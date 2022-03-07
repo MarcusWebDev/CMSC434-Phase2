@@ -1,0 +1,9 @@
+.homePageWrapper {
+    height: 100vh;
+    width: 100vw;
+}
+.shoppingListAndRecipesContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
