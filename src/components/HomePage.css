@@ -8,7 +8,7 @@
 .homePageContainer {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
     height: 100vh;
     width: 336px;
@@ -64,6 +64,7 @@
     flex-direction: row;
     justify-content: space-between;
     width: 336px;
+    margin-top: 25px;
 }
 .refrigeratorHeader {
     font-family: Arial;
@@ -75,7 +76,19 @@
     align-self: flex-start;
 }
 .refrigeratorSelectionContainer {
+    margin-top: 10px;
     align-self: flex-start;
+}
+
+select {
+    border: none;
+    background: url(../icons/dropdownDown.png) no-repeat right;
+    padding: 4px 30px 4px 0;
+    font-family: Arial;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 18px;
+    appearance: none;
 }
 
 label {
@@ -90,4 +103,5 @@ label {
     flex-direction: row;
     justify-content: space-between;
     width: 336px;
+    margin-top: 20px;
 }
