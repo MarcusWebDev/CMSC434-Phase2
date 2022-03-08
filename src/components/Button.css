@@ -7,4 +7,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+}
+.buttonText {
+    font-family: Arial;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #1C1C1E;
 }
