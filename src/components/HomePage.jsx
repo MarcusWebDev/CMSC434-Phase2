@@ -8,7 +8,7 @@ function HomePage() {
             <div className="homePageContainer">
                 <div className="headerBar">
                     <h1 className="header">Hello, Elizabeth!</h1>
-                    <img src="../icons/test.png"/>
+                    <img className="profilePicture" src={require("../icons/profile.png")}/>
                 </div>
                 <div className="notifications">
                     <p className="notificationsHeader"><b>Notifications</b></p>
@@ -17,8 +17,8 @@ function HomePage() {
                     <p className="notificationsAlert"><u><b>Oat Milk</b></u> is expiring in 1 day!</p>
                 </div>
                 <div className="shoppingListAndRecipesContainer">
-                    <Button color="#A7C6FF" icon="../icons/shopping_cart_24px_rounded.svg" text="Shopping List"/>
-                    <Button color="#FED9A8" icon="../icons/library_books_24px_rounded.svg" text="Recipes"/>
+                    <Button color="#A7C6FF" icon={require("../icons/shoppingCart.png")} text="Shopping List"/>
+                    <Button color="#FED9A8" icon={require("../icons/recipes.png")} text="Recipes"/>
                 </div>
                 <div className="refrigeratorSelectionContainer">
                     <h2 className="refrigeratorHeader">Your Refrigerator</h2>
@@ -29,8 +29,8 @@ function HomePage() {
                     </select>
                 </div>
                 <div className="refrigeratorFreezerContainer">
-                    <Button color="#FFFFFF" icon="../icons/shopping_cart_24px_rounded.svg" text="Refrigerator"/>
-                    <Button color="#FFFFFF" icon="../icons/library_books_24px_rounded.svg" text="Freezer"/>
+                    <Button color="#FFFFFF" icon={require("../icons/basket.png")} text="Refrigerator"/>
+                    <Button color="#FFFFFF" icon={require("../icons/snowflake.png")} text="Freezer"/>
                 </div>
             </div>
         </div>
