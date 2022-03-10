@@ -105,3 +105,6 @@ label {
     width: 336px;
     margin-top: 20px;
 }
+.link {
+    text-decoration: none;
+}
