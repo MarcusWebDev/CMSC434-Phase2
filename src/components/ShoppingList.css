@@ -16,11 +16,21 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+    width: 336px;
+    height: 74px;
+    background: white;
+    position: absolute;
 }
 .header {
     font-family: 'Arial';
     font-size: 30px;
+}
+.categoryListContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 74px;
 }
 .button {
     width: 56px;

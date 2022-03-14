@@ -11,8 +11,7 @@ class ShoppingList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isEditDisabled: true,
-            itemComponentsByCategory: {value: new Map()}
+            isEditDisabled: true
         }
     }
 
@@ -40,8 +39,9 @@ class ShoppingList extends React.Component {
                             <button className="button buttonBlue hidden" onClick={() => this.toggleEditDisable()}>Done</button>
                         </div>
                     </div>
-                    <CategoryList name="Meat & Seafood" items={this.state.itemComponentsByCategory.value.get("meatAndSeafood")} isEditDisabled={this.state.isEditDisabled}/>
-                    
+                    <div className="categoryListContainer">
+                        <CategoryList name="Meat & Seafood" items={this.props.itemComponentsByCategory.get("meatAndSeafood")} isEditDisabled={this.state.isEditDisabled}/>
+                    </div>   
                 </div>
             </div>
         );
