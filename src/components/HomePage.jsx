@@ -29,7 +29,7 @@ function HomePage() {
                 </div>
                 <div className="refrigeratorSelectionContainer">
                     <h2 className="refrigeratorHeader">Your Refrigerator</h2>
-                    <select name="refrigerator">
+                    <select name="refrigerator" className="refrigeratorSelect">
                         <option>Lake House Kitchen #2</option>
                         <option>Game Room Fridge</option>
                     </select>

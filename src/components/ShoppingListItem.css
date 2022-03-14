@@ -1,0 +1,43 @@
+.shoppingListItemContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    border-top: solid #C6C6C8 1px;
+    margin-left: 20px
+}
+.checkbox {
+    margin-right: 20px;
+    border-radius: 100px solid black;
+}
+.quantitySelection {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.nameInput {
+    width: 100px;
+}
+.nameInput:disabled {
+    background: white;
+    border: none;
+}
+.quantityInput {
+    width: 40px;
+    text-align: right;
+}
+.quantityInput:disabled {
+    background: white;
+    border: none;
+}
+.metricsSelect {
+    margin-left: 2px;
+    height: 20px;
+    font-family: arial;
+}
+.metricsSelect:disabled {
+    appearance: none;
+    border: none;
+    color: black;
+}

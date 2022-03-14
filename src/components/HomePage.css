@@ -80,7 +80,7 @@
     align-self: flex-start;
 }
 
-select {
+.refrigeratorSelect {
     border: none;
     background: url(../icons/dropdownDown.png) no-repeat right;
     padding: 4px 30px 4px 0;

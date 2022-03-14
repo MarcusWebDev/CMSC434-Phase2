@@ -1,0 +1,10 @@
+.categoryContainer {
+    width: 336px;
+    margin-top: 20px;
+    background: #FFFFFF;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+    border-radius: 13px;
+}
+.categoryHeader {
+    margin-left: 20px;
+}

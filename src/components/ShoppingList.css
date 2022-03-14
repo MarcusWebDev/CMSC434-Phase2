@@ -1,0 +1,41 @@
+.shoppingListWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+.shoppingListContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.headerContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.header {
+    font-family: 'Arial';
+    font-size: 30px;
+}
+.button {
+    width: 56px;
+    height: 32px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    margin-left: 10px;
+}
+.buttonGrey {
+    background: #AEAEB2;
+}
+.buttonBlue {
+    background: #007AFF;
+}
+.hidden {
+    display: none;
+}
