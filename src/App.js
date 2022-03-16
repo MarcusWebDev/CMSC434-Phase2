@@ -9,12 +9,14 @@ class App extends React.Component {
     this.state = {
       shoppingListItemComponentsByCategory: {value: this.initializeListItemComponentsByCategory()},
       itemsToCategories: {value: this.initializeItemsToCategories()}
-    }
+    };
+    this.updateShoppingListItemComponentsByCategory = this.updateShoppingListItemComponentsByCategory.bind(this);
   }
 
-  updateShoppingListItemComponentsByCategory(newValue) {
+  updateShoppingListItemComponentsByCategory(key, newValue) {
+
     this.setState({
-      shoppingListItemComponentsByCategory: newValue
+      shoppingListItemComponentsByCategory: {value: this.state.shoppingListItemComponentsByCategory.value.set(key, this.state.shoppingListItemComponentsByCategory.value.get(key).concat(newValue))}
     })
   }
 
@@ -24,8 +26,10 @@ class App extends React.Component {
         <Route path="/" element={<HomePage />} />
         <Route path="/profileSettings" element={<HomePage />} />
         <Route path="/shoppingList" 
-          element={<ShoppingList itemComponentsByCategory={this.state.shoppingListItemComponentsByCategory.value}/>} 
-          updateItemComponentsByCategory={this.updateShoppingListItemComponentsByCategory}/>
+          element={<ShoppingList 
+          itemComponentsByCategory={this.state.shoppingListItemComponentsByCategory.value}
+          updateItemComponentsByCategory={this.updateShoppingListItemComponentsByCategory}/>} 
+          />
         <Route path="/recipes" element={<HomePage />} />
         <Route path="/refrigerator" element={<HomePage />} />
         <Route path="/freezer" element={<HomePage />} />
@@ -65,20 +69,20 @@ class App extends React.Component {
   }
 
   initializeListItemComponentsByCategory() {
-    return new Map().set("meatAndSeafood", [])
-    .set("breakfast", [])
-    .set("fruit", [])
-    .set("vegetables", [])
-    .set("preparedFood", [])
-    .set("snacks", [])
-    .set("pantry", [])
-    .set("herbsAndSpices", [])
-    .set("beverages", [])
-    .set("dairy", [])
-    .set("frozen", [])
-    .set("bakeryAndBreads", [])
-    .set("personalCare", [])
-    .set("other", [])
+    return new Map().set("Meats & Seafood", [])
+    .set("Breakfast", [])
+    .set("Fruit", [])
+    .set("Vegetables", [])
+    .set("Prepared Food", [])
+    .set("Snacks", [])
+    .set("Pantry", [])
+    .set("HerbsAndSpices", [])
+    .set("Beverages", [])
+    .set("Dairy", [])
+    .set("Frozen", [])
+    .set("Bakery & Breads", [])
+    .set("Personal Care", [])
+    .set("Other", [])
   }
 }
 

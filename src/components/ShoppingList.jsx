@@ -11,16 +11,21 @@ class ShoppingList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isEditDisabled: true
+            isEditDisabled: true,
+            arrayOfCategoryLists: []
         }
     }
 
     toggleEditDisable() {
         this.setState({
             isEditDisabled: !this.state.isEditDisabled,
-            itemComponentsByCategory: {value: this.state.itemComponentsByCategory.value.set("meatAndSeafood", this.state.itemComponentsByCategory.value.get("meatAndSeafood").put(<ShoppingListItem name="Fish" quantity="1" isDisabled={this.state.isEditDisabled}/>))}
         });
 
+        this.props.updateItemComponentsByCategory("Fruit", <ShoppingListItem name="Apple" quantity="1" isDisabled={this.state.isEditDisabled}/>)
+        this.props.updateItemComponentsByCategory("Meats & Seafood", <ShoppingListItem name="Fish" quantity="1" isDisabled={this.state.isEditDisabled}/>)
+        this.props.updateItemComponentsByCategory("Vegetables", <ShoppingListItem name="Fish" quantity="1" isDisabled={this.state.isEditDisabled}/>)
+        this.createCategories();
+        
         let buttons = document.getElementsByClassName("button");
         for (let i = 0; i < buttons.length; i++) {
             buttons[i].classList.toggle("hidden");
@@ -40,14 +45,43 @@ class ShoppingList extends React.Component {
                         </div>
                     </div>
                     <div className="categoryListContainer">
-                        <CategoryList name="Meat & Seafood" items={this.props.itemComponentsByCategory.get("meatAndSeafood")} isEditDisabled={this.state.isEditDisabled}/>
+                        {this.state.arrayOfCategoryLists}
                     </div>   
                 </div>
             </div>
         );
     }
-    
 
+    createCategories() {
+        let items = this.props.itemComponentsByCategory;
+        let iterator = items.keys();
+        console.log(this.props);
+
+
+
+        //add the CategoryLists to the arrayOfCategoryLists
+         for (let currentCategory of iterator) {
+            if (items.get(currentCategory).length != 0) {
+                console.log(currentCategory);
+                /*let i = 0;
+                for (let currentCategoryList of this.state.arrayOfCategoryLists) {
+                    if (currentCategoryList.props.name == currentCategory) {
+                        this.setState({
+                            arrayOfCategoryLists: this.state.arrayOfCategoryLists.splice(i, 1)
+                        });
+                    }
+                    i++;
+                }*/
+                this.setState({
+                    arrayOfCategoryLists: this.state.arrayOfCategoryLists
+                        .concat(<CategoryList name={currentCategory} items={items.get(currentCategory)} isDisabled={this.state.isEditDisabled}/>)
+                });
+                console.log(this.state.arrayOfCategoryLists);
+            }
+        }
+        //console.log(this.state.arrayOfCategoryLists);
+        //console.log(this.props.itemComponentsByCategory);
+    }
 }
 
 export default ShoppingList;
