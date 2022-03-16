@@ -11,8 +11,7 @@ class ShoppingList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isEditDisabled: true,
-            categoryListData: []
+            isEditDisabled: true
         }
     }
 
@@ -32,7 +31,6 @@ class ShoppingList extends React.Component {
     }
 
     render() {
-        console.log(this.state.isEditDisabled);
         return(
             <div className="shoppingListWrapper">
                 <div className="shoppingListContainer">
