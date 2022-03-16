@@ -3,6 +3,12 @@ import ShoppingListItem from "./ShoppingListItem.jsx";
 import "./CategoryList.css";
 
 function CategoryList({name, items, isEditDisabled}) {
+    if(!items.length) {
+        return null;
+    } 
+
+    console.log(isEditDisabled);
+
     return (
         <div className="categoryContainer">
             <h3 className="categoryHeader">{name}</h3>
