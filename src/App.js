@@ -14,7 +14,6 @@ class App extends React.Component {
   }
 
   updateShoppingListItemComponentsByCategory(key, newValue) {
-
     this.setState({
       shoppingListItemComponentsByCategory: {value: this.state.shoppingListItemComponentsByCategory.value.set(key, this.state.shoppingListItemComponentsByCategory.value.get(key).concat(newValue))}
     })

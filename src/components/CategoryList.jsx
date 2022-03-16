@@ -7,7 +7,7 @@ function CategoryList({name, items, isEditDisabled}) {
         <div className="categoryContainer">
             <h3 className="categoryHeader">{name}</h3>
             {
-            items
+            items.map(shoppingListItem => <ShoppingListItem name={shoppingListItem.name} quantity={shoppingListItem.quantity} isDisabled={isEditDisabled} />)
             /* <ShoppingListItem name="Fish" quantity="1" isDisabled={isEditDisabled}/>
             <ShoppingListItem name="Fish" quantity="1" isDisabled={isEditDisabled}/>
             <ShoppingListItem name="Fish" quantity="1" isDisabled={isEditDisabled}/>

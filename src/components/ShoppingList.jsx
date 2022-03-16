@@ -12,7 +12,7 @@ class ShoppingList extends React.Component {
         super(props);
         this.state = {
             isEditDisabled: true,
-            arrayOfCategoryLists: []
+            categoryListData: []
         }
     }
 
@@ -20,12 +20,12 @@ class ShoppingList extends React.Component {
         this.setState({
             isEditDisabled: !this.state.isEditDisabled,
         });
-
-        this.props.updateItemComponentsByCategory("Fruit", <ShoppingListItem name="Apple" quantity="1" isDisabled={this.state.isEditDisabled}/>)
-        this.props.updateItemComponentsByCategory("Meats & Seafood", <ShoppingListItem name="Fish" quantity="1" isDisabled={this.state.isEditDisabled}/>)
-        this.props.updateItemComponentsByCategory("Vegetables", <ShoppingListItem name="Fish" quantity="1" isDisabled={this.state.isEditDisabled}/>)
-        this.createCategories();
         
+        this.props.updateItemComponentsByCategory("Meats & Seafood", {name: "Fish", quantity: 1});
+        this.props.updateItemComponentsByCategory("Vegetables", {name: "Potato", quantity: 1});
+        this.props.updateItemComponentsByCategory("Fruit", {name: "Apple", quantity: 1});
+        this.createCategories();
+
         let buttons = document.getElementsByClassName("button");
         for (let i = 0; i < buttons.length; i++) {
             buttons[i].classList.toggle("hidden");
@@ -45,7 +45,7 @@ class ShoppingList extends React.Component {
                         </div>
                     </div>
                     <div className="categoryListContainer">
-                        {this.state.arrayOfCategoryLists}
+                        {this.state.categoryListData.map(categoryList => <CategoryList name={categoryList.name} items={categoryList.items} isDisabled={this.state.isEditDisabled} />)}
                     </div>   
                 </div>
             </div>
@@ -53,34 +53,30 @@ class ShoppingList extends React.Component {
     }
 
     createCategories() {
-        let items = this.props.itemComponentsByCategory;
-        let iterator = items.keys();
-        console.log(this.props);
+        let items = this.props.itemComponentsByCategory; //an array of objects
 
-
-
-        //add the CategoryLists to the arrayOfCategoryLists
-         for (let currentCategory of iterator) {
-            if (items.get(currentCategory).length != 0) {
-                console.log(currentCategory);
-                /*let i = 0;
-                for (let currentCategoryList of this.state.arrayOfCategoryLists) {
-                    if (currentCategoryList.props.name == currentCategory) {
+        for (let currentCategory of items.keys()) { //for each category
+            if (items.get(currentCategory).length != 0) { //if the category has items mapped to it
+                let i = 0;
+                let alreadySet = false;
+                for (let currentCategoryList of this.state.categoryListData) { //now we're looking at categoryListData which stores the categoryList data used to render CategoryLists
+                    if (currentCategoryList.name == currentCategory) { //If there is already a CategoryList with the current name that has been added to categoryListData then update that data
+                        let temp = [...this.state.categoryListData]
+                        temp[i].items = items.get(currentCategory);
                         this.setState({
-                            arrayOfCategoryLists: this.state.arrayOfCategoryLists.splice(i, 1)
+                            categoryListData: temp
                         });
+                        alreadySet = true;
                     }
                     i++;
-                }*/
-                this.setState({
-                    arrayOfCategoryLists: this.state.arrayOfCategoryLists
-                        .concat(<CategoryList name={currentCategory} items={items.get(currentCategory)} isDisabled={this.state.isEditDisabled}/>)
-                });
-                console.log(this.state.arrayOfCategoryLists);
+                }
+                if (!alreadySet) { //If there is not already a CategoryList with the current name then add one to the categoryListData
+                    this.setState({
+                        categoryListData: this.state.categoryListData.concat({name: currentCategory, items: items.get(currentCategory)})
+                    }, () => console.log(this.state));
+                }
             }
         }
-        //console.log(this.state.arrayOfCategoryLists);
-        //console.log(this.props.itemComponentsByCategory);
     }
 }
 
