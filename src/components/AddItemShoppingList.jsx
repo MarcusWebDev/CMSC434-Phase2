@@ -29,7 +29,7 @@ class AddItemShoppingList extends React.Component {
                         </div>
                         <div className="unitContainer">
                             <label className="addItemLabel">Unit</label>
-                            <select className="addItemInput">
+                            <select className="addItemInput" onChange={(event) => this.setState({itemUnit: event.target.value})}>
                                 <option value="lbs">lbs</option>
                                 <option value="gallons">gallons</option>
                                 <option value="cartons">cartons</option>
@@ -39,7 +39,7 @@ class AddItemShoppingList extends React.Component {
                         </div>
                         
                     </div>
-                    <button className="addItemButton addItemButtonActive" onClick={()=> this.props.updateItemComponentsByCategory(this.props.itemsToCategories.get(this.state.itemName), {name: this.state.itemName, quantity: this.state.itemQuantity})}>Add Item(s)</button>
+                    <button className="addItemButton addItemButtonActive" onClick={()=> this.props.updateItemComponentsByCategory(this.props.itemsToCategories.get(this.state.itemName), {name: this.state.itemName, quantity: this.state.itemQuantity, unit: this.state.itemUnit, checked: false})}>Add Item(s)</button>
                 </div>
             </div>
         );

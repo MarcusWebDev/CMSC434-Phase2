@@ -6,12 +6,12 @@ function CategoryList({name, items, isEditDisabled}) {
     if(!items.length) {
         return null;
     } 
-    
+
     return (
         <div className="categoryContainer">
             <h3 className="categoryHeader">{name}</h3>
             {
-            items.map(shoppingListItem => <ShoppingListItem name={shoppingListItem.name} quantity={shoppingListItem.quantity} isDisabled={isEditDisabled} />)
+            items.map(shoppingListItem => <ShoppingListItem name={shoppingListItem.name} quantity={shoppingListItem.quantity} unit={shoppingListItem.unit} checked={shoppingListItem.checked} isDisabled={isEditDisabled} />)
             /* <ShoppingListItem name="Fish" quantity="1" isDisabled={isEditDisabled}/>
             <ShoppingListItem name="Fish" quantity="1" isDisabled={isEditDisabled}/>
             <ShoppingListItem name="Fish" quantity="1" isDisabled={isEditDisabled}/>
