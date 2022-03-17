@@ -40,12 +40,14 @@ class ShoppingList extends React.Component {
         return(
             <div className="shoppingListWrapper">
                 <div className="shoppingListContainer">
-                    <div className="headerContainer">
-                        <h1 className="header">Shopping List</h1>
-                        <div className="headerButtonContainer">
-                            <button className="button buttonGrey" onClick={() => this.toggleEditDisable()}>Edit</button>
-                            <button className="button buttonBlue" onClick={() => this.setState({addItemOpen: true})}>Add</button>
-                            <button className="button buttonBlue hidden" onClick={() => this.toggleEditDisable()}>Done</button>
+                    <div className="headerWrapper">
+                        <div className="headerContainer">
+                            <h1 className="header">Shopping List</h1>
+                            <div className="headerButtonContainer">
+                                <button className="button buttonGrey" onClick={() => this.toggleEditDisable()}>Edit</button>
+                                <button className="button buttonBlue" onClick={() => this.setState({addItemOpen: true})}>Add</button>
+                                <button className="button buttonBlue hidden" onClick={() => this.toggleEditDisable()}>Done</button>
+                            </div>
                         </div>
                     </div>
                     <div className="categoryListContainer">
