@@ -14,12 +14,19 @@ class App extends React.Component {
   }
 
   updateShoppingListItemComponentsByCategory(key, newValue) {
-    this.setState({
-      shoppingListItemComponentsByCategory: {value: this.state.shoppingListItemComponentsByCategory.value.set(key, this.state.shoppingListItemComponentsByCategory.value.get(key).concat(newValue))}
-    })
+    if (key == undefined) {
+      this.setState({
+        shoppingListItemComponentsByCategory: {value: this.state.shoppingListItemComponentsByCategory.value.set("Other", this.state.shoppingListItemComponentsByCategory.value.get("Other").concat(newValue))}
+      });
+    } else {
+      this.setState({
+        shoppingListItemComponentsByCategory: {value: this.state.shoppingListItemComponentsByCategory.value.set(key, this.state.shoppingListItemComponentsByCategory.value.get(key).concat(newValue))}
+      })
+    }
   }
 
   render() {
+    console.log(this.state);
     return (
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -27,7 +34,8 @@ class App extends React.Component {
         <Route path="/shoppingList" 
           element={<ShoppingList 
           itemComponentsByCategory={this.state.shoppingListItemComponentsByCategory.value}
-          updateItemComponentsByCategory={this.updateShoppingListItemComponentsByCategory}/>} 
+          updateItemComponentsByCategory={this.updateShoppingListItemComponentsByCategory}
+          itemsToCategories={this.state.itemsToCategories.value}/>} 
           />
         <Route path="/recipes" element={<HomePage />} />
         <Route path="/refrigerator" element={<HomePage />} />
@@ -37,34 +45,35 @@ class App extends React.Component {
   }
 
   initializeItemsToCategories() {
-    return new Map().set("soda", "beverages")
-    .set("coke", "beverages")
-    .set("sprite", "beverages")
-    .set("milk", "dairy")
-    .set("eggs", "meatAndSeafood")
+    return new Map().set("soda", "Beverages")
+    .set("coke", "Beverages")
+    .set("sprite", "Beverages")
+    .set("milk", "Dairy")
+    .set("eggs", "Meats & Seafood")
     .set("bread", "bakeryAndBreads")
     .set("cereal", "breakfast")
-    .set("chips", "snacks")
-    .set("cheese", "dairy")
-    .set("beer", "beverages")
-    .set("water", "beverages")
-    .set("cookies", "snacks")
-    .set("bacon", "meatAndSeafood")
-    .set("cupcakes", "snacks")
-    .set("muffins", "snacks")
-    .set("bananas", "fruit")
-    .set("apples", "fruit")
-    .set("pineapples", "fruit")
-    .set("lemons", "fruit")
-    .set("peaches", "fruit")
-    .set("hamburgermeat", "meatAndSeafood")
-    .set("potatoes", "vegetables")
-    .set("corn", "vegetables")
-    .set("onions", "vegetables")
-    .set("tomatoes", "vegetables")
-    .set("chicken", "meatAndSeafood")
-    .set("beef", "meatAndSeafood")
-    .set("steak", "meatAndSeafood")
+    .set("chips", "Snacks")
+    .set("cheese", "Dairy")
+    .set("beer", "Beverages")
+    .set("water", "Beverages")
+    .set("cookies", "Snacks")
+    .set("bacon", "Meats & Seafood")
+    .set("cupcakes", "Snacks")
+    .set("muffins", "Snacks")
+    .set("bananas", "Fruit")
+    .set("apples", "Fruit")
+    .set("pineapples", "Fruit")
+    .set("lemons", "Fruit")
+    .set("peaches", "Fruit")
+    .set("hamburgermeat", "Meats & Seafood")
+    .set("potatoes", "Vegetables")
+    .set("corn", "Vegetables")
+    .set("onions", "Vegetables")
+    .set("tomatoes", "Vegetables")
+    .set("chicken", "Meats & Seafood")
+    .set("beef", "Meats & Seafood")
+    .set("steak", "Meats & Seafood")
+    .set("fish", "Meats & Seafood")
   }
 
   initializeListItemComponentsByCategory() {
