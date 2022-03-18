@@ -13,6 +13,7 @@ class App extends React.Component {
     };
     this.updateShoppingListItemComponentsByCategory = this.updateShoppingListItemComponentsByCategory.bind(this);
     this.removeShoppingListItem = this.removeShoppingListItem.bind(this);
+    this.updateShoppingListItem = this.updateShoppingListItem.bind(this);
   }
 
   updateShoppingListItemComponentsByCategory(key, newValue) {
@@ -30,16 +31,24 @@ class App extends React.Component {
   }
 
   removeShoppingListItem(id, categoryName) {
-      let tempArray = this.state.shoppingListItemComponentsByCategory.value.get(categoryName);
-      tempArray.splice(tempArray.findIndex((obj) => obj.id == id), 1);
-      console.log(tempArray);
-      this.setState({
-        shoppingListItemComponentsByCategory: {value: this.state.shoppingListItemComponentsByCategory.value.set(categoryName, tempArray)}
-      });
+    let tempArray = this.state.shoppingListItemComponentsByCategory.value.get(categoryName);
+    tempArray.splice(tempArray.findIndex((obj) => obj.id == id), 1);
+    this.setState({
+      shoppingListItemComponentsByCategory: {value: this.state.shoppingListItemComponentsByCategory.value.set(categoryName, tempArray)}
+    });
   }
 
-  updateShoppingListItem(id, categoryName, newItemName, newItemQuantity, newItemUnit, checked) {
-
+  updateShoppingListItem(id, categoryName, newItemName, newItemQuantity, newItemUnit, newItemChecked) {
+    let tempArray = this.state.shoppingListItemComponentsByCategory.value.get(categoryName);
+    tempArray.find((obj, i) => {
+      if (obj.id == id) {
+        tempArray[i] = {id: id, name: newItemName, quantity: newItemQuantity, unit: newItemUnit, checked: newItemChecked};
+        return true;
+      }
+    });
+    this.setState({
+      shoppingListItemComponentsByCategory: {value: this.state.shoppingListItemComponentsByCategory.value.set(categoryName, tempArray)}
+    });
   }
 
   render() {
@@ -52,6 +61,7 @@ class App extends React.Component {
           itemComponentsByCategory={this.state.shoppingListItemComponentsByCategory.value}
           updateItemComponentsByCategory={this.updateShoppingListItemComponentsByCategory}
           removeItem={this.removeShoppingListItem}
+          updateItem={this.updateShoppingListItem}
           itemsToCategories={this.state.itemsToCategories.value}
           nextItemId={this.state.nextShoppingListItemId} />} 
           />
