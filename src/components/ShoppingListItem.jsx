@@ -3,8 +3,8 @@ import "./ShoppingListItem.css";
 
 function ShoppingListItem({id, name, quantity, unit, checked, isDisabled, categoryName, updateItem, removeItem}) {
     const [newItemName, setNewItemName] = useState(name);
-    let newItemQuantity = quantity;
-    let newItemUnit = unit;
+    const [newItemQuantity, setNewItemQuantity] = useState(quantity);
+    const [newItemUnit, setNewItemUnit] = useState(unit);
     let newItemChecked = checked;
 
     React.useEffect(() => {
@@ -17,8 +17,8 @@ function ShoppingListItem({id, name, quantity, unit, checked, isDisabled, catego
         <div className="shoppingListItemContainer">
             <input type="text" className="nameInput" defaultValue={name} disabled={isDisabled} onChange={(event) => {setNewItemName(event.target.value);}}/>
             <div className="quantitySelection">
-                <input type="number" className="quantityInput" defaultValue={quantity} disabled={isDisabled} onChange={(event) => {newItemQuantity = event.target.value; updateItem(id, categoryName, newItemName, newItemQuantity, newItemUnit, newItemChecked)}}/>
-                <select name="metricsSelect" className="metricsSelect" defaultValue={unit} disabled={isDisabled} onChange={(event) => {newItemUnit = event.target.value; updateItem(id, categoryName, newItemName, newItemQuantity, newItemUnit, newItemChecked)}}>
+                <input type="number" className="quantityInput" defaultValue={quantity} disabled={isDisabled} onChange={(event) => {setNewItemQuantity(event.target.value)}}/>
+                <select name="metricsSelect" className="metricsSelect" defaultValue={unit} disabled={isDisabled} onChange={(event) => {setNewItemUnit(event.target.value)}}>
                     <option value="lbs">lbs</option>
                     <option value="gallons">gallons</option>
                     <option value="cartons">cartons</option>

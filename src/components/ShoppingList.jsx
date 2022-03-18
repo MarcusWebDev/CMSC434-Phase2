@@ -39,7 +39,7 @@ class ShoppingList extends React.Component {
     render() {
         return(
             <div className="shoppingListWrapper">
-                <div className="shoppingListContainer">
+                <div className={`shoppingListContainer ${this.state.addItemOpen ? "blurWall" : null}`}>
                     <div className="headerWrapper">
                         <div className="headerContainer">
                             <h1 className="header">Shopping List</h1>
@@ -53,9 +53,8 @@ class ShoppingList extends React.Component {
                     <div className="categoryListContainer">
                         {[...this.props.itemComponentsByCategory.entries()].map((entry) => <CategoryList name={entry[0]} items={entry[1]} isEditDisabled={this.state.isEditDisabled} updateItem={this.props.updateItem} removeItem={this.props.removeItem}/>)}
                     </div>   
-                    {this.state.addItemOpen ? <AddItemShoppingList updateItemComponentsByCategory={this.props.updateItemComponentsByCategory} itemsToCategories={this.props.itemsToCategories} nextItemId={this.props.nextItemId} close={this.closeAddItem}/> : null}
-                    
                 </div>
+                {this.state.addItemOpen ? <AddItemShoppingList createShoppingListItem={this.props.createShoppingListItem} itemsToCategories={this.props.itemsToCategories} nextItemId={this.props.nextItemId} close={this.closeAddItem}/> : null}
             </div>
         );
     }

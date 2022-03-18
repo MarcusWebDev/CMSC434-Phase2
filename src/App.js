@@ -11,12 +11,12 @@ class App extends React.Component {
       nextShoppingListItemId: 0,
       itemsToCategories: {value: this.initializeItemsToCategories()}
     };
-    this.updateShoppingListItemComponentsByCategory = this.updateShoppingListItemComponentsByCategory.bind(this);
+    this.createShoppingListItem = this.createShoppingListItem.bind(this);
     this.removeShoppingListItem = this.removeShoppingListItem.bind(this);
     this.updateShoppingListItem = this.updateShoppingListItem.bind(this);
   }
 
-  updateShoppingListItemComponentsByCategory(key, newValue) {
+  createShoppingListItem(key, newValue) {
     if (key == undefined) {
       this.setState({
         shoppingListItemComponentsByCategory: {value: this.state.shoppingListItemComponentsByCategory.value.set("Other", this.state.shoppingListItemComponentsByCategory.value.get("Other").concat(newValue))},
@@ -39,9 +39,9 @@ class App extends React.Component {
   }
 
   updateShoppingListItem(id, categoryName, newItemName, newItemQuantity, newItemUnit, newItemChecked) {
-    if (this.state.itemsToCategories.value.get(newItemName) != categoryName) {
+    if (this.state.itemsToCategories.value.get(newItemName) != categoryName && !(this.state.itemsToCategories.value.get(newItemName) == undefined && categoryName == "Other")) {
       this.removeShoppingListItem(id, categoryName);
-      this.updateShoppingListItemComponentsByCategory(this.state.itemsToCategories.value.get(newItemName), {id: id, name: newItemName, quantity: newItemQuantity, unit: newItemUnit, checked: newItemChecked})
+      this.createShoppingListItem(this.state.itemsToCategories.value.get(newItemName), {id: id, name: newItemName, quantity: newItemQuantity, unit: newItemUnit, checked: newItemChecked})
     } else {
       let tempArray = this.state.shoppingListItemComponentsByCategory.value.get(categoryName);
       tempArray.find((obj, i) => {
@@ -64,7 +64,7 @@ class App extends React.Component {
         <Route path="/shoppingList" 
           element={<ShoppingList 
           itemComponentsByCategory={this.state.shoppingListItemComponentsByCategory.value}
-          updateItemComponentsByCategory={this.updateShoppingListItemComponentsByCategory}
+          createShoppingListItem={this.createShoppingListItem}
           removeItem={this.removeShoppingListItem}
           updateItem={this.updateShoppingListItem}
           itemsToCategories={this.state.itemsToCategories.value}
