@@ -1,8 +1,8 @@
 import React from "react";
 import "./ShoppingListItem.css";
 
-function ShoppingListItem({name, quantity, unit, checked, isDisabled}) {
-    console.log(checked);
+function ShoppingListItem({id, name, quantity, unit, checked, isDisabled, categoryName, removeItem}) {
+    console.log("name: " + name + ", id: " + id);
     return (
         <div className="shoppingListItemContainer">
             <input type="text" className="nameInput" defaultValue={name} disabled={isDisabled} />
@@ -16,7 +16,7 @@ function ShoppingListItem({name, quantity, unit, checked, isDisabled}) {
                     <option value="servings">servings</option>
                 </select>
             </div>
-            <input type="checkbox" className="checkbox" defaultChecked={checked}/>
+            {isDisabled ? <input type="checkbox" className="checkbox" defaultChecked={checked}/> : <img src={require("../icons/deleteSymbol.png")} className="shoppingListDelete" onClick={() => removeItem(id, categoryName)}/>}
         </div>
     );
 }

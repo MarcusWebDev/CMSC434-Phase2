@@ -8,25 +8,41 @@ class App extends React.Component {
     super(props);
     this.state = {
       shoppingListItemComponentsByCategory: {value: this.initializeListItemComponentsByCategory()},
+      nextShoppingListItemId: 0,
       itemsToCategories: {value: this.initializeItemsToCategories()}
     };
     this.updateShoppingListItemComponentsByCategory = this.updateShoppingListItemComponentsByCategory.bind(this);
+    this.removeShoppingListItem = this.removeShoppingListItem.bind(this);
   }
 
   updateShoppingListItemComponentsByCategory(key, newValue) {
     if (key == undefined) {
       this.setState({
-        shoppingListItemComponentsByCategory: {value: this.state.shoppingListItemComponentsByCategory.value.set("Other", this.state.shoppingListItemComponentsByCategory.value.get("Other").concat(newValue))}
+        shoppingListItemComponentsByCategory: {value: this.state.shoppingListItemComponentsByCategory.value.set("Other", this.state.shoppingListItemComponentsByCategory.value.get("Other").concat(newValue))},
+        nextShoppingListItemId: ++this.state.nextShoppingListItemId
       });
     } else {
       this.setState({
-        shoppingListItemComponentsByCategory: {value: this.state.shoppingListItemComponentsByCategory.value.set(key, this.state.shoppingListItemComponentsByCategory.value.get(key).concat(newValue))}
+        shoppingListItemComponentsByCategory: {value: this.state.shoppingListItemComponentsByCategory.value.set(key, this.state.shoppingListItemComponentsByCategory.value.get(key).concat(newValue))},
+        nextShoppingListItemId: ++this.state.nextShoppingListItemId
       })
     }
   }
 
+  removeShoppingListItem(id, categoryName) {
+      let tempArray = this.state.shoppingListItemComponentsByCategory.value.get(categoryName);
+      tempArray.splice(tempArray.findIndex((obj) => obj.id == id), 1);
+      console.log(tempArray);
+      this.setState({
+        shoppingListItemComponentsByCategory: {value: this.state.shoppingListItemComponentsByCategory.value.set(categoryName, tempArray)}
+      });
+  }
+
+  updateShoppingListItem(id, categoryName, newItemName, newItemQuantity, newItemUnit, checked) {
+
+  }
+
   render() {
-    console.log(this.state);
     return (
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -35,7 +51,9 @@ class App extends React.Component {
           element={<ShoppingList 
           itemComponentsByCategory={this.state.shoppingListItemComponentsByCategory.value}
           updateItemComponentsByCategory={this.updateShoppingListItemComponentsByCategory}
-          itemsToCategories={this.state.itemsToCategories.value}/>} 
+          removeItem={this.removeShoppingListItem}
+          itemsToCategories={this.state.itemsToCategories.value}
+          nextItemId={this.state.nextShoppingListItemId} />} 
           />
         <Route path="/recipes" element={<HomePage />} />
         <Route path="/refrigerator" element={<HomePage />} />

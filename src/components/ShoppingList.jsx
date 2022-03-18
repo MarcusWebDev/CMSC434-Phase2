@@ -51,9 +51,9 @@ class ShoppingList extends React.Component {
                         </div>
                     </div>
                     <div className="categoryListContainer">
-                        {[...this.props.itemComponentsByCategory.entries()].map((entry) => <CategoryList name={entry[0]} items={entry[1]} isEditDisabled={this.state.isEditDisabled} />)}
+                        {[...this.props.itemComponentsByCategory.entries()].map((entry) => <CategoryList name={entry[0]} items={entry[1]} isEditDisabled={this.state.isEditDisabled} removeItem={this.props.removeItem}/>)}
                     </div>   
-                    {this.state.addItemOpen ? <AddItemShoppingList updateItemComponentsByCategory={this.props.updateItemComponentsByCategory} itemsToCategories={this.props.itemsToCategories} close={this.closeAddItem}/> : null}
+                    {this.state.addItemOpen ? <AddItemShoppingList updateItemComponentsByCategory={this.props.updateItemComponentsByCategory} itemsToCategories={this.props.itemsToCategories} nextItemId={this.props.nextItemId} close={this.closeAddItem}/> : null}
                     
                 </div>
             </div>
