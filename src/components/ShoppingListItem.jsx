@@ -1,14 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ShoppingListItem.css";
 
 function ShoppingListItem({id, name, quantity, unit, checked, isDisabled, categoryName, updateItem, removeItem}) {
-    let newItemName = name;
+    const [newItemName, setNewItemName] = useState(name);
     let newItemQuantity = quantity;
     let newItemUnit = unit;
     let newItemChecked = checked;
+
+    React.useEffect(() => {
+        if(isDisabled) {
+            updateItem(id, categoryName, newItemName, newItemQuantity, newItemUnit, newItemChecked);
+        }
+    }, [isDisabled]);
+
     return (
         <div className="shoppingListItemContainer">
-            <input type="text" className="nameInput" defaultValue={name} disabled={isDisabled} onChange={(event) => {newItemName = event.target.value; updateItem(id, categoryName, newItemName, newItemQuantity, newItemUnit, newItemChecked)}}/>
+            <input type="text" className="nameInput" defaultValue={name} disabled={isDisabled} onChange={(event) => {setNewItemName(event.target.value);}}/>
             <div className="quantitySelection">
                 <input type="number" className="quantityInput" defaultValue={quantity} disabled={isDisabled} onChange={(event) => {newItemQuantity = event.target.value; updateItem(id, categoryName, newItemName, newItemQuantity, newItemUnit, newItemChecked)}}/>
                 <select name="metricsSelect" className="metricsSelect" defaultValue={unit} disabled={isDisabled} onChange={(event) => {newItemUnit = event.target.value; updateItem(id, categoryName, newItemName, newItemQuantity, newItemUnit, newItemChecked)}}>

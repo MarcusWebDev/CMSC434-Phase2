@@ -39,16 +39,21 @@ class App extends React.Component {
   }
 
   updateShoppingListItem(id, categoryName, newItemName, newItemQuantity, newItemUnit, newItemChecked) {
-    let tempArray = this.state.shoppingListItemComponentsByCategory.value.get(categoryName);
-    tempArray.find((obj, i) => {
-      if (obj.id == id) {
-        tempArray[i] = {id: id, name: newItemName, quantity: newItemQuantity, unit: newItemUnit, checked: newItemChecked};
-        return true;
-      }
-    });
-    this.setState({
-      shoppingListItemComponentsByCategory: {value: this.state.shoppingListItemComponentsByCategory.value.set(categoryName, tempArray)}
-    });
+    if (this.state.itemsToCategories.value.get(newItemName) != categoryName) {
+      this.removeShoppingListItem(id, categoryName);
+      this.updateShoppingListItemComponentsByCategory(this.state.itemsToCategories.value.get(newItemName), {id: id, name: newItemName, quantity: newItemQuantity, unit: newItemUnit, checked: newItemChecked})
+    } else {
+      let tempArray = this.state.shoppingListItemComponentsByCategory.value.get(categoryName);
+      tempArray.find((obj, i) => {
+        if (obj.id == id) {
+          tempArray[i] = {id: id, name: newItemName, quantity: newItemQuantity, unit: newItemUnit, checked: newItemChecked};
+          return true;
+        }
+      });
+      this.setState({
+        shoppingListItemComponentsByCategory: {value: this.state.shoppingListItemComponentsByCategory.value.set(categoryName, tempArray)}
+      });
+    }
   }
 
   render() {
