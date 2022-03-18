@@ -39,9 +39,9 @@ class App extends React.Component {
   }
 
   updateShoppingListItem(id, categoryName, newItemName, newItemQuantity, newItemUnit, newItemChecked) {
-    if (this.state.itemsToCategories.value.get(newItemName) != categoryName && !(this.state.itemsToCategories.value.get(newItemName) == undefined && categoryName == "Other")) {
+    if (this.state.itemsToCategories.value.get(newItemName.toLowerCase().replace(/ /g, "")) != categoryName && !(this.state.itemsToCategories.value.get(newItemName.toLowerCase().replace(/ /g, "")) == undefined && categoryName == "Other")) {
       this.removeShoppingListItem(id, categoryName);
-      this.createShoppingListItem(this.state.itemsToCategories.value.get(newItemName), {id: id, name: newItemName, quantity: newItemQuantity, unit: newItemUnit, checked: newItemChecked})
+      this.createShoppingListItem(this.state.itemsToCategories.value.get(newItemName.toLowerCase().replace(/ /g, "")), {id: id, name: newItemName, quantity: newItemQuantity, unit: newItemUnit, checked: newItemChecked})
     } else {
       let tempArray = this.state.shoppingListItemComponentsByCategory.value.get(categoryName);
       tempArray.find((obj, i) => {
