@@ -17,29 +17,47 @@
     align-items: center;
 }
 .nameInput {
-    width: 100px;
+    width: 86px;
+    background: #EEEEEE;
+    border-radius: 8px;
+    border: none;
+    height: 24px;
+    padding-left: 10px;
 }
 .nameInput:disabled {
     background: white;
     border: none;
 }
 .quantityInput {
-    width: 40px;
+    width: 38px;
     text-align: right;
+    background: #EEEEEE;
+    border-radius: 8px;
+    border: none;
+    height: 24px;
+    padding-right: 10px;
 }
 .quantityInput:disabled {
     background: white;
     border: none;
+    padding: 0;
 }
 .metricsSelect {
-    margin-left: 2px;
+    margin-left: 4px;
     height: 20px;
     font-family: arial;
+    background: #EEEEEE;
+    border-radius: 8px;
+    border: none;
+    height: 24px;
+    padding-left: 10px;
 }
 .metricsSelect:disabled {
     appearance: none;
     border: none;
     color: black;
+    background: white;
+    padding: 0;
 }
 .shoppingListDelete {
     margin-right: 20px;
