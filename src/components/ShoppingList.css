@@ -11,6 +11,16 @@
     justify-content: flex-start;
     align-items: center;
 }
+.headerWrapper {
+    position: fixed;
+    background: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100vw;
+    height: 74px;
+    z-index: 1;
+}
 .headerContainer {
     display: flex;
     flex-direction: row;
@@ -19,7 +29,7 @@
     width: 336px;
     height: 74px;
     background: white;
-    position: absolute;
+    position: fixed;
 }
 .header {
     font-family: 'Arial';
@@ -48,4 +58,12 @@
 }
 .hidden {
     display: none;
+}
+.blurWall {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    filter: blur(3px);
 }

@@ -1,32 +1,49 @@
 import React from "react";
+import "./AddItemShoppingList.css";
 
-function AddItemShoppingList() {
-    return (
-        <div className="AddItemShoppingListContainer">
-            <div className="headerBar">
+class AddItemShoppingList extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            itemName: "",
+            itemQuantity: 0,
+            itemUnit: "lbs"
+        }
+    }
 
+
+    render() {
+        return (
+            <div className="addItemWrapper">
+                <div className="addItemContainer">
+                    <div className="addItemHeader">
+                        <h2>New Item</h2>
+                        <img src={require("../icons/closeButton.png")} className="addItemCloseButton" onClick={()=> this.props.close()}/>
+                    </div>
+                    <label className="addItemLabel">Item Name</label>
+                    <input type="text" className="addItemInput" onChange={(event) => this.setState({itemName: event.target.value})} placeholder="Name"/>
+                    <div className="quantityUnitContainer">
+                        <div className="quantityContainer">
+                            <label className="addItemLabel">Quantity</label>
+                            <input type="number" className="addItemInput" onChange={(event) => this.setState({itemQuantity: event.target.value})} placeholder="0" />            
+                        </div>
+                        <div className="unitContainer">
+                            <label className="addItemLabel">Unit</label>
+                            <select className="addItemInput" onChange={(event) => this.setState({itemUnit: event.target.value})}>
+                                <option value="lbs">lbs</option>
+                                <option value="gallons">gallons</option>
+                                <option value="cartons">cartons</option>
+                                <option value="bowls">bowls</option>
+                                <option value="servings">servings</option>
+                            </select>
+                        </div>
+                        
+                    </div>
+                    <button className="addItemButton addItemButtonActive" onClick={()=> this.props.createShoppingListItem(this.props.itemsToCategories.get(this.state.itemName), {id: this.props.nextItemId, name: this.state.itemName, quantity: this.state.itemQuantity, unit: this.state.itemUnit, checked: false})}>Add Item(s)</button>
+                </div>
             </div>
-            <label>Item Name</label>
-            <input type="text" />
-            <div className="quantityAndUnitContainer">
-                <label>Quantity</label>
-                <input type="number" />
-                <label>Unit</label>
-                <select name="metricsSelect" className="metricsSelect" disabled={isDisabled}>
-                    <option value="lbs">lbs</option>
-                    <option value="gallons">gallons</option>
-                    <option value="cartons">cartons</option>
-                    <option value="bowls">bowls</option>
-                    <option value="servings">servings</option>
-                </select>
-            </div>
-            <label>Category</label>
-            <select name="categorySelect" className="categorySelect">
-                <option></option>    
-            </select>
-
-        </div>
-    );
+        );
+    }
 }
 
 export default AddItemShoppingList;

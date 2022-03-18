@@ -1,8 +1,10 @@
 import React from 'react';
-import ShoppingListItem from "./ShoppingListItem";
-import CategoryList from "./CategoryList.jsx";
-import "./ShoppingList.css";
 import { render } from '@testing-library/react';
+import ShoppingListItem from "./ShoppingListItem.jsx";
+import CategoryList from "./CategoryList.jsx";
+import AddItemShoppingList from './AddItemShoppingList.jsx';
+import "./ShoppingList.css";
+
 
 //check if there is a current value for map.get("whatever"), if not initialize it with an array with the item you want put in it
 //otherwise do a map.get().put()
@@ -12,8 +14,9 @@ class ShoppingList extends React.Component {
         super(props);
         this.state = {
             isEditDisabled: true,
-            arrayOfCategoryLists: []
+            addItemOpen: false
         }
+        this.closeAddItem = this.closeAddItem.bind(this);
     }
 
     toggleEditDisable() {
@@ -21,66 +24,39 @@ class ShoppingList extends React.Component {
             isEditDisabled: !this.state.isEditDisabled,
         });
 
-        this.props.updateItemComponentsByCategory("Fruit", <ShoppingListItem name="Apple" quantity="1" isDisabled={this.state.isEditDisabled}/>)
-        this.props.updateItemComponentsByCategory("Meats & Seafood", <ShoppingListItem name="Fish" quantity="1" isDisabled={this.state.isEditDisabled}/>)
-        this.props.updateItemComponentsByCategory("Vegetables", <ShoppingListItem name="Fish" quantity="1" isDisabled={this.state.isEditDisabled}/>)
-        this.createCategories();
-        
         let buttons = document.getElementsByClassName("button");
         for (let i = 0; i < buttons.length; i++) {
             buttons[i].classList.toggle("hidden");
         }
     }
 
+    closeAddItem() {
+        this.setState({
+            addItemOpen: false
+        })
+    }
+
     render() {
         return(
             <div className="shoppingListWrapper">
-                <div className="shoppingListContainer">
-                    <div className="headerContainer">
-                        <h1 className="header">Shopping List</h1>
-                        <div className="headerButtonContainer">
-                            <button className="button buttonGrey" onClick={() => this.toggleEditDisable()}>Edit</button>
-                            <button className="button buttonBlue">Add</button>
-                            <button className="button buttonBlue hidden" onClick={() => this.toggleEditDisable()}>Done</button>
+                <div className={`shoppingListContainer ${this.state.addItemOpen ? "blurWall" : null}`}>
+                    <div className="headerWrapper">
+                        <div className="headerContainer">
+                            <h1 className="header">Shopping List</h1>
+                            <div className="headerButtonContainer">
+                                <button className="button buttonGrey" onClick={() => this.toggleEditDisable()}>Edit</button>
+                                <button className="button buttonBlue" onClick={() => this.setState({addItemOpen: true})}>Add</button>
+                                <button className="button buttonBlue hidden" onClick={() => this.toggleEditDisable()}>Done</button>
+                            </div>
                         </div>
                     </div>
                     <div className="categoryListContainer">
-                        {this.state.arrayOfCategoryLists}
+                        {[...this.props.itemComponentsByCategory.entries()].map((entry) => <CategoryList name={entry[0]} items={entry[1]} isEditDisabled={this.state.isEditDisabled} updateItem={this.props.updateItem} removeItem={this.props.removeItem}/>)}
                     </div>   
                 </div>
+                {this.state.addItemOpen ? <AddItemShoppingList createShoppingListItem={this.props.createShoppingListItem} itemsToCategories={this.props.itemsToCategories} nextItemId={this.props.nextItemId} close={this.closeAddItem}/> : null}
             </div>
         );
-    }
-
-    createCategories() {
-        let items = this.props.itemComponentsByCategory;
-        let iterator = items.keys();
-        console.log(this.props);
-
-
-
-        //add the CategoryLists to the arrayOfCategoryLists
-         for (let currentCategory of iterator) {
-            if (items.get(currentCategory).length != 0) {
-                console.log(currentCategory);
-                /*let i = 0;
-                for (let currentCategoryList of this.state.arrayOfCategoryLists) {
-                    if (currentCategoryList.props.name == currentCategory) {
-                        this.setState({
-                            arrayOfCategoryLists: this.state.arrayOfCategoryLists.splice(i, 1)
-                        });
-                    }
-                    i++;
-                }*/
-                this.setState({
-                    arrayOfCategoryLists: this.state.arrayOfCategoryLists
-                        .concat(<CategoryList name={currentCategory} items={items.get(currentCategory)} isDisabled={this.state.isEditDisabled}/>)
-                });
-                console.log(this.state.arrayOfCategoryLists);
-            }
-        }
-        //console.log(this.state.arrayOfCategoryLists);
-        //console.log(this.props.itemComponentsByCategory);
     }
 }
 

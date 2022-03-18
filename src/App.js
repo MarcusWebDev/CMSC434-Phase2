@@ -8,16 +8,52 @@ class App extends React.Component {
     super(props);
     this.state = {
       shoppingListItemComponentsByCategory: {value: this.initializeListItemComponentsByCategory()},
+      nextShoppingListItemId: 0,
       itemsToCategories: {value: this.initializeItemsToCategories()}
     };
-    this.updateShoppingListItemComponentsByCategory = this.updateShoppingListItemComponentsByCategory.bind(this);
+    this.createShoppingListItem = this.createShoppingListItem.bind(this);
+    this.removeShoppingListItem = this.removeShoppingListItem.bind(this);
+    this.updateShoppingListItem = this.updateShoppingListItem.bind(this);
   }
 
-  updateShoppingListItemComponentsByCategory(key, newValue) {
+  createShoppingListItem(key, newValue) {
+    if (key == undefined) {
+      this.setState({
+        shoppingListItemComponentsByCategory: {value: this.state.shoppingListItemComponentsByCategory.value.set("Other", this.state.shoppingListItemComponentsByCategory.value.get("Other").concat(newValue))},
+        nextShoppingListItemId: ++this.state.nextShoppingListItemId
+      });
+    } else {
+      this.setState({
+        shoppingListItemComponentsByCategory: {value: this.state.shoppingListItemComponentsByCategory.value.set(key, this.state.shoppingListItemComponentsByCategory.value.get(key).concat(newValue))},
+        nextShoppingListItemId: ++this.state.nextShoppingListItemId
+      })
+    }
+  }
 
+  removeShoppingListItem(id, categoryName) {
+    let tempArray = this.state.shoppingListItemComponentsByCategory.value.get(categoryName);
+    tempArray.splice(tempArray.findIndex((obj) => obj.id == id), 1);
     this.setState({
-      shoppingListItemComponentsByCategory: {value: this.state.shoppingListItemComponentsByCategory.value.set(key, this.state.shoppingListItemComponentsByCategory.value.get(key).concat(newValue))}
-    })
+      shoppingListItemComponentsByCategory: {value: this.state.shoppingListItemComponentsByCategory.value.set(categoryName, tempArray)}
+    });
+  }
+
+  updateShoppingListItem(id, categoryName, newItemName, newItemQuantity, newItemUnit, newItemChecked) {
+    if (this.state.itemsToCategories.value.get(newItemName) != categoryName && !(this.state.itemsToCategories.value.get(newItemName) == undefined && categoryName == "Other")) {
+      this.removeShoppingListItem(id, categoryName);
+      this.createShoppingListItem(this.state.itemsToCategories.value.get(newItemName), {id: id, name: newItemName, quantity: newItemQuantity, unit: newItemUnit, checked: newItemChecked})
+    } else {
+      let tempArray = this.state.shoppingListItemComponentsByCategory.value.get(categoryName);
+      tempArray.find((obj, i) => {
+        if (obj.id == id) {
+          tempArray[i] = {id: id, name: newItemName, quantity: newItemQuantity, unit: newItemUnit, checked: newItemChecked};
+          return true;
+        }
+      });
+      this.setState({
+        shoppingListItemComponentsByCategory: {value: this.state.shoppingListItemComponentsByCategory.value.set(categoryName, tempArray)}
+      });
+    }
   }
 
   render() {
@@ -28,7 +64,11 @@ class App extends React.Component {
         <Route path="/shoppingList" 
           element={<ShoppingList 
           itemComponentsByCategory={this.state.shoppingListItemComponentsByCategory.value}
-          updateItemComponentsByCategory={this.updateShoppingListItemComponentsByCategory}/>} 
+          createShoppingListItem={this.createShoppingListItem}
+          removeItem={this.removeShoppingListItem}
+          updateItem={this.updateShoppingListItem}
+          itemsToCategories={this.state.itemsToCategories.value}
+          nextItemId={this.state.nextShoppingListItemId} />} 
           />
         <Route path="/recipes" element={<HomePage />} />
         <Route path="/refrigerator" element={<HomePage />} />
@@ -38,34 +78,35 @@ class App extends React.Component {
   }
 
   initializeItemsToCategories() {
-    return new Map().set("soda", "beverages")
-    .set("coke", "beverages")
-    .set("sprite", "beverages")
-    .set("milk", "dairy")
-    .set("eggs", "meatAndSeafood")
-    .set("bread", "bakeryAndBreads")
-    .set("cereal", "breakfast")
-    .set("chips", "snacks")
-    .set("cheese", "dairy")
-    .set("beer", "beverages")
-    .set("water", "beverages")
-    .set("cookies", "snacks")
-    .set("bacon", "meatAndSeafood")
-    .set("cupcakes", "snacks")
-    .set("muffins", "snacks")
-    .set("bananas", "fruit")
-    .set("apples", "fruit")
-    .set("pineapples", "fruit")
-    .set("lemons", "fruit")
-    .set("peaches", "fruit")
-    .set("hamburgermeat", "meatAndSeafood")
-    .set("potatoes", "vegetables")
-    .set("corn", "vegetables")
-    .set("onions", "vegetables")
-    .set("tomatoes", "vegetables")
-    .set("chicken", "meatAndSeafood")
-    .set("beef", "meatAndSeafood")
-    .set("steak", "meatAndSeafood")
+    return new Map().set("soda", "Beverages")
+    .set("coke", "Beverages")
+    .set("sprite", "Beverages")
+    .set("milk", "Dairy")
+    .set("eggs", "Meats & Seafood")
+    .set("bread", "Bakery & Breads")
+    .set("cereal", "Breakfast")
+    .set("chips", "Snacks")
+    .set("cheese", "Dairy")
+    .set("beer", "Beverages")
+    .set("water", "Beverages")
+    .set("cookies", "Snacks")
+    .set("bacon", "Meats & Seafood")
+    .set("cupcakes", "Snacks")
+    .set("muffins", "Snacks")
+    .set("bananas", "Fruit")
+    .set("apples", "Fruit")
+    .set("pineapples", "Fruit")
+    .set("lemons", "Fruit")
+    .set("peaches", "Fruit")
+    .set("hamburgermeat", "Meats & Seafood")
+    .set("potatoes", "Vegetables")
+    .set("corn", "Vegetables")
+    .set("onions", "Vegetables")
+    .set("tomatoes", "Vegetables")
+    .set("chicken", "Meats & Seafood")
+    .set("beef", "Meats & Seafood")
+    .set("steak", "Meats & Seafood")
+    .set("fish", "Meats & Seafood")
   }
 
   initializeListItemComponentsByCategory() {
