@@ -27,6 +27,7 @@
 .nameInput:disabled {
     background: white;
     border: none;
+    width: 140px;
 }
 .quantityInput {
     width: 38px;

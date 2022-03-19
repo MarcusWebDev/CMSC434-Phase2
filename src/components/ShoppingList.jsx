@@ -46,6 +46,7 @@ class ShoppingList extends React.Component {
                             <div className="headerButtonContainer">
                                 <button className="button buttonGrey" onClick={() => this.toggleEditDisable()}>Edit</button>
                                 <button className="button buttonBlue" onClick={() => this.setState({addItemOpen: true})}>Add</button>
+                                <button className="button buttonRed hidden" onClick={() => {this.props.clearShoppingList(); this.toggleEditDisable()}} >Clear</button>
                                 <button className="button buttonBlue hidden" onClick={() => this.toggleEditDisable()}>Done</button>
                             </div>
                         </div>
@@ -54,7 +55,7 @@ class ShoppingList extends React.Component {
                         {[...this.props.itemComponentsByCategory.entries()].map((entry) => <CategoryList name={entry[0]} items={entry[1]} isEditDisabled={this.state.isEditDisabled} updateItem={this.props.updateItem} removeItem={this.props.removeItem}/>)}
                     </div>   
                 </div>
-                {this.state.addItemOpen ? <AddItemShoppingList createShoppingListItem={this.props.createShoppingListItem} itemsToCategories={this.props.itemsToCategories} nextItemId={this.props.nextItemId} close={this.closeAddItem}/> : null}
+                {this.state.addItemOpen ? <AddItemShoppingList createItem={this.props.createItem} itemsToCategories={this.props.itemsToCategories} nextItemId={this.props.nextItemId} close={this.closeAddItem}/> : null}
             </div>
         );
     }

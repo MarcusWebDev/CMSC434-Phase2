@@ -49,12 +49,16 @@
     border: none;
     color: white;
     margin-left: 10px;
+    cursor: pointer;
 }
 .buttonGrey {
     background: #AEAEB2;
 }
 .buttonBlue {
     background: #007AFF;
+}
+.buttonRed {
+    background: #E22400;
 }
 .hidden {
     display: none;

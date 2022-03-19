@@ -14,6 +14,7 @@ class App extends React.Component {
     this.createShoppingListItem = this.createShoppingListItem.bind(this);
     this.removeShoppingListItem = this.removeShoppingListItem.bind(this);
     this.updateShoppingListItem = this.updateShoppingListItem.bind(this);
+    this.clearShoppingList = this.clearShoppingList.bind(this);
   }
 
   createShoppingListItem(key, newValue) {
@@ -56,6 +57,12 @@ class App extends React.Component {
     }
   }
 
+  clearShoppingList() {
+    this.setState({
+      shoppingListItemComponentsByCategory: {value: this.initializeListItemComponentsByCategory()},
+    });
+  }
+
   render() {
     return (
       <Routes>
@@ -64,9 +71,10 @@ class App extends React.Component {
         <Route path="/shoppingList" 
           element={<ShoppingList 
           itemComponentsByCategory={this.state.shoppingListItemComponentsByCategory.value}
-          createShoppingListItem={this.createShoppingListItem}
+          createItem={this.createShoppingListItem}
           removeItem={this.removeShoppingListItem}
           updateItem={this.updateShoppingListItem}
+          clearShoppingList={this.clearShoppingList}
           itemsToCategories={this.state.itemsToCategories.value}
           nextItemId={this.state.nextShoppingListItemId} />} 
           />

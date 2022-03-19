@@ -39,7 +39,7 @@ class AddItemShoppingList extends React.Component {
                         </div>
                         
                     </div>
-                    <button className="addItemButton addItemButtonActive" onClick={()=> this.props.createShoppingListItem(this.props.itemsToCategories.get(this.state.itemName), {id: this.props.nextItemId, name: this.state.itemName, quantity: this.state.itemQuantity, unit: this.state.itemUnit, checked: false})}>Add Item(s)</button>
+                    <button className="addItemButton addItemButtonActive" onClick={()=> this.props.createItem(this.props.itemsToCategories.get(this.state.itemName), {id: this.props.nextItemId, name: this.state.itemName, quantity: this.state.itemQuantity, unit: this.state.itemUnit, checked: false})}>Add Item(s)</button>
                 </div>
             </div>
         );
