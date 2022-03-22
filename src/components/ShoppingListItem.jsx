@@ -1,7 +1,29 @@
 import React, { useState } from "react";
 import "./ShoppingListItem.css";
 
-function ShoppingListItem({id, name, quantity, unit, checked, isDisabled, categoryName, updateItem, removeItem}) {
+function renderCheckbox(isPreset, id, categoryName, newItemChecked, newItemName, newItemQuantity, newItemUnit, updateItem) {
+    if (isPreset) {
+        return null;
+    } else {
+        return (
+            <input type="checkbox" className="checkbox" defaultChecked={newItemChecked} onChange={(event) => {newItemChecked = event.target.checked; updateItem(id, categoryName, newItemName, newItemQuantity, newItemUnit, newItemChecked)}}/>
+        );
+    }
+}
+
+function renderRemoveIcon(isPreset, presetId, id, categoryName, removeItem) {
+    if (isPreset) {
+        return (
+            <img src={require("../icons/deleteSymbol.png")} className="shoppingListDelete" onClick={() => removeItem(presetId, id, categoryName)}/>
+        );
+    } else {
+        return (
+            <img src={require("../icons/deleteSymbol.png")} className="shoppingListDelete" onClick={() => removeItem(id, categoryName)}/>
+        );
+    }
+}
+
+function ShoppingListItem({isPreset, presetId, id, name, quantity, unit, checked, isDisabled, categoryName, updateItem, removeItem}) {
     const [newItemName, setNewItemName] = useState(name);
     const [newItemQuantity, setNewItemQuantity] = useState(quantity);
     const [newItemUnit, setNewItemUnit] = useState(unit);
@@ -9,7 +31,11 @@ function ShoppingListItem({id, name, quantity, unit, checked, isDisabled, catego
 
     React.useEffect(() => {
         if(isDisabled) {
-            updateItem(id, categoryName, newItemName, newItemQuantity, newItemUnit, newItemChecked);
+            if (isPreset) {
+                updateItem(presetId, id, categoryName, newItemName, newItemQuantity, newItemUnit);
+            } else {
+                updateItem(id, categoryName, newItemName, newItemQuantity, newItemUnit, newItemChecked);
+            }
         }
     }, [isDisabled]);
 
@@ -26,7 +52,7 @@ function ShoppingListItem({id, name, quantity, unit, checked, isDisabled, catego
                     <option value="servings">servings</option>
                 </select>
             </div>
-            {isDisabled ? <input type="checkbox" className="checkbox" defaultChecked={newItemChecked} onChange={(event) => {newItemChecked = event.target.checked; updateItem(id, categoryName, newItemName, newItemQuantity, newItemUnit, newItemChecked)}}/> : <img src={require("../icons/deleteSymbol.png")} className="shoppingListDelete" onClick={() => removeItem(id, categoryName)}/>}
+            {isDisabled ? renderCheckbox(isPreset, id, categoryName, newItemChecked, newItemName, newItemQuantity, newItemUnit, updateItem) : renderRemoveIcon(isPreset, presetId, id, categoryName, removeItem)}
         </div>
     );
 }

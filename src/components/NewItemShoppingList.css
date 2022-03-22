@@ -1,0 +1,65 @@
+.newItemWrapper {
+    position: absolute;
+    margin-top: 30vh;
+    width: 280px;
+    height: 311px;
+    background: #FFFFFF;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+    border-radius: 22px;
+    z-index: 3;
+}
+.newItemContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 20px;
+}
+.newItemHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.newItemCloseButton {
+    cursor: pointer;
+}
+.quantityUnitContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.quantityContainer {
+    display:flex;
+    flex-direction: column;
+    width: 110px;
+}
+.unitContainer {
+    display: flex;
+    flex-direction: column;
+    width: 110px;
+}
+.newItemInput {
+    background: rgba(237, 237, 237, 0.8);
+    border-radius: 12px;    
+    border: none;
+    height: 38px;
+    padding: 0px 15px;
+}
+.newItemLabel {
+    margin: 10px 0; 
+}
+.newItemButton {
+    margin-top: 20px;
+    width: 232px;
+    height: 38px;
+    color: #E5E5EA;
+    background: #AEAEB2;
+    border-radius: 12px;
+    border: none;
+    align-self: center;
+}
+
+.newItemButtonActive {
+    background: #C9E4FF;
+    color: #007AFF;
+}

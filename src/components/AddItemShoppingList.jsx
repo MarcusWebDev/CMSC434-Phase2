@@ -1,49 +1,127 @@
 import React from "react";
+import ShoppingListPreset from "./ShoppingListPreset.jsx";
+import ShoppingListPresetCard from "./ShoppingListPresetCard.jsx";
+import NewItemShoppingList from "./NewItemShoppingList.jsx";
+import { Link } from "react-router-dom";
 import "./AddItemShoppingList.css";
 
 class AddItemShoppingList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            itemName: "",
-            itemQuantity: 0,
-            itemUnit: "lbs"
+            addItemOpen: false,
+            presetOpen: false,
+            presetIndex: 0
         }
+        this.closeAddItem = this.closeAddItem.bind(this);
+        this.closePreset = this.closePreset.bind(this);
+        this.openPresetByCard = this.openPresetByCard.bind(this);
     }
 
+    /*presetData = [ {name: "Weekly List 1", presetItemDataByCategory: this.initializeShoppingList()}, {name: "Weekly List 2", presetItemDataByCategory: this.initializeShoppingList()} ]
+
+    populateWithDummyData() {
+        for (let currentPreset of this.presetData) {
+            currentPreset.presetItemDataByCategory.set("Meats & Seafood", currentPreset.presetItemDataByCategory.get("Meats & Seafood").concat("test"));
+            currentPreset.presetItemDataByCategory.set("Meats & Seafood", currentPreset.presetItemDataByCategory.get("Meats & Seafood").concat("test"));
+            currentPreset.presetItemDataByCategory.set("Beverages", currentPreset.presetItemDataByCategory.get("Beverages").concat("test"));
+            currentPreset.presetItemDataByCategory.set("Snacks", currentPreset.presetItemDataByCategory.get("Snacks").concat("test"));
+            currentPreset.presetItemDataByCategory.set("Snacks", currentPreset.presetItemDataByCategory.get("Snacks").concat("test"));
+            currentPreset.presetItemDataByCategory.set("Snacks", currentPreset.presetItemDataByCategory.get("Snacks").concat("test"));
+            currentPreset.presetItemDataByCategory.set("Vegetables", currentPreset.presetItemDataByCategory.get("Vegetables").concat("test"));
+            currentPreset.presetItemDataByCategory.set("Dairy", currentPreset.presetItemDataByCategory.get("Dairy").concat("test"));
+            currentPreset.presetItemDataByCategory.set("Vegetables", currentPreset.presetItemDataByCategory.get("Vegetables").concat("test"));
+            currentPreset.presetItemDataByCategory.set("Other", currentPreset.presetItemDataByCategory.get("Other").concat("test"));
+            currentPreset.presetItemDataByCategory.set("Frozen", currentPreset.presetItemDataByCategory.get("Frozen").concat("test"));
+        }
+    }*/
+
+    closeAddItem() {
+        this.setState({
+            addItemOpen: false
+        })
+    }
+    closePreset() {
+        this.setState({
+            presetOpen: false
+        })
+    }
+    openPresetByCard(index) {
+        this.setState({
+            presetOpen: true, presetIndex: index
+        });
+    }
 
     render() {
-        return (
-            <div className="addItemWrapper">
-                <div className="addItemContainer">
-                    <div className="addItemHeader">
-                        <h2>New Item</h2>
-                        <img src={require("../icons/closeButton.png")} className="addItemCloseButton" onClick={()=> this.props.close()}/>
-                    </div>
-                    <label className="addItemLabel">Item Name</label>
-                    <input type="text" className="addItemInput" onChange={(event) => this.setState({itemName: event.target.value})} placeholder="Name"/>
-                    <div className="quantityUnitContainer">
-                        <div className="quantityContainer">
-                            <label className="addItemLabel">Quantity</label>
-                            <input type="number" className="addItemInput" onChange={(event) => this.setState({itemQuantity: event.target.value})} placeholder="0" />            
+        //this.populateWithDummyData();
+        if (this.state.presetOpen) {
+            //console.log(this.props);
+            //console.log(this.state);
+            return (
+                <ShoppingListPreset 
+                    closePreset={this.closePreset} 
+                    updatePresetName={this.props.updatePresetName}
+                    importItemstoShoppingList={this.props.importItemstoShoppingList}
+                    deletePreset={this.props.deletePreset}
+                    name={this.props.presetArray[this.state.presetIndex].name} 
+                    presetData={this.props.presetArray[this.state.presetIndex]} 
+                    createItem={this.props.createPresetItem}
+                    updateItem={this.props.updateItem} 
+                    removeItem={this.props.removeItem}
+                    nextItemId={this.props.nextItemId}
+                    itemsToCategories={this.props.itemsToCategories}
+                />
+            );
+            
+        } else {
+            return (
+                <div className="addItemWrapper">
+                    <div className={`addItemContainer ${this.state.addItemOpen ? "blurWall" : null}`}> 
+                        <Link to="/shoppingList" className="link" >
+                            <div className="backButtonContainer">
+                                <img src={require("../icons/backArrowBlue.png")} className="backButtonArrow"/>
+                                <p className="blueText">Shopping List</p>
+                            </div>
+                        </Link>
+                        <h1>Add Item(s)</h1>
+                        <div className="savedListHeader">
+                            <h3>Start with a Saved List</h3>
+                            <div className="newListButton" onClick={() => {this.props.createNewPreset(); this.setState({presetOpen: true, presetIndex: this.props.presetArray.length})}}>
+                                <img src={require("../icons/addSymbol.png")} className="addSymbol"/>
+                                <p>New List</p>
+                            </div>
                         </div>
-                        <div className="unitContainer">
-                            <label className="addItemLabel">Unit</label>
-                            <select className="addItemInput" onChange={(event) => this.setState({itemUnit: event.target.value})}>
-                                <option value="lbs">lbs</option>
-                                <option value="gallons">gallons</option>
-                                <option value="cartons">cartons</option>
-                                <option value="bowls">bowls</option>
-                                <option value="servings">servings</option>
-                            </select>
+                        <div className="containerOfPresetCards">
+                            {this.props.presetArray.map((obj, i) => <ShoppingListPresetCard openPreset={this.openPresetByCard} presetIndex={i} presetName={obj.name} presetMap={obj.presetMap}/>)}
                         </div>
-                        
+                        <h3 className="addItemEnterInfoText">Or Enter Item Info</h3>
+                        <p className="addItemTinyText">Manually enter the info for the item to be added</p>
+                        <button className="enterItemInfoButton" onClick={() => this.setState({addItemOpen: true})}>Enter Item Info</button>
                     </div>
-                    <button className="addItemButton addItemButtonActive" onClick={()=> this.props.createItem(this.props.itemsToCategories.get(this.state.itemName), {id: this.props.nextItemId, name: this.state.itemName, quantity: this.state.itemQuantity, unit: this.state.itemUnit, checked: false})}>Add Item(s)</button>
+                    {this.state.addItemOpen ? <NewItemShoppingList isPreset={false} createItem={this.props.createItem} itemsToCategories={this.props.itemsToCategories} nextItemId={this.props.nextItemId} close={this.closeAddItem}/> : null}
                 </div>
-            </div>
-        );
+            );
+        }
+        
     }
+
+    initializeShoppingList() {
+        return new Map().set("Meats & Seafood", [])
+        .set("Breakfast", [])
+        .set("Fruit", [])
+        .set("Vegetables", [])
+        .set("Prepared Food", [])
+        .set("Snacks", [])
+        .set("Pantry", [])
+        .set("HerbsAndSpices", [])
+        .set("Beverages", [])
+        .set("Dairy", [])
+        .set("Frozen", [])
+        .set("Bakery & Breads", [])
+        .set("Personal Care", [])
+        .set("Other", [])
+      }
+
 }
 
 export default AddItemShoppingList;

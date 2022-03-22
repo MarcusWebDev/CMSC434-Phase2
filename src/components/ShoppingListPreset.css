@@ -1,0 +1,103 @@
+.presetWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background:#007AFF;
+}
+.presetContainer {
+    display: flex;
+    flex-direction: column;
+    width: 336px;
+}
+.backButtonContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 8px;
+}
+.backButtonArrow {
+    margin-right: 8px;
+}
+.presetHeaderContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.presetName {
+    padding-left: 10px;
+    background: rgba(48, 48, 48, 0.5);
+    color: white;
+    font-size: 30px;
+    border: none;
+    border-radius: 10px;
+    width: 254px;
+    
+}
+.presetName:disabled {
+    padding: 0;
+    height: 36px;
+    background: #007AFF;
+}
+.buttonWhite {
+    background: white;
+    color: #007AFF;
+}
+.presetItemContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 336px;
+    height: 429px;
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 13px;
+    overflow: scroll;
+}
+.addAllItemsButton {
+    width: 336px;
+    color: #007AFF;
+    border: none;
+    border-radius: 10px;
+    height: 48px;
+    margin-top: 24px;
+    font-size: 17px;
+    font-family: arial;
+    font-weight: 700;
+}
+.deleteListButton {
+    width: 100px;
+    height: 48px;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    height: 48px;
+    font-size: 17px;
+    font-family: arial;
+    font-weight: 700;
+    background: #E22400;
+}
+.addNewItemsToListButton {
+    border: none;
+    width: 212px;
+    height: 48px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 22px;
+    color: #0A84FF;
+}
+.presetBottomButtonsContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
+}
+.whiteText {
+    color: white;
+}

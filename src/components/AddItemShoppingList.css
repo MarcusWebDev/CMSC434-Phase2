@@ -1,65 +1,62 @@
 .addItemWrapper {
-    position: absolute;
-    margin-top: 30vh;
-    width: 280px;
-    height: 311px;
-    background: #FFFFFF;
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
-    border-radius: 22px;
-    z-index: 3;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 .addItemContainer {
     display: flex;
     flex-direction: column;
-    margin: 0px 20px;
+    width: 336px;
 }
-.addItemHeader {
+.blueText {
+    color: #007AFF;
+}
+.savedListHeader {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
-.addItemCloseButton {
+.newListButton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #007AFF;
+    font-weight: 700;
+}
+.addSymbol {
+    margin-right: 2px;
+}
+.containerOfPresetCards {
+    position: relative;
+    left: -12px;
+    display: flex;
+    flex-direction: row;
+    overflow: scroll;
+    width: 95vw;
+    height: 280px;
+}
+.addItemEnterInfoText {
+    margin: 100px 0 0 0; 
+}
+.addItemTinyText {
+    margin: 0;
+    font-size: 14px;
+    color: #636366;
+
+}
+.enterItemInfoButton {
+    margin-top: 5px;
+    width: 336px;
+    height: 48px;
+    background: #C9E4FF;
+    border-radius: 10px;
+    border: none;
+    color: #0A84FF;
+    font-size: 17px;
+    font-weight: 700;
     cursor: pointer;
 }
-.quantityUnitContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
-.quantityContainer {
-    display:flex;
-    flex-direction: column;
-    width: 110px;
-}
-.unitContainer {
-    display: flex;
-    flex-direction: column;
-    width: 110px;
-}
-.addItemInput {
-    background: rgba(237, 237, 237, 0.8);
-    border-radius: 12px;    
-    border: none;
-    height: 38px;
-    padding: 0px 15px;
-}
-.addItemLabel {
-    margin: 10px 0; 
-}
-.addItemButton {
-    margin-top: 20px;
-    width: 232px;
-    height: 38px;
-    color: #E5E5EA;
-    background: #AEAEB2;
-    border-radius: 12px;
-    border: none;
-    align-self: center;
-}
-
-.addItemButtonActive {
-    background: #C9E4FF;
-    color: #007AFF;
+.blurWall {
+    filter: blur(3px);
 }

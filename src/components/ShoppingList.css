@@ -11,15 +11,28 @@
     justify-content: flex-start;
     align-items: center;
 }
+.returnToHomeButton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 336px;
+}
 .headerWrapper {
-    position: fixed;
-    background: white;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    position: fixed;
+    background: white;
     width: 100vw;
-    height: 74px;
+    height: 110px;
     z-index: 1;
+}
+.shoppingListHeaderBar {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    background: white;
+    margin-top: 8px;
 }
 .headerContainer {
     display: flex;
@@ -27,9 +40,7 @@
     justify-content: space-between;
     align-items: center;
     width: 336px;
-    height: 74px;
     background: white;
-    position: fixed;
 }
 .header {
     font-family: 'Arial';
@@ -40,7 +51,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    margin-top: 74px;
+    margin-top: 110px;
 }
 .button {
     width: 56px;
@@ -63,11 +74,4 @@
 .hidden {
     display: none;
 }
-.blurWall {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100vw;
-    filter: blur(3px);
-}
+
