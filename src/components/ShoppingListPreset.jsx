@@ -32,7 +32,6 @@ class ShoppingListPreset extends React.Component {
     }
 
     render() {
-        console.log(this.props.presetData.id);
         return(
             <div className="presetWrapper">
                 <div className={`presetContainer ${this.state.addItemOpen ? "blurWall" : null}`}>
