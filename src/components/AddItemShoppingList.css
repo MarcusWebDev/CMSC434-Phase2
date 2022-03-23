@@ -60,3 +60,6 @@
 .blurWall {
     filter: blur(3px);
 }
+.displayInlineBlock {
+    display: inline-block;
+}

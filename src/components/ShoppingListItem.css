@@ -37,6 +37,7 @@
     border: none;
     height: 24px;
     padding-right: 10px;
+    margin-left: 4px;
 }
 .quantityInput:disabled {
     background: white;

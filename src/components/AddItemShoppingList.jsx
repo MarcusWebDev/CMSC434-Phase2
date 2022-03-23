@@ -80,7 +80,7 @@ class AddItemShoppingList extends React.Component {
                         <Link to="/shoppingList" className="link" >
                             <div className="backButtonContainer">
                                 <img src={require("../icons/backArrowBlue.png")} className="backButtonArrow"/>
-                                <p className="blueText">Shopping List</p>
+                                <p className="blueText displayInlineBlock">Shopping List</p>
                             </div>
                         </Link>
                         <h1>Add Item(s)</h1>
