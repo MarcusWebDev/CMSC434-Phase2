@@ -31,6 +31,15 @@ class ShoppingListPreset extends React.Component {
         })
     }
 
+    presetMapIsAllEmptyArrays() {
+        for (let currentValue of this.props.presetData.presetMap.values()) {;
+            if (currentValue.length != 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     render() {
         return(
             <div className="presetWrapper">
@@ -45,7 +54,7 @@ class ShoppingListPreset extends React.Component {
                         <button className={`button buttonWhite ${this.state.isEditDisabled ? "hidden" : null}`} onClick={() => this.toggleEditDisable()}>Done</button>
                     </div>
                     <div className="presetItemContainer">
-                        {[...this.props.presetData.presetMap.entries()].map((entry) => <CategoryList isPreset={true} presetId={this.props.presetData.id} name={entry[0]} items={entry[1]} isEditDisabled={this.state.isEditDisabled} updateItem={this.props.updateItem} removeItem={this.props.removeItem}/>)}
+                        {this.presetMapIsAllEmptyArrays() ? <p className="presetListIsEmptyText">This List is Empty</p> : [...this.props.presetData.presetMap.entries()].map((entry) => <CategoryList isPreset={true} presetId={this.props.presetData.id} name={entry[0]} items={entry[1]} isEditDisabled={this.state.isEditDisabled} updateItem={this.props.updateItem} removeItem={this.props.removeItem}/>)}
                     </div>
                     <button className={`addAllItemsButton ${this.state.isEditDisabled ? null : "hidden"}`} onClick={() => this.props.importItemstoShoppingList(this.props.presetData.presetMap)}>Add All Items to Shopping List</button>
                     <div className="presetBottomButtonsContainer">

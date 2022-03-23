@@ -57,6 +57,13 @@
     border-radius: 13px;
     overflow: scroll;
 }
+.presetListIsEmptyText {
+    position: absolute;
+    top: 35%;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+}
 .addAllItemsButton {
     width: 336px;
     color: #007AFF;

@@ -18,34 +18,18 @@ class AddItemShoppingList extends React.Component {
         this.openPresetByCard = this.openPresetByCard.bind(this);
     }
 
-    /*presetData = [ {name: "Weekly List 1", presetItemDataByCategory: this.initializeShoppingList()}, {name: "Weekly List 2", presetItemDataByCategory: this.initializeShoppingList()} ]
-
-    populateWithDummyData() {
-        for (let currentPreset of this.presetData) {
-            currentPreset.presetItemDataByCategory.set("Meats & Seafood", currentPreset.presetItemDataByCategory.get("Meats & Seafood").concat("test"));
-            currentPreset.presetItemDataByCategory.set("Meats & Seafood", currentPreset.presetItemDataByCategory.get("Meats & Seafood").concat("test"));
-            currentPreset.presetItemDataByCategory.set("Beverages", currentPreset.presetItemDataByCategory.get("Beverages").concat("test"));
-            currentPreset.presetItemDataByCategory.set("Snacks", currentPreset.presetItemDataByCategory.get("Snacks").concat("test"));
-            currentPreset.presetItemDataByCategory.set("Snacks", currentPreset.presetItemDataByCategory.get("Snacks").concat("test"));
-            currentPreset.presetItemDataByCategory.set("Snacks", currentPreset.presetItemDataByCategory.get("Snacks").concat("test"));
-            currentPreset.presetItemDataByCategory.set("Vegetables", currentPreset.presetItemDataByCategory.get("Vegetables").concat("test"));
-            currentPreset.presetItemDataByCategory.set("Dairy", currentPreset.presetItemDataByCategory.get("Dairy").concat("test"));
-            currentPreset.presetItemDataByCategory.set("Vegetables", currentPreset.presetItemDataByCategory.get("Vegetables").concat("test"));
-            currentPreset.presetItemDataByCategory.set("Other", currentPreset.presetItemDataByCategory.get("Other").concat("test"));
-            currentPreset.presetItemDataByCategory.set("Frozen", currentPreset.presetItemDataByCategory.get("Frozen").concat("test"));
-        }
-    }*/
-
     closeAddItem() {
         this.setState({
             addItemOpen: false
         })
     }
+
     closePreset() {
         this.setState({
             presetOpen: false
         })
     }
+    
     openPresetByCard(index) {
         this.setState({
             presetOpen: true, presetIndex: index
@@ -53,10 +37,7 @@ class AddItemShoppingList extends React.Component {
     }
 
     render() {
-        //this.populateWithDummyData();
         if (this.state.presetOpen) {
-            //console.log(this.props);
-            //console.log(this.state);
             return (
                 <ShoppingListPreset 
                     closePreset={this.closePreset} 
@@ -71,8 +52,7 @@ class AddItemShoppingList extends React.Component {
                     nextItemId={this.props.nextItemId}
                     itemsToCategories={this.props.itemsToCategories}
                 />
-            );
-            
+            ); 
         } else {
             return (
                 <div className="addItemWrapper">
@@ -102,26 +82,7 @@ class AddItemShoppingList extends React.Component {
                 </div>
             );
         }
-        
     }
-
-    initializeShoppingList() {
-        return new Map().set("Meats & Seafood", [])
-        .set("Breakfast", [])
-        .set("Fruit", [])
-        .set("Vegetables", [])
-        .set("Prepared Food", [])
-        .set("Snacks", [])
-        .set("Pantry", [])
-        .set("HerbsAndSpices", [])
-        .set("Beverages", [])
-        .set("Dairy", [])
-        .set("Frozen", [])
-        .set("Bakery & Breads", [])
-        .set("Personal Care", [])
-        .set("Other", [])
-      }
-
 }
 
 export default AddItemShoppingList;
