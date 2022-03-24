@@ -33,7 +33,7 @@ class NewItemShoppingList extends React.Component {
                     <div className="quantityUnitContainer">
                         <div className="quantityContainer">
                             <label className="newItemLabel">Quantity</label>
-                            <input type="number" className="newItemInput" onChange={(event) => this.setState({itemQuantity: event.target.value})} placeholder="0" />            
+                            <input type="number" className="newItemInput" min="1" onChange={(event) => this.setState({itemQuantity: event.target.value})} placeholder="1" />            
                         </div>
                         <div className="unitContainer">
                             <label className="newItemLabel">Unit</label>
