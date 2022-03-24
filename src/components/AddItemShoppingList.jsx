@@ -29,7 +29,7 @@ class AddItemShoppingList extends React.Component {
             presetOpen: false
         })
     }
-    
+
     openPresetByCard(index) {
         this.setState({
             presetOpen: true, presetIndex: index
@@ -72,7 +72,7 @@ class AddItemShoppingList extends React.Component {
                             </div>
                         </div>
                         <div className="containerOfPresetCards">
-                            {this.props.presetArray.map((obj, i) => <ShoppingListPresetCard openPreset={this.openPresetByCard} presetIndex={i} presetName={obj.name} presetMap={obj.presetMap}/>)}
+                            {this.props.presetArray.map((obj, i) => <ShoppingListPresetCard key={obj.id} openPreset={this.openPresetByCard} presetIndex={i} presetName={obj.name} presetMap={obj.presetMap}/>)}
                         </div>
                         <h3 className="addItemEnterInfoText">Or Enter Item Info</h3>
                         <p className="addItemTinyText">Manually enter the info for the item to be added</p>
