@@ -1,4 +1,5 @@
 import React from "react";
+import NewItemNotification from "./NewItemNotification.jsx";
 import "./NewItemShoppingList.css";
 
 class NewItemShoppingList extends React.Component {
@@ -7,8 +8,12 @@ class NewItemShoppingList extends React.Component {
         this.state = {
             itemName: "",
             itemQuantity: 0,
-            itemUnit: "lbs"
-        }
+            itemUnit: "lbs",
+            itemAddedNotificationOpen: false,
+            notificationName: ""
+        };
+        this.timer = 0;
+        this.newItemNotificationOnTimeout = this.newItemNotificationOnTimeout.bind(this);
     }
 
     createItem() {
@@ -19,6 +24,17 @@ class NewItemShoppingList extends React.Component {
         }
     }
 
+    newItemNotificationOnTimeout() {
+        this.setState({
+            itemAddedNotificationOpen: false
+        });
+    }
+
+    runNotificationTimer() {
+        this.timer = setTimeout(() => {
+            this.newItemNotificationOnTimeout();
+        }, 3000)
+    }
 
     render() {
         return (
@@ -47,8 +63,9 @@ class NewItemShoppingList extends React.Component {
                         </div>
                         
                     </div>
-                    <button className="newItemButton newItemButtonActive" onClick={()=> this.createItem()}>Add Item(s)</button>
+                    <button className="newItemButton newItemButtonActive" onClick={()=> {this.createItem(); this.setState({itemAddedNotificationOpen: true, notificationName: this.state.itemName}); clearTimeout(this.timer); this.runNotificationTimer()}}>Add Item(s)</button>
                 </div>
+                {this.state.itemAddedNotificationOpen ? <NewItemNotification name={this.state.notificationName} handleTimeout={this.newItemNotificationOnTimeout}/> : null}
             </div>
         );
     }
