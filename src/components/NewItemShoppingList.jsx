@@ -7,7 +7,7 @@ class NewItemShoppingList extends React.Component {
         super(props);
         this.state = {
             itemName: "",
-            itemQuantity: 0,
+            itemQuantity: 1,
             itemUnit: "lbs",
             itemAddedNotificationOpen: false,
             notificationName: ""
