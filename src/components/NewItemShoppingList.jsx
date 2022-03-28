@@ -65,7 +65,7 @@ class NewItemShoppingList extends React.Component {
                     </div>
                     <button className="newItemButton newItemButtonActive" onClick={()=> {this.createItem(); this.setState({itemAddedNotificationOpen: true, notificationName: this.state.itemName}); clearTimeout(this.timer); this.runNotificationTimer()}}>Add Item(s)</button>
                 </div>
-                {this.state.itemAddedNotificationOpen ? <NewItemNotification name={this.state.notificationName} handleTimeout={this.newItemNotificationOnTimeout}/> : null}
+                {this.state.itemAddedNotificationOpen ? <NewItemNotification name={this.state.notificationName}/> : null}
             </div>
         );
     }
