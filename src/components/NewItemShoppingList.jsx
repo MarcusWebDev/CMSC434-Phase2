@@ -18,9 +18,9 @@ class NewItemShoppingList extends React.Component {
 
     createItem() {
         if (this.props.isPreset) {
-            this.props.createItem(this.props.presetId, this.props.itemsToCategories.get(this.state.itemName), {id: this.props.nextItemId, name: this.state.itemName, quantity: this.state.itemQuantity, unit: this.state.itemUnit, checked: false})
+            this.props.createItem(this.props.presetId, this.props.itemsToCategories.get(this.state.itemName.toLowerCase().replace(/ /g, "")), {id: this.props.nextItemId, name: this.state.itemName, quantity: this.state.itemQuantity, unit: this.state.itemUnit, checked: false})
         } else {
-            this.props.createItem(this.props.itemsToCategories.get(this.state.itemName), {id: this.props.nextItemId, name: this.state.itemName, quantity: this.state.itemQuantity, unit: this.state.itemUnit, checked: false})
+            this.props.createItem(this.props.itemsToCategories.get(this.state.itemName.toLowerCase().replace(/ /g, "")), {id: this.props.nextItemId, name: this.state.itemName, quantity: this.state.itemQuantity, unit: this.state.itemUnit, checked: false})
         }
     }
 
