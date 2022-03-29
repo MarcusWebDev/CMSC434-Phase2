@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import "./HomePage.css";
 import Button from "./Button.jsx";
+import NavBar from "./NavBar.jsx";
+import "./HomePage.css";
+
 
 function HomePage() {
     return (
@@ -43,6 +45,7 @@ function HomePage() {
                     </Link>
                 </div>
             </div>
+            <NavBar selectedTab="Home Page" />
         </div>
     );
 }
