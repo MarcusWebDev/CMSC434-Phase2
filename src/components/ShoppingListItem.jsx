@@ -3,7 +3,6 @@ import "./ShoppingListItem.css";
 
 function renderCheckbox(isPreset, presetId, id, categoryName, newItemChecked, presetChecked, newItemName, newItemQuantity, newItemUnit, updateItem) {
     if (isPreset) {
-        console.log("Within render checkbox: " + presetChecked);
         return (
             <input type="checkbox" className="checkbox" checked={presetChecked} onChange={(event) => {updateItem(presetId, id, categoryName, newItemName, newItemQuantity, newItemUnit, event.target.checked)}}/>
         );
@@ -37,7 +36,6 @@ function ShoppingListItem({isPreset, presetId, id, name, quantity, unit, checked
     React.useEffect(() => {
         if(isDisabled) {
             if (isPreset) {
-                console.log(presetChecked);
                 updateItem(presetId, id, categoryName, newItemName, newItemQuantity, newItemUnit, newPresetChecked);
             } else {
                 updateItem(id, categoryName, newItemName, newItemQuantity, newItemUnit, newItemChecked);

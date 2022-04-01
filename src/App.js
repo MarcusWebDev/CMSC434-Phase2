@@ -154,7 +154,6 @@ class App extends React.Component {
           let tempArray = obj.presetMap.get(categoryName);
           tempArray.find((o, i) => {
             if (o.id == itemId) {
-              console.log("Within update: " + newPresetChecked);
               tempArray[i] = {id: itemId, name: newItemName, quantity: newItemQuantity, unit: newItemUnit, checked: false, presetChecked: newPresetChecked};
               return true;
             }
