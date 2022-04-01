@@ -1,0 +1,20 @@
+.selectUserPortraitContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90px;
+    width: 60px;
+    font-size: 10px;
+}
+.selectUserPortrait {
+    height: 48px;
+    width: 48px;
+    border-radius: 100px;
+}
+.selectUserSelected {
+    border: 4px solid #007AFF;
+}
+.selectUserLessTopMargin {
+    margin-top: 2px;
+}

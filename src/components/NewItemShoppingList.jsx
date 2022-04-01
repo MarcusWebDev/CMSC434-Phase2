@@ -1,5 +1,6 @@
 import React from "react";
 import NewItemNotification from "./NewItemNotification.jsx";
+import SelectUserPortrait from "./SelectUserPortrait.jsx";
 import "./NewItemShoppingList.css";
 
 class NewItemShoppingList extends React.Component {
@@ -38,7 +39,7 @@ class NewItemShoppingList extends React.Component {
 
     render() {
         return (
-            <div className="newItemWrapper">
+            <div className={`newItemWrapper ${this.props.isPreset ? "newItemWrapperPreset" : null}`}>
                 <div className="newItemContainer">
                     <div className="newItemHeader">
                         <h2>New Item</h2>
@@ -63,9 +64,18 @@ class NewItemShoppingList extends React.Component {
                         </div>
                         
                     </div>
+                    <div className={`${this.props.isPreset ? "hidden" : null}`}>
+                        <h3 className="newItemSelectUsers">Select Users</h3>
+                        <div className="shoppingListUsersContainer">
+                            <SelectUserPortrait name="Elizabeth" picture={require("../icons/elizabeth.jpg")} />
+                            <SelectUserPortrait name="James" picture={require("../icons/james.jpg")} />
+                            <SelectUserPortrait name="William" picture={require("../icons/william.jpg")} />
+                            <SelectUserPortrait name="Patricia" picture={require("../icons/patricia.jpg")} />
+                        </div>
+                    </div>
                     <button className="newItemButton newItemButtonActive" onClick={()=> {this.createItem(); this.setState({itemAddedNotificationOpen: true, notificationName: this.state.itemName}); clearTimeout(this.timer); this.runNotificationTimer()}}>Add Item(s)</button>
                 </div>
-                {this.state.itemAddedNotificationOpen ? <NewItemNotification name={this.state.notificationName}/> : null}
+                {this.state.itemAddedNotificationOpen ? <NewItemNotification name={this.state.notificationName} isPreset={this.props.isPreset} /> : null}
             </div>
         );
     }

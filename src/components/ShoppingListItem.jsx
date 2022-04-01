@@ -40,11 +40,11 @@ function ShoppingListItem({isPreset, presetId, id, name, quantity, unit, checked
     }, [isDisabled]);
 
     return (
-        <div className="shoppingListItemContainer">
-            <input type="text" className="nameInput shoppingListItemInput" defaultValue={name} disabled={isDisabled} onChange={(event) => {setNewItemName(event.target.value);}}/>
+        <div className={`shoppingListItemContainer ${newItemChecked ? "backgroundGray zeroLeftMargin" : null }`}>
+            <input type="text" className={`nameInput shoppingListItemInput ${newItemChecked && isDisabled ? "backgroundGray twentyLeftMargin" : null }`} defaultValue={name} disabled={isDisabled} onChange={(event) => {setNewItemName(event.target.value);}}/>
             <div className="quantitySelection">
-                <input type="number" className="quantityInput shoppingListItemInput" defaultValue={quantity} disabled={isDisabled} onChange={(event) => {setNewItemQuantity(event.target.value)}}/>
-                <select name="metricsSelect" className="metricsSelect shoppingListItemInput" defaultValue={unit} disabled={isDisabled} onChange={(event) => {setNewItemUnit(event.target.value)}}>
+                <input type="number" className={`quantityInput shoppingListItemInput ${newItemChecked && isDisabled ? "backgroundGray" : null }`} defaultValue={quantity} disabled={isDisabled} onChange={(event) => {setNewItemQuantity(event.target.value)}}/>
+                <select name="metricsSelect" className={`metricsSelect shoppingListItemInput ${newItemChecked && isDisabled ? "backgroundGray" : null }`} defaultValue={unit} disabled={isDisabled} onChange={(event) => {setNewItemUnit(event.target.value)}}>
                     <option value="lbs">lbs</option>
                     <option value="gallons">gallons</option>
                     <option value="cartons">cartons</option>

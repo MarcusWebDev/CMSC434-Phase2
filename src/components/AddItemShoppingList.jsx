@@ -2,6 +2,7 @@ import React from "react";
 import ShoppingListPreset from "./ShoppingListPreset.jsx";
 import ShoppingListPresetCard from "./ShoppingListPresetCard.jsx";
 import NewItemShoppingList from "./NewItemShoppingList.jsx";
+import NavBar from "./NavBar.jsx";
 import { Link } from "react-router-dom";
 import "./AddItemShoppingList.css";
 
@@ -65,10 +66,10 @@ class AddItemShoppingList extends React.Component {
                         </Link>
                         <h1>Add Item(s)</h1>
                         <div className="savedListHeader">
-                            <h3>Start with a Saved List</h3>
+                            <h3>Start with a Template</h3>
                             <div className="newListButton" onClick={() => {this.props.createNewPreset(); this.setState({presetOpen: true, presetIndex: this.props.presetArray.length})}}>
                                 <img src={require("../icons/addSymbol.png")} className="addSymbol"/>
-                                <p>New List</p>
+                                <p>New Template</p>
                             </div>
                         </div>
                         <div className="containerOfPresetCards">
@@ -77,8 +78,10 @@ class AddItemShoppingList extends React.Component {
                         <h3 className="addItemEnterInfoText">Or Enter Item Info</h3>
                         <p className="addItemTinyText">Manually enter the info for the item to be added</p>
                         <button className="enterItemInfoButton" onClick={() => this.setState({addItemOpen: true})}>Enter Item Info</button>
+                        
                     </div>
                     {this.state.addItemOpen ? <NewItemShoppingList isPreset={false} createItem={this.props.createItem} itemsToCategories={this.props.itemsToCategories} nextItemId={this.props.nextItemId} close={this.closeAddItem}/> : null}
+                    <NavBar selectedTab={"Shopping List"} />
                 </div>
             );
         }
