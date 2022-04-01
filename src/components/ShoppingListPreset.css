@@ -31,6 +31,17 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    width: 336px;
+}
+.presetSelectAllButton {
+    height: 32px;
+    background: #E5E5EA;
+    border: none;
+    border-radius: 50px;
+    font-weight: 400;
+    font-size: 14px;
+    color: #007AFF;
+    padding: 0 10px;
 }
 .presetName {
     padding-left: 10px;
@@ -48,6 +59,7 @@
     height: 36px;
     background: white;
     color: black;
+    width: 250px;
 }
 .buttonWhite {
     background: white;

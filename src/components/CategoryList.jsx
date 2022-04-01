@@ -19,6 +19,7 @@ function CategoryList({isPreset, presetId, name, items, isEditDisabled, updateIt
                                                 quantity={shoppingListItem.quantity} 
                                                 unit={shoppingListItem.unit} 
                                                 checked={shoppingListItem.checked} 
+                                                presetChecked={shoppingListItem.presetChecked}
                                                 isDisabled={isEditDisabled} 
                                                 categoryName={name} 
                                                 updateItem={updateItem} 

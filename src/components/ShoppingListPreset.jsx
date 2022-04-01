@@ -40,6 +40,18 @@ class ShoppingListPreset extends React.Component {
         }
         return true;
     }
+    selectAll() {
+        for (let currentArray of this.props.presetData.presetMap) {
+            for (let currentItem of currentArray[1]) {
+                let categoryName = this.props.itemsToCategories.get(currentItem.name);
+                if (categoryName == undefined) {
+                    categoryName = "Other";
+                }
+                this.props.updateItem(this.props.presetData.id, currentItem.id, categoryName, currentItem.name, currentItem.quantity, currentItem.unit, true)
+            }
+        }
+        
+    }
 
     render() {
         return(
@@ -57,12 +69,13 @@ class ShoppingListPreset extends React.Component {
                     
                     <div className="presetHeaderContainer">
                         <input type="text" className="presetName" onChange={(event) => this.props.updatePresetName(this.props.presetData.id, event.target.value)} defaultValue={this.props.name} disabled={this.state.isEditDisabled}/>
+                        <button className={`presetSelectAllButton ${this.state.isEditDisabled ? null : "hidden"}`} onClick={() => this.selectAll()}>Select All</button>
                         
                     </div>
                     <div className="presetItemContainer">
                         {this.presetMapIsAllEmptyArrays() ? <p className="presetListIsEmptyText">This List is Empty</p> : [...this.props.presetData.presetMap.entries()].map((entry) => <CategoryList isPreset={true} presetId={this.props.presetData.id} name={entry[0]} items={entry[1]} isEditDisabled={this.state.isEditDisabled} updateItem={this.props.updateItem} removeItem={this.props.removeItem}/>)}
                     </div>
-                    <button className={`addAllItemsButton ${this.state.isEditDisabled ? null : "hidden"}`} onClick={() => this.props.importItemstoShoppingList(this.props.presetData.presetMap)}>Add All Items to Shopping List</button>
+                    <button className={`addAllItemsButton ${this.state.isEditDisabled ? null : "hidden"}`} onClick={() => this.props.importItemstoShoppingList(this.props.presetData.presetMap)}>Add Selected Items to Shopping List</button>
                     <div className="presetBottomButtonsContainer">
                         <button className={`addNewItemsToListButton ${this.state.isEditDisabled ? "hidden" : null}`} onClick={() => this.setState({addItemOpen: true})}>Add New Items to Template</button>
                     </div>
