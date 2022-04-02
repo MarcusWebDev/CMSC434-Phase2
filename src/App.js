@@ -213,6 +213,10 @@ class App extends React.Component {
       for (let currentItem of currentArray) {
         if (currentItem.presetChecked) {
           currentItem.presetChecked = false;
+          currentItem.id = this.state.nextShoppingListItemId;
+          this.setState({
+            nextShoppingListItemId: ++this.state.nextShoppingListItemId
+          })
           this.createShoppingListItem(this.state.itemsToCategories.value.get(currentItem.name), currentItem);
         }
       }

@@ -3,6 +3,7 @@ import { render } from '@testing-library/react';
 import ShoppingListItem from "./ShoppingListItem.jsx";
 import CategoryList from "./CategoryList.jsx";
 import NewItemShoppingList from './NewItemShoppingList.jsx';
+import ItemsAddedNotification from "./ItemsAddedNotification.jsx";
 import NavBar from "./NavBar.jsx";
 import "./ShoppingListPreset.css";
 
@@ -15,9 +16,11 @@ class ShoppingListPreset extends React.Component {
         super(props);
         this.state = {
             isEditDisabled: true,
-            addItemOpen: false
+            addItemOpen: false,
+            itemsAddedOpen: false
         }
         this.closeAddItem = this.closeAddItem.bind(this);
+        this.closeItemsAdded = this.closeItemsAdded.bind(this);
     }
 
     toggleEditDisable() {
@@ -32,6 +35,12 @@ class ShoppingListPreset extends React.Component {
         })
     }
 
+    closeItemsAdded() {
+        this.setState({
+            itemsAddedOpen: false
+        })
+    }
+
     presetMapIsAllEmptyArrays() {
         for (let currentValue of this.props.presetData.presetMap.values()) {;
             if (currentValue.length != 0) {
@@ -40,6 +49,7 @@ class ShoppingListPreset extends React.Component {
         }
         return true;
     }
+    
     selectAll() {
         for (let currentArray of this.props.presetData.presetMap) {
             for (let currentItem of currentArray[1]) {
@@ -49,14 +59,13 @@ class ShoppingListPreset extends React.Component {
                 }
                 this.props.updateItem(this.props.presetData.id, currentItem.id, categoryName, currentItem.name, currentItem.quantity, currentItem.unit, true)
             }
-        }
-        
+        }        
     }
 
     render() {
         return(
             <div className="presetWrapper">
-                <div className={`presetContainer ${this.state.addItemOpen ? "blurWall" : null}`}>
+                <div className={`presetContainer ${this.state.addItemOpen || this.state.itemsAddedOpen ? "blurWall" : null}`}>
                     <div className="presetHeaderButtonBar">
                         <div className={`backButtonContainer ${this.state.isEditDisabled ? null : "hidden"}`} onClick={() => this.props.closePreset()}>
                             <img src={require("../icons/backArrowBlue.png")} className="backButtonArrow"/>
@@ -75,7 +84,7 @@ class ShoppingListPreset extends React.Component {
                     <div className="presetItemContainer">
                         {this.presetMapIsAllEmptyArrays() ? <p className="presetListIsEmptyText">This List is Empty</p> : [...this.props.presetData.presetMap.entries()].map((entry) => <CategoryList isPreset={true} presetId={this.props.presetData.id} name={entry[0]} items={entry[1]} isEditDisabled={this.state.isEditDisabled} updateItem={this.props.updateItem} removeItem={this.props.removeItem}/>)}
                     </div>
-                    <button className={`addAllItemsButton ${this.state.isEditDisabled ? null : "hidden"}`} onClick={() => this.props.importItemstoShoppingList(this.props.presetData.presetMap)}>Add Selected Items to Shopping List</button>
+                    <button className={`addAllItemsButton ${this.state.isEditDisabled ? null : "hidden"}`} onClick={() => {this.setState({itemsAddedOpen: true}); this.props.importItemstoShoppingList(this.props.presetData.presetMap)}}>Add Selected Items to Shopping List</button>
                     <div className="presetBottomButtonsContainer">
                         <button className={`addNewItemsToListButton ${this.state.isEditDisabled ? "hidden" : null}`} onClick={() => this.setState({addItemOpen: true})}>Add New Items to Template</button>
                     </div>
@@ -83,6 +92,7 @@ class ShoppingListPreset extends React.Component {
                 </div>
                 <NavBar selectedTab={"Shopping List"} />
                 {this.state.addItemOpen ? <NewItemShoppingList isPreset={true} presetId={this.props.presetData.id} createItem={this.props.createItem} itemsToCategories={this.props.itemsToCategories} nextItemId={this.props.nextItemId} close={this.closeAddItem}/> : null}
+                {this.state.itemsAddedOpen ? <ItemsAddedNotification addedToName="Shopping List" onClose={this.closeItemsAdded} pathToGoTo="/shoppingList" /> : null}
             </div>
         );
     }
