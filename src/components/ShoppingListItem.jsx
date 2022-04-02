@@ -45,7 +45,7 @@ function ShoppingListItem({isPreset, presetId, id, name, quantity, unit, checked
 
     return (
         <div className={`shoppingListItemContainer ${newItemChecked ? "backgroundGray zeroLeftMargin" : null }`}>
-            <input type="text" className={`nameInput shoppingListItemInput ${newItemChecked && isDisabled ? "backgroundGray twentyLeftMargin" : null }`} defaultValue={name} disabled={isDisabled} onChange={(event) => {setNewItemName(event.target.value);}}/>
+            <input type="text" className={`nameInput shoppingListItemInput ${newItemChecked && isDisabled ? "backgroundGray " : null } ${newItemChecked ? "twentyLeftMargin " : null}`} defaultValue={name} disabled={isDisabled} onChange={(event) => {setNewItemName(event.target.value);}}/>
             <div className="quantitySelection">
                 <input type="number" className={`quantityInput shoppingListItemInput ${newItemChecked && isDisabled ? "backgroundGray" : null }`} defaultValue={quantity} disabled={isDisabled} onChange={(event) => {setNewItemQuantity(event.target.value)}}/>
                 <select name="metricsSelect" className={`metricsSelect shoppingListItemInput ${newItemChecked && isDisabled ? "backgroundGray" : null }`} defaultValue={unit} disabled={isDisabled} onChange={(event) => {setNewItemUnit(event.target.value)}}>
