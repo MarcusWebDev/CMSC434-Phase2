@@ -17,7 +17,8 @@ class ShoppingListPreset extends React.Component {
         this.state = {
             isEditDisabled: true,
             addItemOpen: false,
-            itemsAddedOpen: false
+            itemsAddedOpen: false,
+            aKeyboardVisible: false
         }
         this.closeAddItem = this.closeAddItem.bind(this);
         this.closeItemsAdded = this.closeItemsAdded.bind(this);
@@ -77,7 +78,7 @@ class ShoppingListPreset extends React.Component {
                     </div>
                     
                     <div className="presetHeaderContainer">
-                        <input type="text" className="presetName" onChange={(event) => this.props.updatePresetName(this.props.presetData.id, event.target.value)} defaultValue={this.props.name} disabled={this.state.isEditDisabled}/>
+                        <input type="text" className="presetName" onChange={(event) => this.props.updatePresetName(this.props.presetData.id, event.target.value)} defaultValue={this.props.name} disabled={this.state.isEditDisabled} onFocus={() => this.setState({aKeyboardVisible: true})} onBlur={() => this.setState({aKeyboardVisible: false})} />
                         <button className={`presetSelectAllButton ${this.state.isEditDisabled ? null : "hidden"}`} onClick={() => this.selectAll()}>Select All</button>
                         
                     </div>
@@ -93,6 +94,7 @@ class ShoppingListPreset extends React.Component {
                 <NavBar selectedTab={"Shopping List"} />
                 {this.state.addItemOpen ? <NewItemShoppingList isPreset={true} presetId={this.props.presetData.id} createItem={this.props.createItem} itemsToCategories={this.props.itemsToCategories} nextItemId={this.props.nextItemId} close={this.closeAddItem}/> : null}
                 {this.state.itemsAddedOpen ? <ItemsAddedNotification addedToName="Shopping List" onClose={this.closeItemsAdded} pathToGoTo="/shoppingList" /> : null}
+                <img className={`alphabeticKeyboard ${this.state.aKeyboardVisible ? "" : "hidden "}`} src={require("../icons/alphabeticKeyboard.png")} />
             </div>
         );
     }

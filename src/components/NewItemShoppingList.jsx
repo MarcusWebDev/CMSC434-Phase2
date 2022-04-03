@@ -11,7 +11,9 @@ class NewItemShoppingList extends React.Component {
             itemQuantity: 1,
             itemUnit: "lbs",
             itemAddedNotificationOpen: false,
-            notificationName: ""
+            notificationName: "",
+            aKeyboardVisible: false,
+            nKeyboardVisible: false
         };
         this.timer = 0;
         this.newItemNotificationOnTimeout = this.newItemNotificationOnTimeout.bind(this);
@@ -46,11 +48,11 @@ class NewItemShoppingList extends React.Component {
                         <img src={require("../icons/closeButton.png")} className="newItemCloseButton" onClick={()=> this.props.close()}/>
                     </div>
                     <label className="newItemLabel">Item Name</label>
-                    <input type="text" className="newItemInput" onChange={(event) => this.setState({itemName: event.target.value})} placeholder="Name"/>
+                    <input type="text" className="newItemInput" onChange={(event) => this.setState({itemName: event.target.value})} placeholder="Name" onFocus={() => this.setState({aKeyboardVisible: true})} onBlur={() => this.setState({aKeyboardVisible: false})}/>
                     <div className="quantityUnitContainer">
                         <div className="quantityContainer">
                             <label className="newItemLabel">Quantity</label>
-                            <input type="number" className="newItemInput" min="1" onChange={(event) => this.setState({itemQuantity: event.target.value})} placeholder="1" />            
+                            <input type="number" className="newItemInput" min="1" onChange={(event) => this.setState({itemQuantity: event.target.value})} placeholder="1" onFocus={() => this.setState({nKeyboardVisible: true})} onBlur={() => this.setState({nKeyboardVisible: false})}/>            
                         </div>
                         <div className="unitContainer">
                             <label className="newItemLabel">Unit</label>
@@ -76,6 +78,8 @@ class NewItemShoppingList extends React.Component {
                     <button className="newItemButton newItemButtonActive" onClick={()=> {this.createItem(); this.setState({itemAddedNotificationOpen: true, notificationName: this.state.itemName}); clearTimeout(this.timer); this.runNotificationTimer()}}>Add Item(s)</button>
                 </div>
                 {this.state.itemAddedNotificationOpen ? <NewItemNotification name={this.state.notificationName} isPreset={this.props.isPreset} /> : null}
+                <img className={`alphabeticKeyboard ${this.state.aKeyboardVisible ? "" : "hidden "}`} src={require("../icons/alphabeticKeyboard.png")} />
+                <img className={`numericKeyboard ${this.state.nKeyboardVisible ? "" : "hidden "}`} src={require("../icons/numericKeyboard.png")} />
             </div>
         );
     }

@@ -29,6 +29,8 @@ function ShoppingListItem({isPreset, presetId, id, name, quantity, unit, checked
     const [newItemName, setNewItemName] = useState(name);
     const [newItemQuantity, setNewItemQuantity] = useState(quantity);
     const [newItemUnit, setNewItemUnit] = useState(unit);
+    const [aKeyboardVisible, setAKeyboardVisible] = useState(false);
+    const [nKeyboardVisible, setNKeyboardVisible] = useState(false);
     let newItemChecked = checked;
     let newPresetChecked = presetChecked;
     
@@ -44,11 +46,11 @@ function ShoppingListItem({isPreset, presetId, id, name, quantity, unit, checked
     }, [isDisabled]);
 
     return (
-        <div className={`shoppingListItemContainer ${newItemChecked ? "backgroundGray zeroLeftMargin" : null }`}>
-            <input type="text" className={`nameInput shoppingListItemInput ${newItemChecked && isDisabled ? "backgroundGray " : null } ${newItemChecked ? "twentyLeftMargin " : null}`} defaultValue={name} disabled={isDisabled} onChange={(event) => {setNewItemName(event.target.value);}}/>
+        <div className={`shoppingListItemContainer ${newItemChecked ? "backgroundGray zeroLeftMargin" : "" }`}>
+            <input type="text" className={`nameInput shoppingListItemInput ${newItemChecked && isDisabled ? "backgroundGray " : "" } ${newItemChecked ? "twentyLeftMargin " : ""}`} defaultValue={name} disabled={isDisabled} onChange={(event) => {setNewItemName(event.target.value);}} onFocus={() => setAKeyboardVisible(true)} onBlur={() => setAKeyboardVisible(false)}/>
             <div className="quantitySelection">
-                <input type="number" className={`quantityInput shoppingListItemInput ${newItemChecked && isDisabled ? "backgroundGray" : null }`} defaultValue={quantity} disabled={isDisabled} onChange={(event) => {setNewItemQuantity(event.target.value)}}/>
-                <select name="metricsSelect" className={`metricsSelect shoppingListItemInput ${newItemChecked && isDisabled ? "backgroundGray" : null }`} defaultValue={unit} disabled={isDisabled} onChange={(event) => {setNewItemUnit(event.target.value)}}>
+                <input type="number" className={`quantityInput shoppingListItemInput ${newItemChecked && isDisabled ? "backgroundGray" : "" }`} defaultValue={quantity} disabled={isDisabled} onChange={(event) => {setNewItemQuantity(event.target.value)}} onFocus={() => setNKeyboardVisible(true)} onBlur={() => setNKeyboardVisible(false)}/>
+                <select name="metricsSelect" className={`metricsSelect shoppingListItemInput ${newItemChecked && isDisabled ? "backgroundGray" : "" }`} defaultValue={unit} disabled={isDisabled} onChange={(event) => {setNewItemUnit(event.target.value)}}>
                     <option value="lbs">lbs</option>
                     <option value="gallons">gallons</option>
                     <option value="cartons">cartons</option>
@@ -57,6 +59,8 @@ function ShoppingListItem({isPreset, presetId, id, name, quantity, unit, checked
                 </select>
             </div>
             {isDisabled ? renderCheckbox(isPreset, presetId, id, categoryName, checked, presetChecked, newItemName, newItemQuantity, newItemUnit, updateItem) : renderRemoveIcon(isPreset, presetId, id, categoryName, removeItem)}
+            <img className={`alphabeticKeyboard ${aKeyboardVisible ? "" : "hidden "}`} src={require("../icons/alphabeticKeyboard.png")} />
+            <img className={`numericKeyboard ${nKeyboardVisible ? "" : "hidden "}`} src={require("../icons/numericKeyboard.png")} />
         </div>
     );
 }

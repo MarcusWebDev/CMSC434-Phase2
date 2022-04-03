@@ -78,4 +78,16 @@
 .twentyLeftMargin {
     margin-left: 20px;
 }
+.alphabeticKeyboard {
+    position: fixed;
+    top: 64.5%;
+    left: 0%;
+    z-index: 10;
+}
+.numericKeyboard {
+    position: fixed;
+    top: 64.5%;
+    left: 0%;
+    z-index: 10;
+}
 
