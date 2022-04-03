@@ -1,0 +1,352 @@
+.PageWrapper {
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* align-items: center; */
+    /* height: 500vh; */
+    /* width: 1000vw; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* border: solid green; */
+    max-width: 100%;
+    
+}
+
+.HeaderContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 70px;
+    /* border: solid blue; */
+    
+}
+
+.Heading {
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 34px;
+    float: left;
+    width: 268px;
+    text-align: left;
+    margin-top: 40px;
+    color: #1C1C1E;
+    padding: 0px;
+
+}
+
+.RefriFreezer {
+    height: 200px;
+    /* width: 100%; */
+    /* background-color: black; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6.93px;
+
+    font-family: 'Arial';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 20px;
+}
+.space {
+    margin: 0 10px;
+}
+.tip {
+ /* width: 315px; */
+  /* height: 38px; */
+  /* left: 32px; */
+  /* top: 90px; */
+  background: #CBCBCB;
+  box-shadow: 0px 10px 20px rgb(0 0 0 / 10%);
+  border-radius: 13px;
+  font-family: 'Arial';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 35px;
+  display: flex;
+  align-items: center;
+  margin-left: 7px;
+  /* z-index: 100; */
+}
+.para {
+    text-align: auto;
+    margin: auto;
+    font-size: 13px;
+}
+.InventoryList {
+  height: 200px;
+  width: 100%;
+  /* background-color: black; */
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  margin: 0 auto;
+  /* border: solid purple;*/
+}
+.symbol {
+    margin: 0 5px;
+    margin-top: 10px;
+}
+.buttons {
+    display: flex;
+    width: 336px;
+    height: 32px;
+    background-color: #ebebeb;
+    justify-content: space-around;
+    margin-top: 2em;
+    border-radius: 6.93px;
+    align-items: center;
+}
+
+.Refri {
+    width: 160px;
+    /* background-color: white; */
+    border-radius: 6.93px;
+    /* text-align: center; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 28px;
+    cursor: pointer;
+}
+
+.active {
+    background-color: white;
+}
+
+
+.RefrigeratorTab {
+    position: static;
+left: 2px;
+right: 168px;
+top: 6.25%;
+bottom: 6.25%;
+
+/* System Background/Light/Primary */
+
+background: #FFFFFF;
+border: 0.5px solid rgba(0, 0, 0, 0.04);
+box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.12), 0px 3px 1px rgba(0, 0, 0, 0.04);
+border-radius: 6.93px;
+
+/* Inside auto layout */
+
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 1;
+margin: 0px 0px;
+}
+
+.FreezerTab {
+    position: absolute;
+height: 16px;
+left: 10px;
+right: 190px;
+/* top: calc(50% - 16px/2); */
+
+font-family: 'Arial';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 20px;
+/* or 143% */
+
+display: flex;
+align-items: center;
+text-align: center;
+
+/* Label Color/Light/Primary */
+
+color: #000000;
+
+}
+.button {
+    width: 56px;
+    height: 32px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    margin-left: 10px;
+    
+}
+.buttonGrey {
+    background: #AEAEB2;
+}
+.buttonBlue {
+    background: #007AFF;
+    align-items: center;
+    justify-content: center;
+}
+.hidden {
+    display: none;
+}
+.linkAdd {
+    color: #007AFF;
+    margin-bottom: 19px;
+    margin-left: -1px;
+    text-decoration: none;
+}
+.linkEdit {
+    color: #007AFF;
+    margin-bottom: 19px;
+    margin-left: 270px;
+    text-decoration: none;
+}
+.dropbtn {
+    background-color: green;
+    color: black;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* The container <div> - needed to position the dropdown content */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 20%);
+    z-index: 1;
+    margin-left: 27px;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    font-family: 'Arial';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 21px;
+display: flex;
+align-items: center;
+
+color: #000000;
+text-decoration: none;
+  }
+
+  .Refrig {
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 30px;
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.03em;
+    margin-left: 24px;
+  }
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {background-color: #f1f1f1}
+  
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  /* Change the background color of the dropdown button when the dropdown content is shown */
+  .dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+  }
+  .drop {
+    width:22.35px;
+    height:13.17px;
+    margin-left: 6px;
+  }
+
+  .rule3 {
+    width: 301px;
+    height: 0px;
+    border: 0.5px solid #C7C7CC;
+    margin-left: 24px;
+    margin-top: 13px;
+    margin-bottom: 24px;
+}
+
+.select {
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1px;
+    /* display: flex; */
+    align-items: center;
+    letter-spacing: -0.03em;
+    color: #000000;
+    margin-left: 24px;
+    /* margin-bottom: 10px; */
+    margin: 0;
+    margin-left: 26px;
+}
+
+.dot {
+    height: 45px;
+    width: 45px;
+    background-color: #007AFF;
+    border-radius: 50%;
+    display: inline-block;
+    
+  }
+
+  .Users {
+    margin-top: 26px;
+    margin-left: 16px;
+  }
+
+  .Elizabeth {
+    height: 48px;
+    width: 48px;
+  }
+
+  .James {
+    height: 48px;
+    width: 48px;
+  }
+  .William {
+    height: 45px;
+    width: 45px;
+  }
+  .Patricia {
+    height: 48px;
+    width: 48px;
+  }
+
+  .Usernames {
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 11px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    margin-left: 19px;
+  }
+
+  .rule4 {
+    width: 301px;
+    height: 0px;
+    border: 0.5px solid #C7C7CC;
+    margin-left: 24px;
+    margin-top: 13px;
+    margin-bottom: 24px;
+}

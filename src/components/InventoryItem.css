@@ -1,0 +1,99 @@
+.shoppingListItemContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    border-top: solid #C6C6C8 1px;
+    margin-left: 20px;
+    
+}
+.checkbox {
+    margin-right: 20px;
+    border-radius: 100px solid black;
+}
+.quantitySelection {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.nameInput {
+    width: 86px;
+    background: #EEEEEE;
+    border-radius: 8px;
+    border: none;
+    height: 24px;
+    padding-left: 10px;
+}
+.nameInput:disabled {
+    background: white;
+    border: none;
+    font-family: 'Arial';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 16px;
+/* identical to box height */
+
+
+/* Gray Dark 6 */
+
+color: #1C1C1E;
+}
+.quantityInput {
+    width: 38px;
+    text-align: right;
+    background: #EEEEEE;
+    border-radius: 8px;
+    border: none;
+    height: 24px;
+    padding-right: 10px;
+    font-family: 'Arial';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 16px;
+/* identical to box height */
+
+
+/* Gray Dark 6 */
+
+color: #1C1C1E;
+}
+.quantityInput:disabled {
+    background: white;
+    border: none;
+    padding: 0;
+    font-family: 'Arial';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 16px;
+/* identical to box height */
+
+
+/* Gray Dark 6 */
+
+color: #1C1C1E;
+}
+.metricsSelect {
+    margin-left: 4px;
+    height: 20px;
+    font-family: arial;
+    background: #EEEEEE;
+    border-radius: 8px;
+    border: none;
+    height: 24px;
+    padding-left: 10px;
+}
+.metricsSelect:disabled {
+    appearance: none;
+    border: none;
+    color: black;
+    background: white;
+    padding: 0;
+}
+.shoppingListDelete {
+    margin-right: 20px;
+    cursor: pointer;
+}
