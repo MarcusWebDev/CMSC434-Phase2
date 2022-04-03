@@ -23,6 +23,7 @@
     align-items: center;
     color: #007AFF;
     font-weight: 700;
+    font-size: 14px;
 }
 .addSymbol {
     margin-right: 2px;
@@ -37,7 +38,7 @@
     height: 280px;
 }
 .addItemEnterInfoText {
-    margin: 100px 0 0 0; 
+    margin: 30px 0 0 0; 
 }
 .addItemTinyText {
     margin: 0;

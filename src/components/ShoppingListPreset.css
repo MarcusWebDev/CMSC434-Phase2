@@ -4,18 +4,24 @@
     justify-content: center;
     width: 100vw;
     height: 100vh;
-    background:#007AFF;
+    background: white;
 }
 .presetContainer {
     display: flex;
     flex-direction: column;
     width: 336px;
 }
+.presetHeaderButtonBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
 .backButtonContainer {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-top: 8px;
+    font-weight: 400;
 }
 .backButtonArrow {
     margin-right: 8px;
@@ -25,21 +31,35 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    width: 336px;
+}
+.presetSelectAllButton {
+    height: 32px;
+    background: #E5E5EA;
+    border: none;
+    border-radius: 50px;
+    font-weight: 400;
+    font-size: 14px;
+    color: #007AFF;
+    padding: 0 10px;
 }
 .presetName {
     padding-left: 10px;
-    background: rgba(48, 48, 48, 0.5);
+    background: rgba(48, 48, 48, 0.8);
     color: white;
     font-size: 30px;
+    font-weight: 700;
     border: none;
     border-radius: 10px;
-    width: 254px;
+    width: 326px;
     
 }
 .presetName:disabled {
     padding: 0;
     height: 36px;
-    background: #007AFF;
+    background: white;
+    color: black;
+    width: 250px;
 }
 .buttonWhite {
     background: white;
@@ -50,27 +70,32 @@
     flex-direction: column;
     align-items: center;
     width: 336px;
-    height: 429px;
+    height: 378px;
     margin-top: 20px;
-    background: rgba(255, 255, 255, 0.5);
+    background:#C9E4FF;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
     border-radius: 13px;
     overflow: scroll;
 }
+.presetEmptySpace {
+    width: 336px;
+    height: 200px;
+}
 .presetListIsEmptyText {
     position: absolute;
     top: 35%;
-    color: white;
+    color: #636366;
     font-size: 14px;
     font-weight: 700;
 }
 .addAllItemsButton {
     width: 336px;
-    color: #007AFF;
+    color: white;
+    background: #007AFF;
     border: none;
     border-radius: 10px;
     height: 48px;
-    margin-top: 24px;
+    margin-top: 29px;
     font-size: 17px;
     font-family: arial;
     font-weight: 700;
@@ -88,15 +113,16 @@
     background: #E22400;
 }
 .addNewItemsToListButton {
+    margin-top: 5px;
     border: none;
-    width: 212px;
+    width: 336px;
     height: 48px;
-    background: #FFFFFF;
+    background: #007AFF;
     border-radius: 10px;
     font-weight: 700;
     font-size: 17px;
     line-height: 22px;
-    color: #0A84FF;
+    color: white;
 }
 .presetBottomButtonsContainer {
     display: flex;
@@ -107,4 +133,10 @@
 }
 .whiteText {
     color: white;
+}
+.hidden {
+    display: none;
+}
+.verticalMargin {
+    margin: 13.5px 0; 
 }

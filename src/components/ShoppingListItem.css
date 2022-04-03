@@ -66,3 +66,28 @@
     margin-right: 20px;
     cursor: pointer;
 }
+.backgroundGray {
+    background: #AEAEB2;
+}
+.backgroundGray:disabled {
+    background: #AEAEB2;
+}
+.zeroLeftMargin {
+    margin-left: 0;
+}
+.twentyLeftMargin {
+    margin-left: 20px;
+}
+.alphabeticKeyboard {
+    position: fixed;
+    top: 64.5%;
+    left: 0%;
+    z-index: 10;
+}
+.numericKeyboard {
+    position: fixed;
+    top: 64.5%;
+    left: 0%;
+    z-index: 10;
+}
+

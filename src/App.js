@@ -232,18 +232,18 @@ class App extends React.Component {
     });
   }
 
-  updatePresetListItem(presetId, itemId, categoryName, newItemName, newItemQuantity, newItemUnit) {
+  updatePresetListItem(presetId, itemId, categoryName, newItemName, newItemQuantity, newItemUnit, newPresetChecked) {
     let temp = [...this.state.presetArray];
     temp.find((obj) => {
       if (obj.id == presetId) {
         if (this.state.itemsToCategories.value.get(newItemName.toLowerCase().replace(/ /g, "")) != categoryName && !(this.state.itemsToCategories.value.get(newItemName.toLowerCase().replace(/ /g, "")) == undefined && categoryName == "Other")) {
           this.removePresetListItem(presetId, itemId, categoryName);
-          this.createPresetListItem(presetId, this.state.itemsToCategories.value.get(newItemName.toLowerCase().replace(/ /g, "")), {id: itemId, name: newItemName, quantity: newItemQuantity, unit: newItemUnit, checked: false});
+          this.createPresetListItem(presetId, this.state.itemsToCategories.value.get(newItemName.toLowerCase().replace(/ /g, "")), {id: itemId, name: newItemName, quantity: newItemQuantity, unit: newItemUnit, checked: false, presetChecked: newPresetChecked});
         } else {
           let tempArray = obj.presetMap.get(categoryName);
           tempArray.find((o, i) => {
             if (o.id == itemId) {
-              tempArray[i] = {id: itemId, name: newItemName, quantity: newItemQuantity, unit: newItemUnit, checked: false};
+              tempArray[i] = {id: itemId, name: newItemName, quantity: newItemQuantity, unit: newItemUnit, checked: false, presetChecked: newPresetChecked};
               return true;
             }
           });
@@ -298,8 +298,17 @@ class App extends React.Component {
   }
 
   importItemstoShoppingList(presetMap) {
-    for (let currentItem of presetMap.values()) {
-      this.createShoppingListItem(this.state.itemsToCategories.value.get(currentItem.name), currentItem);
+    for (let currentArray of presetMap.values()) {
+      for (let currentItem of currentArray) {
+        if (currentItem.presetChecked) {
+          currentItem.presetChecked = false;
+          currentItem.id = this.state.nextShoppingListItemId;
+          this.setState({
+            nextShoppingListItemId: ++this.state.nextShoppingListItemId
+          })
+          this.createShoppingListItem(this.state.itemsToCategories.value.get(currentItem.name), currentItem);
+        }
+      }
     }
   }
 

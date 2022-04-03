@@ -1,12 +1,16 @@
 .newItemWrapper {
     position: absolute;
-    margin-top: 30vh;
+    margin-top: 12vh;
     width: 280px;
-    height: 311px;
+    height: 435px;
     background: #FFFFFF;
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
     border-radius: 22px;
     z-index: 3;
+}
+.newItemWrapperPreset {
+    margin-top: 30vh;
+    height: 310px;
 }
 .newItemContainer {
     display: flex;
@@ -37,6 +41,9 @@
     display: flex;
     flex-direction: column;
     width: 110px;
+}
+.newItemSelectUsers {
+    margin: 20px 0 0 0;
 }
 .newItemInput {
     background: rgba(237, 237, 237, 0.8);

@@ -1,5 +1,5 @@
 .navBarWrapper {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100vw;
     background: white;
@@ -9,4 +9,5 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    border-top: solid 1px #C7C7CC;
 }

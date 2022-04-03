@@ -3,6 +3,8 @@ import { render } from '@testing-library/react';
 import ShoppingListItem from "./ShoppingListItem.jsx";
 import CategoryList from "./CategoryList.jsx";
 import NewItemShoppingList from './NewItemShoppingList.jsx';
+import ItemsAddedNotification from "./ItemsAddedNotification.jsx";
+import NavBar from "./NavBar.jsx";
 import "./ShoppingListPreset.css";
 
 
@@ -14,9 +16,12 @@ class ShoppingListPreset extends React.Component {
         super(props);
         this.state = {
             isEditDisabled: true,
-            addItemOpen: false
+            addItemOpen: false,
+            itemsAddedOpen: false,
+            aKeyboardVisible: false
         }
         this.closeAddItem = this.closeAddItem.bind(this);
+        this.closeItemsAdded = this.closeItemsAdded.bind(this);
     }
 
     toggleEditDisable() {
@@ -31,6 +36,12 @@ class ShoppingListPreset extends React.Component {
         })
     }
 
+    closeItemsAdded() {
+        this.setState({
+            itemsAddedOpen: false
+        })
+    }
+
     presetMapIsAllEmptyArrays() {
         for (let currentValue of this.props.presetData.presetMap.values()) {;
             if (currentValue.length != 0) {
@@ -39,31 +50,52 @@ class ShoppingListPreset extends React.Component {
         }
         return true;
     }
+    
+    selectAll() {
+        for (let currentArray of this.props.presetData.presetMap) {
+            for (let currentItem of currentArray[1]) {
+                let categoryName = this.props.itemsToCategories.get(currentItem.name);
+                if (categoryName == undefined) {
+                    categoryName = "Other";
+                }
+                this.props.updateItem(this.props.presetData.id, currentItem.id, categoryName, currentItem.name, currentItem.quantity, currentItem.unit, true)
+            }
+        }        
+    }
 
     render() {
         return(
             <div className="presetWrapper">
-                <div className={`presetContainer ${this.state.addItemOpen ? "blurWall" : null}`}>
-                    <div className="backButtonContainer" onClick={() => this.props.closePreset()}>
-                        <img src={require("../icons/backArrowWhite.png")} className="backButtonArrow"/>
-                        <p className="whiteText">Back</p>
+                <div className={`presetContainer ${this.state.addItemOpen || this.state.itemsAddedOpen ? "blurWall" : null}`}>
+                    <div className="presetHeaderButtonBar">
+                        <div className={`backButtonContainer ${this.state.isEditDisabled ? null : "hidden"}`} onClick={() => this.props.closePreset()}>
+                            <img src={require("../icons/backArrowBlue.png")} className="backButtonArrow"/>
+                            <p className="blueText">Back</p>
+                        </div>
+                        <button className={`buttonBackgroundless redText  ${this.state.isEditDisabled ? "hidden" : "verticalMargin"}`} onClick={() => {this.props.closePreset(); this.props.deletePreset(this.props.presetData.id)}}>Delete Template</button>
+                        <button className={`buttonBackgroundless blueText ${this.state.isEditDisabled ? null : "hidden"}`} onClick={() => this.toggleEditDisable()}>Edit</button>
+                        <button className={`buttonBackgroundless blueText boldText ${this.state.isEditDisabled ? "hidden" : null}`} onClick={() => this.toggleEditDisable()}>Done</button>
                     </div>
+                    
                     <div className="presetHeaderContainer">
-                        <input type="text" className="presetName" onChange={(event) => this.props.updatePresetName(this.props.presetData.id, event.target.value)} defaultValue={this.props.name} disabled={this.state.isEditDisabled}/>
-                        <button className={`button buttonWhite ${this.state.isEditDisabled ? null : "hidden"}`} onClick={() => this.toggleEditDisable()}>Edit</button>
-                        <button className={`button buttonWhite ${this.state.isEditDisabled ? "hidden" : null}`} onClick={() => this.toggleEditDisable()}>Done</button>
+                        <input type="text" className="presetName" onChange={(event) => this.props.updatePresetName(this.props.presetData.id, event.target.value)} defaultValue={this.props.name} disabled={this.state.isEditDisabled} onFocus={() => this.setState({aKeyboardVisible: true})} onBlur={() => this.setState({aKeyboardVisible: false})} />
+                        <button className={`presetSelectAllButton ${this.state.isEditDisabled ? null : "hidden"}`} onClick={() => this.selectAll()}>Select All</button>
+                        
                     </div>
                     <div className="presetItemContainer">
                         {this.presetMapIsAllEmptyArrays() ? <p className="presetListIsEmptyText">This List is Empty</p> : [...this.props.presetData.presetMap.entries()].map((entry) => <CategoryList isPreset={true} presetId={this.props.presetData.id} name={entry[0]} items={entry[1]} isEditDisabled={this.state.isEditDisabled} updateItem={this.props.updateItem} removeItem={this.props.removeItem}/>)}
+                        <div className="presetEmptySpace"><br/><br/><br/><br/><br/></div>
                     </div>
-                    <button className={`addAllItemsButton ${this.state.isEditDisabled ? null : "hidden"}`} onClick={() => this.props.importItemstoShoppingList(this.props.presetData.presetMap)}>Add All Items to Shopping List</button>
+                    <button className={`addAllItemsButton ${this.state.isEditDisabled ? null : "hidden"}`} onClick={() => {this.setState({itemsAddedOpen: true}); this.props.importItemstoShoppingList(this.props.presetData.presetMap)}}>Add Selected Items to Shopping List</button>
                     <div className="presetBottomButtonsContainer">
-                        <button className={`deleteListButton ${this.state.isEditDisabled ? "hidden" : null}`} onClick={() => {this.props.closePreset(); this.props.deletePreset(this.props.presetData.id)}}>Delete List</button>
-                        <button className={`addNewItemsToListButton ${this.state.isEditDisabled ? "hidden" : null}`} onClick={() => this.setState({addItemOpen: true})}>Add New Items to List</button>
+                        <button className={`addNewItemsToListButton ${this.state.isEditDisabled ? "hidden" : null}`} onClick={() => this.setState({addItemOpen: true})}>Add New Items to Template</button>
                     </div>
                     
                 </div>
+                <NavBar selectedTab={"Shopping List"} />
                 {this.state.addItemOpen ? <NewItemShoppingList isPreset={true} presetId={this.props.presetData.id} createItem={this.props.createItem} itemsToCategories={this.props.itemsToCategories} nextItemId={this.props.nextItemId} close={this.closeAddItem}/> : null}
+                {this.state.itemsAddedOpen ? <ItemsAddedNotification addedToName="Shopping List" onClose={this.closeItemsAdded} pathToGoTo="/shoppingList" /> : null}
+                <img className={`alphabeticKeyboard ${this.state.aKeyboardVisible ? "" : "hidden "}`} src={require("../icons/alphabeticKeyboard.png")} />
             </div>
         );
     }

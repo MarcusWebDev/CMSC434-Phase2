@@ -1,8 +1,8 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import ShoppingListItem from "./ShoppingListItem.jsx";
 import CategoryList from "./CategoryList.jsx";
-import NewItemShoppingList from './NewItemShoppingList.jsx';
+import NavBar from "./NavBar.jsx";
+import SelectUserPortrait from "./SelectUserPortrait.jsx";
 import { Link } from "react-router-dom";
 import "./ShoppingList.css";
 
@@ -14,7 +14,11 @@ class ShoppingList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isEditDisabled: true
+            isEditDisabled: true,
+            elizabethClicked: false,
+            jamesClicked: false,
+            williamClicked: false,
+            patriciaClicked: false
         }
     }
 
@@ -30,30 +34,33 @@ class ShoppingList extends React.Component {
                 <div className="shoppingListContainer">
                     <div className="headerWrapper">
                         <div className="shoppingListHeaderBar">
-                            <Link to="/" className="link">
-                                <div className="returnToHomeButton">
-                                    <img src={require("../icons/backArrowBlue.png")} className="backButtonArrow"/>
-                                    <p className="blueText">Home</p>
-                                </div>
-                            </Link>
+                            <div className="headerButtonContainer">
+                                <Link to="/shoppingList/add" className={`link ${this.state.isEditDisabled ? null : "hidden"}`}>  
+                                    <button className={`buttonBackgroundless blueText ${this.state.isEditDisabled ? null : "hidden"}`}>Add</button>
+                                </Link>
+                                <button className={`buttonBackgroundless blueText ${this.state.isEditDisabled ? null : "hidden"}`} onClick={() => this.toggleEditDisable()}>Edit</button>
+                                <button className={`buttonBackgroundless redText ${this.state.isEditDisabled ? "hidden" : null}`} onClick={() => {this.props.clearShoppingList(); this.toggleEditDisable()}} >Clear List</button>
+                                <button className={`buttonBackgroundless blueText boldText ${this.state.isEditDisabled ? "hidden" : null}`} onClick={() => this.toggleEditDisable()}>Done</button>
+                            </div>
                             <div className="headerContainer">
                                 <h1 className="header">Shopping List</h1>
-                                <div className="headerButtonContainer">
-                                    <Link to="/shoppingList/add" className="link">  
-                                        <button className={`button buttonBlue ${this.state.isEditDisabled ? null : "hidden"}`}>Add</button>
-                                    </Link>
-                                    <button className={`button buttonGrey ${this.state.isEditDisabled ? null : "hidden"}`} onClick={() => this.toggleEditDisable()}>Edit</button>
-                                    <button className={`button buttonRed ${this.state.isEditDisabled ? "hidden" : null}`} onClick={() => {this.props.clearShoppingList(); this.toggleEditDisable()}} >Clear</button>
-                                    <button className={`button buttonBlue ${this.state.isEditDisabled ? "hidden" : null}`} onClick={() => this.toggleEditDisable()}>Done</button>
-                                </div>
                             </div>
-                            
+                        </div>
+                    </div>
+                    <div className="shoppingListSelectUser">
+                        <h3>Select Users</h3>
+                        <div className="shoppingListUsersContainer">
+                            <SelectUserPortrait name="Elizabeth" picture={require("../icons/elizabeth.jpg")} />
+                            <SelectUserPortrait name="James" picture={require("../icons/james.jpg")} />
+                            <SelectUserPortrait name="William" picture={require("../icons/william.jpg")} />
+                            <SelectUserPortrait name="Patricia" picture={require("../icons/patricia.jpg")} />
                         </div>
                     </div>
                     <div className="categoryListContainer">
                         {[...this.props.itemDataByCategory.entries()].map((entry) => <CategoryList isPreset={false} name={entry[0]} items={entry[1]} isEditDisabled={this.state.isEditDisabled} updateItem={this.props.updateItem} removeItem={this.props.removeItem}/>)}
                     </div>   
                 </div>
+                <NavBar selectedTab={"Shopping List"} />
             </div>
         );
     }
