@@ -37,7 +37,7 @@ function HomePage() {
                     </select>
                 </div>
                 <div className="refrigeratorFreezerContainer">
-                    <Link to="/refrigerator" className="link">
+                    <Link to="/inventory/OfficeRefrigerator" className="link">
                         <Button color="#FFFFFF" icon={require("../icons/basket.png")} text="Refrigerator"/>
                     </Link>
                     <Link to="/freezer" className="link">

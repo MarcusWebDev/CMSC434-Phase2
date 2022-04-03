@@ -1,0 +1,125 @@
+.PageWrapper {
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* align-items: center; */
+    /* height: 500vh; */
+    /* width: 1000vw; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* border: solid green; */
+    max-width: 100%;
+    
+}
+
+.HeaderContainer {
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+    width: 100%;
+    height: 70px;
+    /* border: solid blue; */
+    float:left;
+}
+
+.Heading {
+    font-family: 'Arial';
+font-style: normal;
+font-weight: 700;
+font-size: 30px;
+line-height: 34px;
+float:left;
+width: 337px;
+text-align: left;
+margin-top: 40px;
+
+/* Gray Dark 6 */
+
+color: #1C1C1E;
+
+}
+.rule {
+    width: 336px;
+height: 0px;
+    border: 0.5px solid #C7C7CC;
+}
+
+.ShoppingListandButton {
+        /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    width: 100%;
+    height: 136px;
+    /* border: solid blue; */
+    float: left;
+}
+.ChooseShoppingList {
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+    /* float: left; */
+    width: 281px;
+    text-align: center;
+    margin-top: 11px;
+    letter-spacing: -0.03em;
+    color: #1C1C1E;
+    margin-right: 98px;
+    margin-bottom: 2px;
+}
+.Select {
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    width: 331px;
+    padding: 0px;
+    color: #636366;
+    margin-left: 19px;
+}
+.ShoppingListButton {
+    width: 336px;
+    height: 48px;
+    left: 24px;
+    top: 176px;
+    background: #C9E4FF;
+    border-radius: 10px;
+    margin-left: 19px;
+    margin-top: 9px;
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 48px;
+    /* display: flex; */
+    align-items: center;
+    text-align: center;
+    color: #0A84FF;
+    background: #C9E4FF;
+    border-radius: 10px;
+}
+
+.rule2 {
+    width: 336px;
+height: 0px;
+    border: 0.5px solid #C7C7CC;
+}
+
+.ChooseShoppingList2 {
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+    /* float: left; */
+    width: 194px;
+    text-align: center;
+    margin-top: 11px;
+    letter-spacing: -0.03em;
+    color: #1C1C1E;
+    margin-right: 98px;
+    margin-bottom: 2px;
+}

@@ -4,7 +4,12 @@ import ShoppingListPreset from "./components/ShoppingListPreset.jsx";
 import AddItemShoppingList from "./components/AddItemShoppingList.jsx";
 import { Routes, Route } from "react-router-dom";
 import React from 'react';
+import InventoryRefrigerator from './components/InventoryRefrigerator.jsx';
 import { toHaveDisplayValue } from '@testing-library/jest-dom/dist/matchers';
+import AddItemInventory from './components/AddItemInventory.jsx';
+import { useState } from 'react';
+import ItemInfoInventory from './components/ItemInfoInventory.jsx';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -16,7 +21,13 @@ class App extends React.Component {
 
       presetArray: [],
       nextPresetId: 0,
+      dummyInv:this.dummyInventoryData(),
+      nextInventoryId: 6
     };
+    this.deleteItemInventory = this.deleteItemInventory.bind(this);
+    this.reduceItemInventory = this.reduceItemInventory.bind(this);
+    this.createItemInventory = this.createItemInventory.bind(this);
+    this.updateItemInventory = this.updateItemInventory.bind(this);
     this.createShoppingListItem = this.createShoppingListItem.bind(this);
     this.removeShoppingListItem = this.removeShoppingListItem.bind(this);
     this.updateShoppingListItem = this.updateShoppingListItem.bind(this);
@@ -30,6 +41,9 @@ class App extends React.Component {
     this.importItemstoShoppingList = this.importItemstoShoppingList.bind(this);
     this.deletePreset = this.deletePreset.bind(this);
   }
+
+
+  
 
   render() {
     return (
@@ -60,8 +74,17 @@ class App extends React.Component {
           />} 
         />
         <Route path="/recipes" element={<ShoppingListPreset />} />
-        <Route path="/refrigerator" element={<HomePage />} />
+        <Route path="/inventory/OfficeRefrigerator" element={<InventoryRefrigerator
+        dummyInv={this.state.dummyInv}
+        onReduce={this.reduceItemInventory} 
+        onDelete={this.deleteItemInventory}
+        updateItem={this.updateItemInventory}/>} />
         <Route path="/freezer" element={<HomePage />} />
+        <Route path="/inventory/addOfficeRefrigerator" element={<AddItemInventory />} />
+        <Route path="/inventory/addOfficeRefrigeratorItem" element={<ItemInfoInventory 
+        dummyInv={this.state.dummyInv}
+        id={this.state.nextInventoryId}
+        newItem={this.createItemInventory} />} />
       </Routes>
     );
   }
@@ -80,6 +103,70 @@ class App extends React.Component {
     }
   }
 
+  deleteItemInventory = (id) => {
+    let temp = [...this.state.dummyInv];
+    temp.splice(temp.findIndex((obj) => obj.id == id),1);
+    this.setState({
+      dummyInv: temp
+    });
+  }
+
+  reduceItemInventory = (id) => {
+    let temp = [...this.state.dummyInv];
+    let index = temp.findIndex((obj) => obj.id == id)
+    
+    if(temp[index].quantity-1===0)
+    return this.deleteItemInventory(id)
+    temp[index].quantity=temp[index].quantity-1; 
+    // console.log(temp[index].quantity)
+    // temp.findIndex((obj) => obj.id == id ? obj.quantity=obj.quantity-1 : null);
+    this.setState({
+      dummyInv: temp
+
+    });
+    console.log(this.state.dummyInv);
+    
+  }
+
+  createItemInventory = (id,name,quantity,unit,expiration) => {
+    let temp = [...this.state.dummyInv];
+    let item = {
+    'id': id, 
+    'name': name,
+    'quantity': quantity,
+    'unit': unit,
+    'isDisabled': true,
+    'checked': false,
+    'expiration': new Date(expiration),
+    'categoryName': 'Other'
+    }
+    temp.push(item)
+    this.setState({
+      dummyInv:temp,
+      nextInventoryId: ++this.state.nextInventoryId
+    })
+    console.log("Item Create",id);
+  }
+
+  updateItemInventory = (id,name) => {
+    console.log("PLEASE")
+    let temp = [...this.state.dummyInv];
+    let index=temp.findIndex((obj) => obj.id === id);
+    let tempitem = {
+      'id':id,
+      'name': name,
+      'quantity': 7,
+      'unit': 'lbs',
+      'isDisabled': true,
+      'checked': false,
+      'categoryName': 'Other'
+    }
+    temp.splice(index,1,1);
+    this.setState({
+      dummyInv:temp
+    })
+  }
+
   removeShoppingListItem(id, categoryName) {
     let tempArray = this.state.shoppingListItemDataByCategory.value.get(categoryName);
     tempArray.splice(tempArray.findIndex((obj) => obj.id == id), 1);
@@ -87,6 +174,8 @@ class App extends React.Component {
       shoppingListItemDataByCategory: {value: this.state.shoppingListItemDataByCategory.value.set(categoryName, tempArray)}
     });
   }
+
+
 
   updateShoppingListItem(id, categoryName, newItemName, newItemQuantity, newItemUnit, newItemChecked) {
     if (this.state.itemsToCategories.value.get(newItemName.toLowerCase().replace(/ /g, "")) != categoryName && !(this.state.itemsToCategories.value.get(newItemName.toLowerCase().replace(/ /g, "")) == undefined && categoryName == "Other")) {
@@ -262,6 +351,59 @@ class App extends React.Component {
     .set("Personal Care", [])
     .set("Other", [])
   }
+
+  dummyInventoryData() {
+    let expiring = [
+      {
+      'id': '1', 
+      'name': 'bananas',
+      'quantity': 7,
+      'unit': 'lbs',
+      'isDisabled': true,
+      'checked': false,
+      'categoryName': 'Expiring'
+   }, 
+   {
+      'id':'2',
+      'name': 'watermelon',
+      'quantity': '1',
+      'unit': 'lbs',
+      'isDisabled': true,
+      'checked': false,
+      'categoryName': 'Expiring'
+   },
+   {
+      'id':'3',
+      'name': 'oatmilk',
+      'quantity': '1',
+      'unit': 'cartons',
+      'isDisabled': true,
+      'checked': false,
+      'categoryName': 'Expiring'
+   }, 
+   {
+     'id':'4',
+       'name': 'Egg',
+       'quantity': '15',
+       'unit': 'qty',
+       'isDisabled': true,
+       'checked': false,
+       'categoryName': 'Dairy'
+   },
+   {
+    'id': 5, 
+    'name': 'Apples',
+    'quantity': '13',
+    'unit': 'cartons',
+    'isDisabled': true,
+    'checked': false,
+    'categoryName': 'Other'
+   }
+   ]
+   return expiring
+   }
 }
+
+
 
 export default App;
