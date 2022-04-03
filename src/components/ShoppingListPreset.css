@@ -77,6 +77,10 @@
     border-radius: 13px;
     overflow: scroll;
 }
+.presetEmptySpace {
+    width: 336px;
+    height: 200px;
+}
 .presetListIsEmptyText {
     position: absolute;
     top: 35%;

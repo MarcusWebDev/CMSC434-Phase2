@@ -84,6 +84,7 @@ class ShoppingListPreset extends React.Component {
                     </div>
                     <div className="presetItemContainer">
                         {this.presetMapIsAllEmptyArrays() ? <p className="presetListIsEmptyText">This List is Empty</p> : [...this.props.presetData.presetMap.entries()].map((entry) => <CategoryList isPreset={true} presetId={this.props.presetData.id} name={entry[0]} items={entry[1]} isEditDisabled={this.state.isEditDisabled} updateItem={this.props.updateItem} removeItem={this.props.removeItem}/>)}
+                        <div className="presetEmptySpace"><br/><br/><br/><br/><br/></div>
                     </div>
                     <button className={`addAllItemsButton ${this.state.isEditDisabled ? null : "hidden"}`} onClick={() => {this.setState({itemsAddedOpen: true}); this.props.importItemstoShoppingList(this.props.presetData.presetMap)}}>Add Selected Items to Shopping List</button>
                     <div className="presetBottomButtonsContainer">
