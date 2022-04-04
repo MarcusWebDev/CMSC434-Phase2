@@ -2,7 +2,7 @@ import React from 'react'
 import "./AddItemInventory.css"
 import { Link } from "react-router-dom";
 
-const AddItemInventory = () => {
+const AddItemInventory = ({importFromShoppingList}) => {
   return (
     <div className='PageWrapper'>
         <div className='HeaderContainer'>
@@ -12,8 +12,8 @@ const AddItemInventory = () => {
         <div className='ShoppingListandButton'>
         <h3 className='ChooseShoppingList'>Choose from Shopping List</h3>
         <div className='Select'>Select the items from Shopping List</div>
-        <div className='ShoppingListButton'>
-            Go to Your Shopping List
+        <div className='ShoppingListButton' onClick={() => importFromShoppingList()}>
+            Import checked items from Shopping List
         </div>
         </div>
         <hr className='rule2'/>
