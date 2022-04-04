@@ -16,7 +16,7 @@ function NavBar({selectedTab}) {
                         {selectedTab == "Shopping List" ? <img src={require("../icons/shoppingListButtonBlue.png")} /> : <img src={require("../icons/shoppingListButtonGray.png")} />}
                     </div>
                 </Link>
-                <Link to="/inventory">
+                <Link to="/inventory/OfficeRefrigerator">
                     <div>
                         {selectedTab == "Inventory" ? <img src={require("../icons/inventoryButtonBlue.png")} /> : <img src={require("../icons/inventoryButtonGray.png")} />}
                     </div>
