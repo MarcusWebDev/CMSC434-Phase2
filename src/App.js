@@ -28,6 +28,7 @@ class App extends React.Component {
     this.reduceItemInventory = this.reduceItemInventory.bind(this);
     this.createItemInventory = this.createItemInventory.bind(this);
     this.updateItemInventory = this.updateItemInventory.bind(this);
+    this.importItemsFromShoppingList = this.importItemsFromShoppingList.bind(this);
     this.createShoppingListItem = this.createShoppingListItem.bind(this);
     this.removeShoppingListItem = this.removeShoppingListItem.bind(this);
     this.updateShoppingListItem = this.updateShoppingListItem.bind(this);
@@ -80,7 +81,7 @@ class App extends React.Component {
         onDelete={this.deleteItemInventory}
         updateItem={this.updateItemInventory}/>} />
         <Route path="/freezer" element={<HomePage />} />
-        <Route path="/inventory/addOfficeRefrigerator" element={<AddItemInventory />} />
+        <Route path="/inventory/addOfficeRefrigerator" element={<AddItemInventory importFromShoppingList={this.importItemsFromShoppingList}/>} />
         <Route path="/inventory/addOfficeRefrigeratorItem" element={<ItemInfoInventory 
         dummyInv={this.state.dummyInv}
         id={this.state.nextInventoryId}
@@ -128,6 +129,25 @@ class App extends React.Component {
     
   }
 
+  updateItemInventory = (id,name) => {
+    console.log("PLEASE")
+    let temp = [...this.state.dummyInv];
+    let index=temp.findIndex((obj) => obj.id === id);
+    let tempitem = {
+      'id':id,
+      'name': name,
+      'quantity': 7,
+      'unit': 'lbs',
+      'isDisabled': true,
+      'checked': false,
+      'categoryName': 'Other'
+    }
+    temp.splice(index,1,1);
+    this.setState({
+      dummyInv:temp
+    })
+  }
+
   createItemInventory = (id,name,quantity,unit,expiration) => {
     let temp = [...this.state.dummyInv];
     let currentExpirationDate=new Date(expiration);
@@ -140,40 +160,11 @@ class App extends React.Component {
     {
       categoryName="Expiring"
     }
-    else if(tempname==="soda"||tempname==="water"||tempname==="coke"||tempname==="sprite")
-    {
-      categoryName="Beverages"
-    }
-    else if(tempname==="milk"||tempname==="cheese")
-    {
-      categoryName="Dairy"
-    }
-    else if(tempname==="eggs"||tempname==="bacon"||tempname==="hamburgermeat"||tempname==="chicken"||tempname==="beef"||tempname==="steak"||tempname==="fish")
-    {
-      categoryName="Meats & Seafood"
-    }
-    else if(tempname==="bread")
-    {
-      categoryName="Bakery & Breads"
-    }
-    else if(tempname==="cereal")
-    {
-      categoryName="Breakfast"
-    }
-    else if(tempname==="chips"||tempname==="cupcakes"||tempname==="cookies"||tempname==="muffins")
-    {
-      categoryName="Snacks"
-    }
-    else if(tempname==="bananas"||tempname==="apples"||tempname==="pineapples"||tempname==="lemons"||tempname==="peaches")
-    {
-      categoryName="Fruit"
-    }
-    else if(tempname==="corn"||tempname==="potatoes"||tempname==="onions"||tempname==="tomatoes")
-    {
-      categoryName="Vegetables"
-    }
     else {
-      categoryName="Other"
+      categoryName= this.state.itemsToCategories.value.get(name.toLowerCase().replace(/ /g, ""));
+      if (categoryName == undefined) {
+        categoryName= "Other";
+      }
     }
     let item = {
     'id': id, 
@@ -193,23 +184,16 @@ class App extends React.Component {
     console.log("Item Create",id);
   }
 
-  updateItemInventory = (id,name) => {
-    console.log("PLEASE")
-    let temp = [...this.state.dummyInv];
-    let index=temp.findIndex((obj) => obj.id === id);
-    let tempitem = {
-      'id':id,
-      'name': name,
-      'quantity': 7,
-      'unit': 'lbs',
-      'isDisabled': true,
-      'checked': false,
-      'categoryName': 'Other'
+  importItemsFromShoppingList() {
+    let mapValues = this.state.shoppingListItemDataByCategory.value.values();
+    let today = new Date();
+    for (let currentArray of mapValues) {
+      for (let currentItem of currentArray) {
+        if (currentItem.checked) {
+          this.createItemInventory(this.state.nextInventoryId, currentItem.name, currentItem.quantity, currentItem.unit, today.setDate(today.getDate() + 7));
+        }
+      }
     }
-    temp.splice(index,1,1);
-    this.setState({
-      dummyInv:temp
-    })
   }
 
   removeShoppingListItem(id, categoryName) {
