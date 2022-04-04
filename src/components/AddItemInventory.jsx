@@ -7,10 +7,10 @@ import BackArrow from '../icons/backArrowBlue.png';
 
 const AddItemInventory = () => {
   return (
-    <div className='PageWrapper4'>
-        <div className='HeaderContainer4'>
-        <Link to="/inventory/OfficeRefrigerator" className="linkBack3" > <img className="linkBackimage" src={BackArrow} />   Back</Link>
-        <h3 className='Heading4'>Add Item(s)</h3>
+    <div className='PageWrapper'>
+        <div className='HeaderContainer'>
+        <Link to="/inventory/OfficeRefrigerator" className="linkBack2" > <img className="linkBackimage" src={BackArrow} /></Link>
+        <h3 className='Heading'>Add Item(s)</h3>
         </div>
         <hr className='rule'/>
         <div className='ShoppingListandButton'>

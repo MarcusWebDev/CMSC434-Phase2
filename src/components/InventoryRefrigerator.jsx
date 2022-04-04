@@ -10,6 +10,8 @@ import James from '../icons/James.png';
 import William from '../icons/William.png';
 import Patricia from '../icons/Patricia.png';
 import NavBar from './NavBar';
+import BackArrow from '../icons/backArrowBlue.png';
+import SelectUserPortrait from "./SelectUserPortrait.jsx";
 
 
 function InventoryRefrigerator(props) {
