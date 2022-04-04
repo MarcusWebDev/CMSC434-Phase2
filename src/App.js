@@ -135,6 +135,7 @@ class App extends React.Component {
     var d = new Date();
     d.setDate(d.getDate() +3);
     let tempname=name.toLowerCase();
+    name=tempname[0].toUpperCase()+tempname.substring(1);
     if(d>=currentExpirationDate)
     {
       categoryName="Expiring"
@@ -409,7 +410,7 @@ class App extends React.Component {
     let expiring = [
       {
       'id': '1', 
-      'name': 'bananas',
+      'name': 'Bananas',
       'quantity': 7,
       'unit': 'lbs',
       'isDisabled': true,
@@ -418,7 +419,7 @@ class App extends React.Component {
    }, 
    {
       'id':'2',
-      'name': 'watermelon',
+      'name': 'Watermelon',
       'quantity': '1',
       'unit': 'lbs',
       'isDisabled': true,
@@ -427,7 +428,7 @@ class App extends React.Component {
    },
    {
       'id':'3',
-      'name': 'oatmilk',
+      'name': 'Oatmilk',
       'quantity': '1',
       'unit': 'cartons',
       'isDisabled': true,
