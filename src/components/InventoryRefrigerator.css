@@ -81,15 +81,16 @@ line-height: 20px;
     font-size: 13px;
 }
 .InventoryList {
-  height: 200px;
+  /* height: 200px; */
   width: 100%;
   /* background-color: black; */
   /* display: flex; */
   /* flex-direction: column; */
   /* justify-content: center; */
   /* align-items: center; */
-  margin: 0 auto;
+  /* margin: 0 auto; */
   /* border: solid purple;*/
+  margin-bottom: 60px;
 }
 .symbol {
     margin: 0 5px;

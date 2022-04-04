@@ -102,7 +102,6 @@ function InventoryRefrigerator(props) {
 
     return (
         <div className='PageWrapper'>
-           <Link to="/" className="linkBack" > <img className="linkBackimage" src={BackArrow} />     Back</Link>
             <div className='HeaderContainer'>
                 <Link to="/inventory/addOfficeRefrigerator" className="linkAdd" color='#007AFF;'>Add</Link>
                 
@@ -142,7 +141,7 @@ function InventoryRefrigerator(props) {
                 })}
                 {/* <InventoryCategoryList items={props.dummyInv} onDelete={props.onDelete} onReduce={props.onReduce} /> */}
             </div>
-            {/* <NavBar selectedTab={"Inventory"} /> */}
+            <NavBar selectedTab={"Inventory"} />
         </div>
 
 

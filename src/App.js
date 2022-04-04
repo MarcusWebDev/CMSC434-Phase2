@@ -160,40 +160,11 @@ class App extends React.Component {
     {
       categoryName="Expiring"
     }
-    else if(tempname==="soda"||tempname==="water"||tempname==="coke"||tempname==="sprite")
-    {
-      categoryName="Beverages"
-    }
-    else if(tempname==="milk"||tempname==="cheese")
-    {
-      categoryName="Dairy"
-    }
-    else if(tempname==="eggs"||tempname==="bacon"||tempname==="hamburgermeat"||tempname==="chicken"||tempname==="beef"||tempname==="steak"||tempname==="fish")
-    {
-      categoryName="Meats & Seafood"
-    }
-    else if(tempname==="bread")
-    {
-      categoryName="Bakery & Breads"
-    }
-    else if(tempname==="cereal")
-    {
-      categoryName="Breakfast"
-    }
-    else if(tempname==="chips"||tempname==="cupcakes"||tempname==="cookies"||tempname==="muffins")
-    {
-      categoryName="Snacks"
-    }
-    else if(tempname==="bananas"||tempname==="apples"||tempname==="pineapples"||tempname==="lemons"||tempname==="peaches")
-    {
-      categoryName="Fruit"
-    }
-    else if(tempname==="corn"||tempname==="potatoes"||tempname==="onions"||tempname==="tomatoes")
-    {
-      categoryName="Vegetables"
-    }
     else {
-      categoryName="Other"
+      categoryName= this.state.itemsToCategories.value.get(name.toLowerCase().replace(/ /g, ""));
+      if (categoryName == undefined) {
+        categoryName= "Other";
+      }
     }
     let item = {
     'id': id, 
