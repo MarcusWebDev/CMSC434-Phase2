@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import NavBar from './NavBar';
 import BackArrow from '../icons/backArrowBlue.png';
 
+
 const AddItemInventory = () => {
   return (
     <div className='PageWrapper'>

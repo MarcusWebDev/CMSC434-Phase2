@@ -15,7 +15,7 @@ const InventoryItem = ({item, onDelete,onReduce,updateItem}) => {
     const edit = (id) => {
         var btn=document.getElementsByClassName('linkEdit');
         // btn.text="Done"
-        var inputs = document.getElementsByClassName('nameInput shoppingListItemInput');
+        var inputs = document.getElementsByClassName('nameInput2 shoppingListItemInput2');
 
         var tip = document.getElementsByClassName('tip');
         if(inputs[0].disabled===true)
@@ -37,15 +37,15 @@ const InventoryItem = ({item, onDelete,onReduce,updateItem}) => {
         else {
             tip[0].style.display = "None";
             btn[0].innerHTML='Done'
-            var inputs = document.getElementsByClassName('nameInput shoppingListItemInput');
+            var inputs = document.getElementsByClassName('nameInput2 shoppingListItemInput2');
         for (var i = 0; i < inputs.length; i++) {
             inputs[i].disabled = true;
         }
-        inputs = document.getElementsByClassName('quantityInput shoppingListItemInput');
+        inputs = document.getElementsByClassName('quantityInput2 shoppingListItemInput2');
         for (var i = 0; i < inputs.length; i++) {
             inputs[i].disabled = true;
         }
-        inputs = document.getElementsByClassName('metricsSelect shoppingListItemInput');
+        inputs = document.getElementsByClassName('metricsSelect2 shoppingListItemInput2');
         for (var i = 0; i < inputs.length; i++) {
             inputs[i].disabled = true;
         }
@@ -58,11 +58,11 @@ const InventoryItem = ({item, onDelete,onReduce,updateItem}) => {
        
     }
     return (
-        <div className="shoppingListItemContainer">
-            <input type="text" className="nameInput shoppingListItemInput" value={itemname} onChange={(event) => setItemName(event.target.value)} disabled />
+        <div className="shoppingListItemContainer4">
+            <input type="text" className="nameInput2 shoppingListItemInput2" value={itemname} onChange={(event) => setItemName(event.target.value)} disabled />
             <div className="quantitySelection">
-                <input type="number" className="quantityInput shoppingListItemInput"  value={item.quantity}  disabled/>
-                <select name="metricsSelect" className="metricsSelect shoppingListItemInput" value={itemunit} onChange={(event) => setItemUnit(event.target.value)} disabled >
+                <input type="number" className="quantityInput2 shoppingListItemInput2"  value={item.quantity}  disabled/>
+                <select name="metricsSelect" className="metricsSelect2 shoppingListItemInput2" value={itemunit} onChange={(event) => setItemUnit(event.target.value)} disabled >
                     <option value="lbs">lbs</option>
                     <option value="gallons">gallons</option>
                     <option value="cartons">cartons</option>
@@ -70,7 +70,7 @@ const InventoryItem = ({item, onDelete,onReduce,updateItem}) => {
                     <option value="servings">servings</option>
                 </select>
             </div>
-            <img src={Symbol} className="shoppingListDelete" onClick={() => edit(item.id)}/>
+            <img src={Symbol} className="shoppingListDelete2" onClick={() => edit(item.id)}/>
         </div>
     );
 }

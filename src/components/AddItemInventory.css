@@ -1,4 +1,4 @@
-.PageWrapper {
+.PageWrapper4 {
     /* display: flex; */
     /* flex-direction: column; */
     /* align-items: center; */
@@ -13,7 +13,7 @@
     
 }
 
-.HeaderContainer {
+.HeaderContainer4 {
     display: flex;
     /* justify-content: center; */
     /* align-items: center; */
@@ -23,20 +23,18 @@
     float:left;
 }
 
-.Heading {
+.Heading4 {
     font-family: 'Arial';
-font-style: normal;
-font-weight: 700;
-font-size: 30px;
-line-height: 34px;
-float:left;
-width: 337px;
-text-align: left;
-margin-top: 40px;
-
-/* Gray Dark 6 */
-
-color: #1C1C1E;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 34px;
+    float: left;
+    width: 337px;
+    text-align: left;
+    margin-top: 50px;
+    color: #1C1C1E;
+    margin-left: -43px;
 
 }
 .rule {
@@ -123,7 +121,6 @@ height: 0px;
     margin-right: 98px;
     margin-bottom: 2px;
 }
-
 .linkBack2 {
     text-decoration: none;
     color: #007AFF;
