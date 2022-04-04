@@ -9,6 +9,8 @@ import Elizabeth from '../icons/Elizabeth.png';
 import James from '../icons/James.png';
 import William from '../icons/William.png';
 import Patricia from '../icons/Patricia.png';
+import NavBar from './NavBar';
+import BackArrow from '../icons/backArrowBlue.png';
 
 
 function InventoryRefrigerator(props) {
@@ -99,6 +101,7 @@ function InventoryRefrigerator(props) {
 
     return (
         <div className='PageWrapper'>
+           <Link to="/" className="linkBack" > <img className="linkBackimage" src={BackArrow} />     Back</Link>
             <div className='HeaderContainer'>
                 <Link to="/inventory/addOfficeRefrigerator" className="linkAdd" color='#007AFF;'>Add</Link>
                 
@@ -144,6 +147,7 @@ function InventoryRefrigerator(props) {
                 })}
                 {/* <InventoryCategoryList items={props.dummyInv} onDelete={props.onDelete} onReduce={props.onReduce} /> */}
             </div>
+            {/* <NavBar selectedTab={"Inventory"} /> */}
         </div>
 
 

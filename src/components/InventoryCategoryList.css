@@ -11,6 +11,13 @@
         /* margin: 15px 21px; */
         margin-left: 20px;
         padding-top: 10px;
+        font-family: 'Arial';
+font-style: normal;
+font-weight: 700;
+font-size: 17px;
+line-height: 16px;
+display: flex;
+align-items: center;
 }
 .width300px {
     width: 300px;
