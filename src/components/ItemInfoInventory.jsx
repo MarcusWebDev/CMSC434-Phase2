@@ -1,6 +1,7 @@
 import React from 'react'
 import "./ItemInfoInventory.css";
 import { useState } from 'react';
+import SelectUserPortrait from "./SelectUserPortrait.jsx";
 
 const ItemInfoInventory = ({id, newItem}) => {
     const [itemname, setItemName] = useState('');
@@ -47,6 +48,15 @@ const ItemInfoInventory = ({id, newItem}) => {
                             <label className="newItemLabel">Expiration Date</label>
                             <input type="text" className="newItemInput" value={itemExpiration} onChange={(event) => setItemExpiration(event.target.value)} placeholder="MM/DD/YYYY" />            
                         </div>
+                        <div className="shoppingListSelectUser3">
+                        <h3 className='userHead'>Select Users</h3>
+                        <div className="shoppingListUsersContainer">
+                            <SelectUserPortrait name="Elizabeth" picture={require("../icons/elizabeth.jpg")} />
+                            <SelectUserPortrait name="James" picture={require("../icons/james.jpg")} />
+                            <SelectUserPortrait name="William" picture={require("../icons/william.jpg")} />
+                            <SelectUserPortrait name="Patricia" picture={require("../icons/patricia.jpg")} />
+                        </div>
+                    </div>
                     <button className="newItemButton newItemButtonActive" onClick={()=> {newItem(id,itemname,itemquantity,itemunit,itemExpiration); showNotification();}}>Add Item(s)</button>
                 </div>
                 <div className = "newItemNotificationContainer2" >

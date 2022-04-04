@@ -150,6 +150,51 @@ class App extends React.Component {
 
   createItemInventory = (id,name,quantity,unit,expiration) => {
     let temp = [...this.state.dummyInv];
+    let currentExpirationDate=new Date(expiration);
+    let categoryName = "Other"
+    var d = new Date();
+    d.setDate(d.getDate() +3);
+    let tempname=name.toLowerCase();
+    name=tempname[0].toUpperCase()+tempname.substring(1);
+    if(d>=currentExpirationDate)
+    {
+      categoryName="Expiring"
+    }
+    else if(tempname==="soda"||tempname==="water"||tempname==="coke"||tempname==="sprite")
+    {
+      categoryName="Beverages"
+    }
+    else if(tempname==="milk"||tempname==="cheese")
+    {
+      categoryName="Dairy"
+    }
+    else if(tempname==="eggs"||tempname==="bacon"||tempname==="hamburgermeat"||tempname==="chicken"||tempname==="beef"||tempname==="steak"||tempname==="fish")
+    {
+      categoryName="Meats & Seafood"
+    }
+    else if(tempname==="bread")
+    {
+      categoryName="Bakery & Breads"
+    }
+    else if(tempname==="cereal")
+    {
+      categoryName="Breakfast"
+    }
+    else if(tempname==="chips"||tempname==="cupcakes"||tempname==="cookies"||tempname==="muffins")
+    {
+      categoryName="Snacks"
+    }
+    else if(tempname==="bananas"||tempname==="apples"||tempname==="pineapples"||tempname==="lemons"||tempname==="peaches")
+    {
+      categoryName="Fruit"
+    }
+    else if(tempname==="corn"||tempname==="potatoes"||tempname==="onions"||tempname==="tomatoes")
+    {
+      categoryName="Vegetables"
+    }
+    else {
+      categoryName="Other"
+    }
     let item = {
     'id': id, 
     'name': name,
@@ -158,7 +203,7 @@ class App extends React.Component {
     'isDisabled': true,
     'checked': false,
     'expiration': new Date(expiration),
-    'categoryName': 'Other'
+    'categoryName': categoryName
     }
     temp.push(item)
     this.setState({
@@ -378,7 +423,7 @@ class App extends React.Component {
     let expiring = [
       {
       'id': '1', 
-      'name': 'bananas',
+      'name': 'Bananas',
       'quantity': 7,
       'unit': 'lbs',
       'isDisabled': true,
@@ -387,7 +432,7 @@ class App extends React.Component {
    }, 
    {
       'id':'2',
-      'name': 'watermelon',
+      'name': 'Watermelon',
       'quantity': '1',
       'unit': 'lbs',
       'isDisabled': true,
@@ -396,7 +441,7 @@ class App extends React.Component {
    },
    {
       'id':'3',
-      'name': 'oatmilk',
+      'name': 'Oatmilk',
       'quantity': '1',
       'unit': 'cartons',
       'isDisabled': true,
@@ -419,7 +464,7 @@ class App extends React.Component {
     'unit': 'cartons',
     'isDisabled': true,
     'checked': false,
-    'categoryName': 'Other'
+    'categoryName': 'Fruit'
    }
    ]
    return expiring

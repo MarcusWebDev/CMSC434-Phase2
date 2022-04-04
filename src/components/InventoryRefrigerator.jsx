@@ -9,6 +9,9 @@ import Elizabeth from '../icons/Elizabeth.png';
 import James from '../icons/James.png';
 import William from '../icons/William.png';
 import Patricia from '../icons/Patricia.png';
+import NavBar from './NavBar';
+import BackArrow from '../icons/backArrowBlue.png';
+import SelectUserPortrait from "./SelectUserPortrait.jsx";
 
 
 function InventoryRefrigerator(props) {
@@ -99,6 +102,7 @@ function InventoryRefrigerator(props) {
 
     return (
         <div className='PageWrapper'>
+           <Link to="/" className="linkBack" > <img className="linkBackimage" src={BackArrow} />     Back</Link>
             <div className='HeaderContainer'>
                 <Link to="/inventory/addOfficeRefrigerator" className="linkAdd" color='#007AFF;'>Add</Link>
                 
@@ -114,22 +118,16 @@ function InventoryRefrigerator(props) {
     <a href="#">Lake House Pantry</a>
     <a href="#">Office Pantry</a>
   </div>
-  <hr className='rule3' />
 </div>
-                <h4 className='select'>Select Users</h4>
-                <div className='Users'>
-                    <form>
-                    <span className="dot"><img className='Elizabeth' src={Elizabeth}></img></span>&nbsp;
-                <span className="dot"><img className='James' src={James}></img></span>&nbsp;
-                <span className="dot"><img className='William' src={William}></img></span>&nbsp;
-                <span className="dot"><img className='Patricia' src={Patricia}></img></span>&nbsp;
-                    </form>
-                </div>
-                <div className='Usernames'>
-                    Elizabeth &nbsp; &nbsp; &nbsp;  James &nbsp; &nbsp; &nbsp; William &nbsp; &nbsp;&nbsp;Patricia
-                    
-                </div>
-                <hr className='rule4' />
+<div className="shoppingListSelectUser2">
+                        <h3>Select Users</h3>
+                        <div className="shoppingListUsersContainer">
+                            <SelectUserPortrait name="Elizabeth" picture={require("../icons/elizabeth.jpg")} />
+                            <SelectUserPortrait name="James" picture={require("../icons/james.jpg")} />
+                            <SelectUserPortrait name="William" picture={require("../icons/william.jpg")} />
+                            <SelectUserPortrait name="Patricia" picture={require("../icons/patricia.jpg")} />
+                        </div>
+                    </div>
                 <div className='tip'>
                     <p className='para'>Tip: Click<img className='symbol' src={Symbol}></img>to reduce item quantity by one.</p>
                 </div>
@@ -144,6 +142,7 @@ function InventoryRefrigerator(props) {
                 })}
                 {/* <InventoryCategoryList items={props.dummyInv} onDelete={props.onDelete} onReduce={props.onReduce} /> */}
             </div>
+            {/* <NavBar selectedTab={"Inventory"} /> */}
         </div>
 
 

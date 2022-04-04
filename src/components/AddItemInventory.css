@@ -123,3 +123,11 @@ height: 0px;
     margin-right: 98px;
     margin-bottom: 2px;
 }
+
+.linkBack2 {
+    text-decoration: none;
+    color: #007AFF;
+    margin-left: -12px;
+    margin-bottom: -7px;
+    margin-top: -36px;
+}
