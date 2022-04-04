@@ -1,0 +1,40 @@
+.StorageUnitBox {
+    width: 162px;
+height: 162px;
+left: 24px;
+top: 12px;
+
+/* Tile */
+
+background: #3A87FD;
+/* Tile */
+
+box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+border-radius: 22px;
+
+}
+
+.StorageUnitHeading {
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 28px;
+    letter-spacing: -0.03em;
+    text-align: justify;
+    color: #FFFFFF;
+    margin-top: 13px;
+    margin-left: 10px;
+}
+
+.Numberitems {
+    margin-top: -11px;
+    margin-left: 12px;
+    font-family: 'Arial';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 23px;
+letter-spacing: -0.03em;
+color: #F2F2F7;
+}

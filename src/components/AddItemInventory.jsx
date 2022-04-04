@@ -2,12 +2,15 @@ import React from 'react'
 import "./AddItemInventory.css"
 import { Link } from "react-router-dom";
 import NavBar from './NavBar';
+import BackArrow from '../icons/backArrowBlue.png';
+
 
 const AddItemInventory = () => {
   return (
-    <div className='PageWrapper'>
-        <div className='HeaderContainer'>
-        <h3 className='Heading'>Add Item(s)</h3>
+    <div className='PageWrapper4'>
+        <div className='HeaderContainer4'>
+        <Link to="/inventory/OfficeRefrigerator" className="linkBack3" > <img className="linkBackimage" src={BackArrow} />   Back</Link>
+        <h3 className='Heading4'>Add Item(s)</h3>
         </div>
         <hr className='rule'/>
         <div className='ShoppingListandButton'>
@@ -27,7 +30,7 @@ const AddItemInventory = () => {
         </Link>
         </div>
         
-        {/* <NavBar selectedTab={"Inventory"} /> */}
+        <NavBar selectedTab={"Inventory"} />
             
         
     </div>

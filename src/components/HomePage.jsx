@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import Button from "./Button.jsx";
 import NavBar from "./NavBar.jsx";
 import "./HomePage.css";
+import SelectUserPortrait from './SelectUserPortrait.jsx';
+import StorageUnit from './StorageUnit.jsx';
 
 
 function HomePage() {
@@ -12,7 +14,7 @@ function HomePage() {
                 <div className="headerBar">
                     <h1 className="header">Hello, Elizabeth!</h1>
                     <Link to="/profileSettings" className="link">
-                        <img className="profilePicture" src={require("../icons/profile.png")}/>
+                    <SelectUserPortrait picture={require("../icons/elizabeth.jpg")} />
                     </Link>
                 </div>
                 <div className="notifications">
@@ -21,28 +23,19 @@ function HomePage() {
                     <p className="notificationsAlert"><u><b>Watermelon</b></u> is expiring in 3 days!</p>
                     <p className="notificationsAlert"><u><b>Oat Milk</b></u> is expiring in 1 day!</p>
                 </div>
-                <div className="shoppingListAndRecipesContainer">
-                    <Link to="/shoppingList" className="link">
-                        <Button color="#A7C6FF" icon={require("../icons/shoppingCart.png")} text="Shopping List"/>
-                    </Link>
-                    <Link to="/recipes" className="link">
-                        <Button color="#FED9A8" icon={require("../icons/recipes.png")} text="Recipes"/>
-                    </Link>
-                </div>
+                <hr className='divide'/>
                 <div className="refrigeratorSelectionContainer">
-                    <h2 className="refrigeratorHeader">Your Refrigerator</h2>
-                    <select name="refrigerator" className="refrigeratorSelect">
-                        <option>Lake House Kitchen #2</option>
-                        <option>Game Room Fridge</option>
-                    </select>
+                    
+                    <h2 className="refrigeratorHeader">Your Storage Units</h2> <div className='SeeAll'>See All</div>
                 </div>
                 <div className="refrigeratorFreezerContainer">
-                    <Link to="/inventory/OfficeRefrigerator" className="link">
+                    {/* <Link to="/inventory/OfficeRefrigerator" className="link">
                         <Button color="#FFFFFF" icon={require("../icons/basket.png")} text="Refrigerator"/>
                     </Link>
                     <Link to="/freezer" className="link">
                         <Button color="#FFFFFF" icon={require("../icons/snowflake.png")} text="Freezer"/>
-                    </Link>
+                    </Link> */}
+                    <StorageUnit />
                 </div>
             </div>
             <NavBar selectedTab="Home Page" />

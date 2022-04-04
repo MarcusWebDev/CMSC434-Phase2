@@ -36,11 +36,11 @@
 }
 .notifications {
     width: 336px;
-    height: 144px;
+    height: 220px;
     left: 24px;
     top: 88px;
     background: #F9D3E0;
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 10px 30px rgb(0 0 0 / 30%);
     border-radius: 22px;
 }
 .notificationsHeader {
@@ -74,10 +74,11 @@
     letter-spacing: -0.03em;
     color: #1C1C1E;
     align-self: flex-start;
+    margin-top: -5px;
 }
 .refrigeratorSelectionContainer {
     margin-top: 10px;
-    align-self: flex-start;
+    display: flex;
 }
 
 .refrigeratorSelect {
@@ -107,4 +108,13 @@ label {
 }
 .link {
     text-decoration: none;
+}
+.divide {
+    border: 0.5px solid #C7C7CC;
+    width: 331px;
+}
+.SeeAll {
+    margin-left: 102px;
+    margin-top: -3px;
+    color: #007AFF;
 }
