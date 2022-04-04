@@ -359,3 +359,12 @@ text-decoration: none;
     margin-bottom: -5px;
     margin-top: 4px;
 }
+
+.shoppingListSelectUser2 {
+  margin-top: -5px;
+  margin-left: 24px;
+  width: 336px;
+  align-self: flex-start;
+  border-top: 1px solid #C7C7CC;
+  border-bottom: 0px solid #C7C7CC;
+}
