@@ -1,6 +1,7 @@
 import React from 'react'
 import "./AddItemInventory.css"
 import { Link } from "react-router-dom";
+import NavBar from './NavBar';
 
 const AddItemInventory = () => {
   return (
@@ -26,7 +27,7 @@ const AddItemInventory = () => {
         </Link>
         </div>
         
-            
+        {/* <NavBar selectedTab={"Inventory"} /> */}
             
         
     </div>
