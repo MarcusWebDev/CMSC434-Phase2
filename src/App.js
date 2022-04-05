@@ -125,8 +125,11 @@ class App extends React.Component {
   deleteItemInventory = (id) => {
     let temp = [...this.state.dummyInv];
     temp.splice(temp.findIndex((obj) => obj.id == id),1);
+    let temp2 = [...this.state.dummyHome];
+    temp2[0].numberitems = temp2[0].numberitems-1
     this.setState({
-      dummyInv: temp
+      dummyInv: temp,
+      dummyHome:temp2
     });
   }
 
