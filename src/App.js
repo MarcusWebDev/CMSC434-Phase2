@@ -9,6 +9,9 @@ import { toHaveDisplayValue } from '@testing-library/jest-dom/dist/matchers';
 import AddItemInventory from './components/AddItemInventory.jsx';
 import { useState } from 'react';
 import ItemInfoInventory from './components/ItemInfoInventory.jsx';
+import AllStorageUnits from './components/AllStorageUnits.jsx';
+import AddStorageUnit from './components/AddStorageUnit.jsx';
+import WorkInProgress from './components/WorkInProgress.jsx';
 
 
 class App extends React.Component {
@@ -22,12 +25,15 @@ class App extends React.Component {
       presetArray: [],
       nextPresetId: 0,
       dummyInv:this.dummyInventoryData(),
-      nextInventoryId: 6
+      nextInventoryId: 6,
+      dummyHome:this.dummyHomePage()
     };
     this.deleteItemInventory = this.deleteItemInventory.bind(this);
     this.reduceItemInventory = this.reduceItemInventory.bind(this);
     this.createItemInventory = this.createItemInventory.bind(this);
     this.updateItemInventory = this.updateItemInventory.bind(this);
+    this.editHomePage = this.editHomePage.bind(this);
+    this.deleteHomePage = this.deleteHomePage.bind(this);
     this.importItemsFromShoppingList = this.importItemsFromShoppingList.bind(this);
     this.createShoppingListItem = this.createShoppingListItem.bind(this);
     this.removeShoppingListItem = this.removeShoppingListItem.bind(this);
@@ -41,6 +47,7 @@ class App extends React.Component {
     this.updatePresetName = this.updatePresetName.bind(this);
     this.importItemstoShoppingList = this.importItemstoShoppingList.bind(this);
     this.deletePreset = this.deletePreset.bind(this);
+    this.createStorageUnit = this.createStorageUnit.bind(this);
   }
 
 
@@ -49,7 +56,9 @@ class App extends React.Component {
   render() {
     return (
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<HomePage
+        dummyHome={this.state.dummyHome} 
+        dummyInv={this.state.dummyInv}/>} />
         <Route path="/profileSettings" element={<HomePage />} />
         <Route path="/shoppingList" 
           element={<ShoppingList 
@@ -59,6 +68,14 @@ class App extends React.Component {
             clearShoppingList={this.clearShoppingList}
           />} 
         />
+        <Route path="/allStorageUnits" element={<AllStorageUnits
+        dummyHome={this.state.dummyHome} 
+        editHomePage={this.editHomePage}
+        deleteHomePage={this.deleteHomePage}/>} />
+        <Route path="/addStorageUnits" element={<AddStorageUnit 
+        dummyHome={this.state.dummyHome}
+        id={this.state.nextInventoryId}
+        createStorageUnit={this.createStorageUnit}/>} />
         <Route path="/shoppingList/add" 
           element={<AddItemShoppingList 
             createItem={this.createShoppingListItem}
@@ -86,6 +103,7 @@ class App extends React.Component {
         dummyInv={this.state.dummyInv}
         id={this.state.nextInventoryId}
         newItem={this.createItemInventory} />} />
+        <Route path="/workinprogress" element={<WorkInProgress />} />
       </Routes>
     );
   }
@@ -177,11 +195,61 @@ class App extends React.Component {
     'categoryName': categoryName
     }
     temp.push(item)
+    let temp2 = [...this.state.dummyHome]
+    temp2[0].numberitems = temp2[0].numberitems+1
     this.setState({
       dummyInv:temp,
-      nextInventoryId: ++this.state.nextInventoryId
+      nextInventoryId: ++this.state.nextInventoryId,
+      dummyHome: temp2
     })
     console.log("Item Create",id);
+  }
+
+  createStorageUnit(id,name) {
+    let temp=[...this.state.dummyHome]
+    let storage={
+      'id': id,
+      'name': name,
+        'numberitems': 0,
+        'linkTo':'#/workinprogress',
+        'isEditable':false,
+        'FavoriteFill':false
+    }
+    temp.push(storage);
+    this.setState({
+      dummyHome: temp,
+      nextInventoryId: ++this.state.nextInventoryId
+    })
+  }
+
+  editHomePage() {
+    let temp=[...this.state.dummyHome]
+    if(temp[0].isEditable==false) {
+      for(const element of temp)
+        {
+            element.isEditable=true
+            console.log(element)
+        }
+    }
+    else {
+      for(const element of temp)
+        {
+            element.isEditable=false
+            console.log(element)
+        }
+    }
+    this.setState({
+      dummyHome:temp
+    })
+
+  }
+
+  deleteHomePage = (id) => {
+    let temp=[...this.state.dummyHome]
+    console.log(temp.filter((page) => page.id !== id))
+    this.setState({
+      dummyHome:temp.filter((page) => page.id !== id)
+    })
   }
 
   importItemsFromShoppingList() {
@@ -457,7 +525,48 @@ class App extends React.Component {
    ]
    return expiring
    }
+
+   dummyHomePage() {
+    let data = [
+      {
+        'id': 1,
+        'name': 'Office Refrigerator',
+        'numberitems': 5,
+        'linkTo':'#/inventory/OfficeRefrigerator',
+        'isEditable':false,
+        'FavoriteFill':true
+      },
+      {
+        'id': 2,
+        'name': 'LakeHouse Freezer',
+        'numberitems': 3,
+        'linkTo':'#/inventory/OfficeRefrigerator',
+        'isEditable':false,
+        'FavoriteFill':false
+      },
+      {
+        'id': 3,
+        'name': 'LakeHouse Refrigerator',
+        'numberitems': 6,
+        'linkTo':'#/inventory/OfficeRefrigerator',
+        'isEditable':false,
+        'FavoriteFill':false
+      },
+      {
+        'id': 4,
+        'name': 'LakeHouse Pantry',
+        'numberitems': 4,
+        'linkTo':'#/inventory/OfficeRefrigerator',
+        'isEditable':false,
+        'FavoriteFill':false
+      }
+    ]
+    return data
+  }
+
 }
+
+
 
 
 

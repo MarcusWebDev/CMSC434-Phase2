@@ -1,0 +1,38 @@
+.StorageHead {
+    display: inline-block;
+}
+.linkBack4 {
+    text-decoration: none;
+    color: #007AFF;
+    margin-left: 6px;
+    margin-bottom: 5px;
+    margin-top: -36px
+}
+
+.linkEdit3 {
+    color: #007AFF;
+    margin-bottom: -238px;
+    margin-left: 341px;
+    text-decoration: none;
+    margin-top: -40px;
+}
+
+.linkAdd2 {
+    width: 20px;
+    height: 20px;
+}
+
+.StorageHeading {
+    margin-left: 139px;
+    margin-top: -19px;
+}
+
+.StorageLists {
+    margin-left: 18px;
+    margin-top: 14px;
+    display: grid;
+    grid-template-columns: 162px 162px;
+    grid-template-rows: 162px;
+    grid-column-gap: 22px;
+    grid-row-gap: 17px;
+}

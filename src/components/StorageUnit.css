@@ -1,17 +1,18 @@
 .StorageUnitBox {
     width: 162px;
-height: 162px;
-left: 24px;
-top: 12px;
+    height: 162px;
+    /* left: 24px; */
+    top: 12px;
+    background: #3A87FD;
+    box-shadow: 0px 4px 12px rgb(0 0 0 / 20%);
+    border-radius: 22px;
+    position: relative;
 
-/* Tile */
-
-background: #3A87FD;
-/* Tile */
-
-box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
-border-radius: 22px;
-
+}
+.StorageUnitBox .deleteicon {
+    position: absolute;
+    top: 0px;
+    right: 0px;
 }
 
 .StorageUnitHeading {
@@ -38,3 +39,37 @@ line-height: 23px;
 letter-spacing: -0.03em;
 color: #F2F2F7;
 }
+
+.FavoriteFill {
+    height: 17px;
+    /* left: 18.2%; */
+    /* right: 18.27%; */
+    /* top: 20.33%; */
+    /* bottom: 20.85%; */
+    margin-left: 12px;
+    width: 16px;
+}
+
+.UserImages {
+    margin-top: -34px;
+    /* margin-bottom: 7px; */
+    margin-left: 79px;
+    
+}
+
+.Elizabeth2 {
+    height: 36px;
+    width: 34px;
+}
+.James2 {
+    height: 34px;
+    width: 36px;
+}
+/* .dot {
+    height: 45px;
+    width: 45px;
+    margin-right: -18px;
+    background-color: #007AFF;
+    border-radius: 50%;
+    display: inline-block;
+  } */
