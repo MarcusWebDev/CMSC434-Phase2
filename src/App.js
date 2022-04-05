@@ -187,13 +187,30 @@ class App extends React.Component {
   importItemsFromShoppingList() {
     let mapValues = this.state.shoppingListItemDataByCategory.value.values();
     let today = new Date();
+    let tempArray = [...this.state.dummyInv];
     for (let currentArray of mapValues) {
       for (let currentItem of currentArray) {
         if (currentItem.checked) {
-          this.createItemInventory(this.state.nextInventoryId, currentItem.name, currentItem.quantity, currentItem.unit, today.setDate(today.getDate() + 7));
+          let categoryName= this.state.itemsToCategories.value.get(currentItem.name.toLowerCase().replace(/ /g, ""));
+          if (categoryName == undefined) {
+            categoryName= "Other";
+          }
+          tempArray.push({
+            'id': currentItem.id, 
+            'name': currentItem.name,
+            'quantity': currentItem.quantity,
+            'unit': currentItem.unit,
+            'isDisabled': true,
+            'checked': false,
+            'expiration': new Date(today.setDate(today.getDate() + 7)),
+            'categoryName': categoryName
+          });
         }
       }
     }
+    this.setState({
+      dummyInv: tempArray
+    })
   }
 
   removeShoppingListItem(id, categoryName) {

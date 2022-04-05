@@ -98,7 +98,7 @@ function InventoryRefrigerator(props) {
     })
 
     console.log(m)
-
+    console.log(props.dummyInv);
 
     return (
         <div className='PageWrapper'>
