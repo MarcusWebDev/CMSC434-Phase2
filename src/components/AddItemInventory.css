@@ -13,6 +13,14 @@
     
 }
 
+.addItemInventoryContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+}
+
 .HeaderContainer4 {
     display: flex;
     /* justify-content: center; */
