@@ -1,0 +1,26 @@
+.newItemWrapper5 {
+    position: absolute;
+    margin-top: 25vh;
+    margin-left: 46px;
+    width: 280px;
+    height: 241px;
+    background: #FFFFFF;
+    box-shadow: 0px 10px 30px rgb(0 0 0 / 30%);
+    border-radius: 22px;
+    z-index: 3;
+}
+
+.newItemNotificationContainer5{
+    position: absolute;
+    top: -40%;
+    left: 2.5%;
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    background: #585858;
+    color: white;
+    border: none;
+    width: 262px;
+    border-radius: 10px;
+    padding: 0px 10px;
+}

@@ -5,9 +5,16 @@ import NavBar from "./NavBar.jsx";
 import "./HomePage.css";
 import SelectUserPortrait from './SelectUserPortrait.jsx';
 import StorageUnit from './StorageUnit.jsx';
+import HomePageNotifications from './HomePageNotifications.jsx';
 
 
-function HomePage() {
+function HomePage({dummyHome,dummyInv}) {
+
+    
+    const getLink = () => {
+        console.log(dummyHome[0].linkTo)
+    }
+
     return (
         <div className="homePageWrapper">
             <div className="homePageContainer">
@@ -19,23 +26,27 @@ function HomePage() {
                 </div>
                 <div className="notifications">
                     <p className="notificationsHeader"><b>Notifications</b></p>
-                    <p className="notificationsAlert"><u><b>Bananas</b></u> is expiring in 2 days!</p>
-                    <p className="notificationsAlert"><u><b>Watermelon</b></u> is expiring in 3 days!</p>
-                    <p className="notificationsAlert"><u><b>Oat Milk</b></u> is expiring in 1 day!</p>
+                    {dummyInv.map((unit) => { if(unit.categoryName==="Expiring")
+                return (
+                    <HomePageNotifications itemname={unit.name} />
+                )
+            } )}            
+                    {/* <p className="notificationsAlert"><u><b>Watermelon</b></u> is expiring in 3 days!</p>
+                    <p className="notificationsAlert"><u><b>Oat Milk</b></u> is expiring in 1 day!</p> */}
                 </div>
                 <hr className='divide'/>
                 <div className="refrigeratorSelectionContainer">
                     
-                    <h2 className="refrigeratorHeader">Your Storage Units</h2> <div className='SeeAll'>See All</div>
+                    <h2 className="refrigeratorHeader">Your Storage Units</h2> <div className='SeeAll'><a className="link" href="#/allStorageUnits" >See All</a></div>
                 </div>
                 <div className="refrigeratorFreezerContainer">
-                    {/* <Link to="/inventory/OfficeRefrigerator" className="link">
-                        <Button color="#FFFFFF" icon={require("../icons/basket.png")} text="Refrigerator"/>
-                    </Link>
-                    <Link to="/freezer" className="link">
-                        <Button color="#FFFFFF" icon={require("../icons/snowflake.png")} text="Freezer"/>
-                    </Link> */}
-                    <StorageUnit />
+                {dummyHome.map((unit) => {
+                return (
+                    <StorageUnit id={unit.id} name={unit.name} number={unit.numberitems} linkTo={unit.linkTo} FavoriteFillc={unit.FavoriteFill} />
+                )
+            } )}
+                    {/* <StorageUnit name={dummyHome[0].name} number={dummyHome[0].numberitems} linkTo={dummyHome[0].linkTo} FavoriteFillc={true}/>
+                    <StorageUnit name={dummyHome[1].name} number={dummyHome[1].numberitems} linkTo={dummyHome[1].linkTo} /> */}
                 </div>
             </div>
             <NavBar selectedTab="Home Page" />

@@ -104,10 +104,12 @@ label {
     flex-direction: row;
     justify-content: space-between;
     width: 336px;
-    margin-top: 20px;
+    overflow: scroll;
+    /* margin-top: 20px; */
 }
 .link {
     text-decoration: none;
+    color: #007AFF;
 }
 .divide {
     border: 0.5px solid #C7C7CC;

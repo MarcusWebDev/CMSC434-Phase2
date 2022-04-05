@@ -1,0 +1,7 @@
+.WorkPage {
+    display: flex;
+    justify-content: center;
+}
+.WorkHeading {
+    align-items: center;
+}
