@@ -24,7 +24,7 @@ function InventoryRefrigerator(props) {
         // console.log("works");
         var btn=document.getElementsByClassName('linkEdit');
         // btn.text="Done"
-        var inputs = document.getElementsByClassName('nameInput shoppingListItemInput');
+        var inputs = document.getElementsByClassName('nameInput2 shoppingListItemInput2');
 
         var tip = document.getElementsByClassName('tip');
         if(inputs[0].disabled===true)
@@ -32,11 +32,11 @@ function InventoryRefrigerator(props) {
             for (var i = 0; i < inputs.length; i++) {
                 inputs[i].disabled = false;
             }
-            inputs = document.getElementsByClassName('quantityInput shoppingListItemInput');
+            inputs = document.getElementsByClassName('quantityInput2 shoppingListItemInput2');
             for (var i = 0; i < inputs.length; i++) {
                 inputs[i].disabled = false;
             }
-            inputs = document.getElementsByClassName('metricsSelect shoppingListItemInput');
+            inputs = document.getElementsByClassName('metricsSelect2 shoppingListItemInput2');
             for (var i = 0; i < inputs.length; i++) {
                 inputs[i].disabled = false;
             }
@@ -45,15 +45,15 @@ function InventoryRefrigerator(props) {
             
         }
         else {
-            var inputs = document.getElementsByClassName('nameInput shoppingListItemInput');
+            var inputs = document.getElementsByClassName('nameInput2 shoppingListItemInput2');
         for (var i = 0; i < inputs.length; i++) {
             inputs[i].disabled = true;
         }
-        inputs = document.getElementsByClassName('quantityInput shoppingListItemInput');
+        inputs = document.getElementsByClassName('quantityInput2 shoppingListItemInput2');
         for (var i = 0; i < inputs.length; i++) {
             inputs[i].disabled = true;
         }
-        inputs = document.getElementsByClassName('metricsSelect shoppingListItemInput');
+        inputs = document.getElementsByClassName('metricsSelect2 shoppingListItemInput2');
         for (var i = 0; i < inputs.length; i++) {
             inputs[i].disabled = true;
         }
