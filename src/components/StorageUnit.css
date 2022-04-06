@@ -1,12 +1,14 @@
 .StorageUnitBox {
-    width: 162px;
-    height: 162px;
+    min-width: 162px;
+    min-height: 162px;
+    max-width: 162px;
+    max-height: 162px;
     /* left: 24px; */
-    top: 12px;
     background: #3A87FD;
     box-shadow: 0px 4px 12px rgb(0 0 0 / 20%);
     border-radius: 22px;
     position: relative;
+    margin-right: 10px;
 
 }
 .StorageUnitBox .deleteicon {

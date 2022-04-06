@@ -104,6 +104,7 @@ label {
     flex-direction: row;
     justify-content: space-between;
     width: 336px;
+    height: 180px;
     overflow: scroll;
     /* margin-top: 20px; */
 }
