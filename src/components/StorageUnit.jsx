@@ -19,9 +19,9 @@ const StorageUnit = ({id,name,number,linkTo,FavoriteFillc,isEditable,deleteHomeP
 }
 
   return (
-    <div className='StorageUnitBox' >
+    <div className='StorageUnitBox' onClick={getLink}>
       {isEditable ? (<img className='deleteicon' src={deleteSymbol} onClick={onClick}/>) : null} 
-        <h4 className='StorageUnitHeading' onClick={getLink}>{name}</h4>
+        <h4 className='StorageUnitHeading' >{name}</h4>
         <p className='Numberitems'>{number} items</p>
       <div className='FavoriteandUsers'>
         {FavoriteFillc ? (<img className='FavoriteFill' src={FavoriteFill} />) : (<div className='FavoriteFill'></div>)}
