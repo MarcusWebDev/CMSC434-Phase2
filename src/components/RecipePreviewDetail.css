@@ -1,0 +1,15 @@
+.recipePreviewDetailContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 0.5px solid #C7C7CC;
+    width: 280px;
+}
+.recipePreviewDetailName {
+    color: #636366;
+}
+.recipePreviewDetailText {
+    margin: 5px 0;
+    font-weight: 400;
+    font-size: 16px;
+}

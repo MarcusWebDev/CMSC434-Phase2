@@ -1,0 +1,52 @@
+.recipesWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.recipesContainer {
+    display: flex;
+    flex-direction: column;
+    width: 336px;
+}
+.recipesHeaderContainer {
+    position: fixed;
+    width: 336px;
+    display: flex;
+    flex-direction :column;
+    background: white;
+    border-bottom: 1px solid #C7C7CC;
+    z-index: 2;
+}
+.recipesHeaderButtons {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between
+}
+.recipesRecommendedHeader {
+    border-top: 1px solid #C7C7CC;
+    margin-top: 87px;
+    padding-top: 10px;
+    font-size: 24px;
+}
+.recipesRecommendedCardContainer {
+    display: flex;
+    flex-direction: row;
+    overflow: scroll;
+    border-bottom: 1px solid #C7C7CC;
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+.recipesFavoritesHeaderContianer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.recipesFavoritesCardContainer {
+    display: flex;
+    flex-direction: row;
+    overflow: scroll;
+    padding-top: 10px;
+    padding-bottom: 30px;
+    margin-bottom: 60px;
+}

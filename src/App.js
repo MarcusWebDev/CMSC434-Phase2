@@ -1,17 +1,19 @@
+import React, { useState } from 'react';
+import { Routes, Route } from "react-router-dom";
 import HomePage from './components/HomePage.jsx';
 import ShoppingList from "./components/ShoppingList.jsx";
 import ShoppingListPreset from "./components/ShoppingListPreset.jsx";
 import AddItemShoppingList from "./components/AddItemShoppingList.jsx";
-import { Routes, Route } from "react-router-dom";
-import React from 'react';
 import InventoryRefrigerator from './components/InventoryRefrigerator.jsx';
-import { toHaveDisplayValue } from '@testing-library/jest-dom/dist/matchers';
 import AddItemInventory from './components/AddItemInventory.jsx';
-import { useState } from 'react';
 import ItemInfoInventory from './components/ItemInfoInventory.jsx';
 import AllStorageUnits from './components/AllStorageUnits.jsx';
 import AddStorageUnit from './components/AddStorageUnit.jsx';
 import WorkInProgress from './components/WorkInProgress.jsx';
+import Recipes from "./components/Recipes.jsx";
+import RecipePreview from "./components/RecipePreview.jsx";
+import RecipeInstructions from "./components/RecipeInstructions.jsx";
+import { toHaveDisplayValue } from '@testing-library/jest-dom/dist/matchers';
 
 
 class App extends React.Component {
@@ -50,7 +52,7 @@ class App extends React.Component {
     this.createStorageUnit = this.createStorageUnit.bind(this);
   }
 
-
+  
   
 
   render() {
@@ -91,7 +93,7 @@ class App extends React.Component {
             presetArray={this.state.presetArray}
           />} 
         />
-        <Route path="/recipes" element={<ShoppingListPreset />} />
+        <Route path="/recipes" element={<Recipes />} />
         <Route path="/inventory/OfficeRefrigerator" element={<InventoryRefrigerator
         dummyInv={this.state.dummyInv}
         onReduce={this.reduceItemInventory} 
@@ -104,8 +106,115 @@ class App extends React.Component {
         id={this.state.nextInventoryId}
         newItem={this.createItemInventory} />} />
         <Route path="/workinprogress" element={<WorkInProgress />} />
+
+        <Route path="/recipes/berryYogurtSmoothiePreview" element={<RecipePreview picture={require("./icons/berryYogurtSmoothie.jpg")} itemName="Berry Yogurt Smoothie" itemDescription="Get frosty with this super easy and delicious mixed berry smoothie with yogurt and made with lots of love!" prepTime="5 min" servingSize="Serves 2" method="Blender" cuisine="Vegan" pathToLinkTo={"/recipes/berryYogurtSmoothieInstructions"} />} />
+        <Route path="/recipes/strawberryMuffinsPreview" element={<RecipePreview picture={require("./icons/strawberryMuffins.jpg")} itemName="StrawBerry Muffins" itemDescription="Vegan Strawberry Muffins – Speckled with juicy red strawberries this healthy muffin recipe bakes up moist and fluffy and is made with 7 simple ingredients in 1 bowl!" prepTime="5 min" servingSize="12 muffins" method="Bake" cuisine="Vegan" pathToLinkTo={"/recipes/strawberryMuffinsInstructions"} />} />
+        <Route path="/recipes/thaiLettuceWrapsPreview" element={<RecipePreview picture={require("./icons/lettuceWraps.jpg")} itemName="Thai Lettuce Wraps" itemDescription="Easy Thai Lettuce Wraps with chickpea and quinoa ‘meatballs’ and peanut dressing are a perfect healthy and delicious vegan lunch or dinner made with everyday ingredients! " prepTime="10 min" servingSize="Serves 3" method="Bake" cuisine="Vegan" pathToLinkTo={"/recipes/thaiLettuceWrapsInstructions"} />} />
+        <Route path="/recipes/bananaBreadPreview" element={<RecipePreview picture={require("./icons/bananaBread.jpg")} itemName="Banana Bread" itemDescription="This ‘tried and true’, classic vegan banana bread recipe is moist, healthy, and so easy to make. It’s egg & dairy free, has an oil-free option, and is the best banana bread ever!" prepTime="10 min" servingSize="8-10 slices" method="Bake" cuisine="Vegan" pathToLinkTo={"/recipes/bananaBreadInstructions"} />} />
+
+        <Route path="/recipes/berryYogurtSmoothieInstructions" element={<RecipeInstructions itemName="Berry Yogurt Smoothie" ingredientsArray={this.getBerryYogurtSmoothieIngredients()} instructions={this.getBerryYogurtSmoothieInstructions()} pathToLinkTo="/recipes/berryYogurtSmoothiePreview" />} />
+        <Route path="/recipes/strawberryMuffinsInstructions" element={<RecipeInstructions itemName="Strawberry Muffins" ingredientsArray={this.getStrawBerryMuffinIngredients()} instructions={this.getStrawberryMuffinInstructions()} pathToLinkTo="/recipes/strawberryMuffinsPreview" />} />
+        <Route path="/recipes/thaiLettuceWrapsInstructions" element={<RecipeInstructions itemName="Thai Lettuce Wraps" ingredientsArray={this.getThaiLettuceWrapsIngredients()} instructions={this.getThaiLettuceWrapsInstructions()} pathToLinkTo="/recipes/thaiLettuceWrapsPreview" />} />
+        <Route path="/recipes/bananaBreadInstructions" element={<RecipeInstructions itemName="Banana Bread" ingredientsArray={this.getBananaBreadIngredients()} instructions={this.getBananaBreadInstructions()} pathToLinkTo="/recipes/bananaBreadPreview" />} />
+
       </Routes>
     );
+  }
+  getBerryYogurtSmoothieIngredients() {
+    return  [
+      "1 1/2 cups frozen berries mix (strawberries, raspberries, blueberries, and/or blackberries)",
+      "1 small banana, optional (but adds extra creaminess!)",
+      "1 cup unsweetened non-dairy yogurt (plain or vanilla)",
+      "1/2 cup unsweetened almond milk (plain or vanilla)",
+      "1 teaspoon vanilla extract or ground vanilla bean powder, optional"
+    ];
+  }
+
+  getBerryYogurtSmoothieInstructions() {
+    return "Place ingredients into your blender, blend until smooth, stopping every now and then to scrape down the sides if needed. Add an extra splash of non-dairy milk or water as needed.\n\n" +
+    "Serve as is in a glass with straw/spoon. Alternately, serve in a bowl making a smoothie bowl."
+  }
+
+  getStrawBerryMuffinIngredients() {
+    return [
+      "1/3 cup sugar (pure cane, coconut, or pure maple syrup)",
+      "1/3 cup olive oil or vegan butter (at room temp)",
+      "1 teaspoon vanilla extract",
+      "1 cup non-dairy milk (almond, cashew, oat, soy, etc)",
+      "2 cups flour (all-purpose, whole wheat, spelt, or combo)",
+      "2 1/2 teaspoons baking powder",
+      "pinch of salt",
+      "1 1/2 cups of strawberries, diced (plus extra for topping)"
+    ];
+  }
+
+  getStrawberryMuffinInstructions() {
+    return "Prep: Preheat oven to 350 degrees F. Line a muffin tin with parchment paper liners or lightly grease with oil.\n\n" +
+    "Batter: In the bottom of a large mixing bowl, add the sugar and oil/butter, mix well. Add the vanilla and non-dairy milk, stir to combine. Lastly, add the flour, baking powder, and salt, mix until combined.Batter: In the bottom of a large mixing bowl, add the sugar and oil/butter, mix well. Add the vanilla and non-dairy milk, stir to combine. Lastly, add the flour, baking powder, and salt, mix until combined.\n\n" +
+    "Add strawberries: Toss in the strawberries and gently fold them into the batter.\n\n" +
+    "Scoop: Fill each muffin-lined hole with batter. For uniformity, fill muffin tin using a ¼ measuring cup or large ice cream scooper to scoop up the batter and pour into the muffin holes.\n\n" +
+    "Topping: Optionally, add a few strategic strawberries on top and sprinkle the top with a little pure cane sugar or raw sugar. The sugar will add a nice crunch to the tops!\n\n" +
+    "Bake: Place in the oven on the center rack and bake for 30 – 35 minutes. Let cool a few minutes and enjoy warm or at room temperature.\n\n" +
+    "Makes 12 muffins"
+  }
+
+  getThaiLettuceWrapsIngredients() {
+    return [
+      "1 can (15 oz) chickpeas",
+      "1/2 cup cooked quinoa",
+      "1/4 cup coconut sugar (or organic brown sugar)",
+      "2 tablespoons salted natural peanut butter (smooth or chunky)",
+      "2 – 3 tablespoons tamari or soy sauce",
+      "1/4 cup finely chopped fresh cilantro",
+      "1/4 cup scallions (green onions), thinly sliced",
+      "1 teaspoon chili garlic sauce",
+      "1/4 cup roasted salted peanuts, crushed or finely chopped",
+      "1/3 cup natural peanut butter or almond butter",
+      "1 tablespoon tamari or soy sauce",
+      "2 tablespoons coconut sugar or organic brown sugar",
+      "1/2 lime, juiced",
+      "1/2 – 1 teaspoon garlic chili sauce",
+      "2 – 4 tablespoons hot water, to thin",
+      "1 head butter or bibb lettuce or 1 – 2 head romaine",
+      "shredded carrots",
+      "sliced green onions",
+      "chopped peanuts",
+      "chopped fresh cilantro",
+      "lime wedges"
+    ];
+  }
+
+  getThaiLettuceWrapsInstructions() {
+    return "Preheat oven to 350 degrees F.Line a rimmed baking sheet with parchment paper or silpat, or lightly grease with oil.\n\n" +
+    "Mash chickpeas: Drain, rinse and pat the chickpeas dry as possible. In a medium size mixing bowl, add chickpeas and mash well with the back of a fork (pulsing in a blender/food processor will also work).\n\n" +
+    "Mix the meatball mixture: Add in the remaining ingredients for the meatballs with the mashed chickpeas. Mix well to combine. Taste and adjust seasoning as needed. If mixture is too wet, add a bit more crushed peanuts (a few tablespoons of breadcrumbs would work great too). I will depend on how wet your quinoa and peanut butter are.\n\n" +
+    "Roll meatballs: Scoop up mixture, using about 1 – 1 1/2 heaping tablespoons. Gently, but firmly press the mixture together and shape into balls, rolling between your palms. Take your time. You should get about 12. The mixture my be sticky and you may need to rinse your hands after rolling 2 – 3 balls, it helps to keep your hands clean.\n\n" +
+    "Bake: Place ‘meatballs’ on the prepared baking sheet. Place on the center rack in the oven for 25 – 20 minutes.\n\n" +
+    "Peanut sauce: In a small bowl, mix the peanut butter, tamari, sugar, lime, garlic and chili sauce. Add hot water a tablespoon or so at a time until desired consistency. If too thin add more nut butter.\n\n" + 
+    "Serve: Place lettuce (you may want to double up the lettuce for added strength) on individual serving dishes, top with carrots, meatballs, scallions, peanuts, cilantro and a drizzle of peanut sauce. Enjoy to the fullest!"
+  }
+
+  getBananaBreadIngredients() {
+    return [
+      "1 3/4 cups (210 g) spelt flour (whole wheat, unbleached all-purpose, or gluten free blend)",
+      "1/3 cup (75 g) organic pure cane sugar (or 1/2 finely chopped dates)",
+      "1 1/2 teaspoons baking powder",
+      "1/2 teaspoon baking soda",
+      "pinch of mineral salt",
+      "1/3 cup (75 ml) neutral flavored oil (or coconut oil in liquid state, vegan butter at room temp or applesauce",
+      "1 teaspoon vanilla extract",
+      "4 small or 3 large overripe bananas (about 1 1/2 – 1 3/4 cups (338-410g)), mashed",
+      "1/4 cup (56 ml) almond milk, use only if needed"
+    ];
+  }
+
+  getBananaBreadInstructions() {
+    return "Preheat oven to 350 degrees F. Grease your loaf pan.\n\n" +
+    "One bowl method: In a medium sized mixing bowl, mash 3 – 4 bananas (about 1 1/2 cups to 1 3/4 cups works well), add oil/applesauce and vanilla extract, mix again. Add the flour, sugar, baking soda, baking powder and salt, and mix well, but don’t overmix, just enough until the flour is combined. Batter will be slightly thick and a few lumps is ok. If mixture seems too thick, add milk, especially if using heavier flours such as whole wheat or whole spelt (you’re more inclined to need it).\n\n" +
+    "Pour batter into a greased loaf pan. Bake for about 50 min – 1 hour. Ovens vary, mine usually takes 50 minutes. You can also do the toothpick test in the center of the loaf, if it comes out clean it should be ready. Remove from oven and let cool for 10 min before slicing.\n\n" +
+    "Original method: In a medium/large size bowl, combine flour, sugar, baking powder, baking soda and salt, set aside. In a medium bowl, mash bananas. Add the oil, vanilla and bananas to the dry ingredients and mix until combined, do not overmix. If mixture seems too thick, add the almond milk (especially if using heavier flours such as whole wheat or whole spelt, you’re more inclined to need it).\n\n" +
+    "Pour batter into a greased loaf pan. Bake for about 50 min – 1 hour. Ovens vary, mine usually takes 50 minutes. You can also do the toothpick test in the center of the loaf, if it comes out clean it should be ready. Remove from oven and let cool for 10 min before slicing.\n\n" +
+    "Store: Keep covered on the counter for up to 3 days or in the refrigerator up to 1 week. Keep in the freezer for up to 2 months. Thaw the wrapped loaves overnight in the refrigerator. Reheat in the microwave or a toaster oven with a door."
   }
 
   createShoppingListItem(key, newValue) {

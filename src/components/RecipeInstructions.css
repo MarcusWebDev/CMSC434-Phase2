@@ -1,0 +1,35 @@
+.recipeInstructionsWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.recipeInstructionsContainer {
+    display: flex;
+    flex-direction: column;
+    width: 336px;
+}
+.recipeInstructionsHeaderContainer {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    background: white;
+    width: 336px;
+}
+.recipeInstructionsButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.recipeInstructionsIngredientsHeader {
+    border-top: 0.5px solid #C7C7CC;
+    padding-top: 10px;
+    margin-top: 115px;
+}
+.recipeInstructionsIngredient {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.recipeInstructionsInstructions {
+    white-space: pre-line;
+}
