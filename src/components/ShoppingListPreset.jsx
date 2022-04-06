@@ -63,6 +63,18 @@ class ShoppingListPreset extends React.Component {
         }        
     }
 
+    deselectAll() {
+        for (let currentArray of this.props.presetData.presetMap) {
+            for (let currentItem of currentArray[1]) {
+                let categoryName = this.props.itemsToCategories.get(currentItem.name);
+                if (categoryName == undefined) {
+                    categoryName = "Other";
+                }
+                this.props.updateItem(this.props.presetData.id, currentItem.id, categoryName, currentItem.name, currentItem.quantity, currentItem.unit, false)
+            }
+        }  
+    }
+
     render() {
         return(
             <div className="presetWrapper">
@@ -79,10 +91,12 @@ class ShoppingListPreset extends React.Component {
                     
                     <div className="presetHeaderContainer">
                         <input type="text" className="presetName" onChange={(event) => this.props.updatePresetName(this.props.presetData.id, event.target.value)} defaultValue={this.props.name} disabled={this.state.isEditDisabled} onFocus={() => this.setState({aKeyboardVisible: true})} onBlur={() => this.setState({aKeyboardVisible: false})} />
-                        <button className={`presetSelectAllButton ${this.state.isEditDisabled ? null : "hidden"}`} onClick={() => this.selectAll()}>Select All</button>
-                        
                     </div>
-                    <div className="presetItemContainer">
+                    <div className="presetSelectionButtons">
+                        <button className={`presetSelectAllButton ${this.state.isEditDisabled ? null : "hidden"}`} onClick={() => this.deselectAll()}>Deselect All</button>
+                        <button className={`presetSelectAllButton ${this.state.isEditDisabled ? null : "hidden"}`} onClick={() => this.selectAll()}>Select All</button>
+                    </div>
+                    <div className={`presetItemContainer ${this.state.isEditDisabled ? "presetItemContainerSmall" : null}`}>
                         {this.presetMapIsAllEmptyArrays() ? <p className="presetListIsEmptyText">This List is Empty</p> : [...this.props.presetData.presetMap.entries()].map((entry) => <CategoryList isPreset={true} presetId={this.props.presetData.id} name={entry[0]} items={entry[1]} isEditDisabled={this.state.isEditDisabled} updateItem={this.props.updateItem} removeItem={this.props.removeItem}/>)}
                         <div className="presetEmptySpace"><br/><br/><br/><br/><br/></div>
                     </div>
