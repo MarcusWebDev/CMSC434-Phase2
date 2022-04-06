@@ -11,10 +11,10 @@
     margin-right: 10px;
 
 }
-.StorageUnitBox .deleteicon {
-    position: absolute;
-    top: 0px;
-    right: 0px;
+.StorageUnitDeleteIcon {
+    position: relative;
+    top: -175px;
+    left: -15px;
 }
 
 .StorageUnitHeading {

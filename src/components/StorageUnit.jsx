@@ -19,18 +19,21 @@ const StorageUnit = ({id,name,number,linkTo,FavoriteFillc,isEditable,deleteHomeP
 }
 
   return (
-    <div className='StorageUnitBox' onClick={getLink}>
-      {isEditable ? (<img className='deleteicon' src={deleteSymbol} onClick={onClick}/>) : null} 
+    <div className={"StorageUnitWrapper"}>
+      <div className='StorageUnitBox' onClick={getLink}>
         <h4 className='StorageUnitHeading' >{name}</h4>
         <p className='Numberitems'>{number} items</p>
-      <div className='FavoriteandUsers'>
-        {FavoriteFillc ? (<img className='FavoriteFill' src={FavoriteFill} />) : (<div className='FavoriteFill'></div>)}
-        <div className='UserImages'>
-          <img  src={Elizabeth}></img>
-          <img className='James2' src={James}></img>
-</div>
+        <div className='FavoriteandUsers'>
+          {FavoriteFillc ? (<img className='FavoriteFill' src={FavoriteFill} />) : (<div className='FavoriteFill'></div>)}
+          <div className='UserImages'>
+            <img  src={Elizabeth}></img>
+            <img className='James2' src={James}></img>
+          </div>
+        </div>
       </div>
+      {isEditable ? (<img className='StorageUnitDeleteIcon' src={deleteSymbol} onClick={onClick}/>) : null} 
     </div>
+    
   )
 }
 
