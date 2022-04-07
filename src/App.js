@@ -18,6 +18,8 @@ import LakeHouseRefrigerator from './components/LakeHouseRefrigerator.jsx';
 import AddItemInventoryLHR from './components/AddItemInventoryLHR.jsx';
 import LakeHousePantry from './components/LakeHousePantry.jsx';
 import AddItemInventoryLHP from './components/AddItemInventoryLHP.jsx';
+import Recipes from './components/Recipes.jsx';
+import Favorites from './components/Favorites.jsx';
 
 
 class App extends React.Component {
@@ -112,7 +114,6 @@ class App extends React.Component {
             presetArray={this.state.presetArray}
           />} 
         />
-        <Route path="/recipes" element={<ShoppingListPreset />} />
         <Route path="/inventory/OfficeRefrigerator" element={<InventoryRefrigerator
         dummyInv={this.state.dummyInv}
         onReduce={this.reduceItemInventory} 
@@ -142,6 +143,8 @@ class App extends React.Component {
         id={this.state.nextInventoryId}
         newItem={this.createItemInventoryLHP} />} />
         <Route path="/workinprogress" element={<WorkInProgress />} />
+        <Route path="/recipes" element={<Recipes />} />
+        <Route path="/recipes/favorites" element={<Favorites />}/>
       </Routes>
     );
   }

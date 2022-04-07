@@ -1,0 +1,125 @@
+.recipesPageWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    overflow: scroll;
+}
+.recipesPageContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 336px;
+    overflow: scroll;
+}
+.recipesHeaderWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: fixed;
+    background: white;
+    width: 336px;
+    height: 110px;
+}
+.recipesHeaderBar {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    background: white;
+    margin-top: 24px;
+}
+.recipesHeaderContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 336px;
+    background: white;
+}
+.recipesHeader {
+    font-family: 'Arial';
+    font-size: 30px;
+}
+.recipesNavHeader{
+    margin-bottom: 3px;
+}
+.addRecipes{
+    float: left;
+    color: #007aff;
+    text-decoration: none;
+}
+.searchRecipes{
+    float: right;
+    color: #007aff;
+    text-decoration: none;
+}
+.line{
+    width: 336px;
+    color: #C7C7CC;
+    border: 1;
+}
+.recHeaderWrapper{
+    display: flex;
+    flex-direction: row;
+    background: white;
+    margin-top: 110px;
+    width: 336px;
+}
+.recRecipesTitle{
+    margin-left: 1px;
+}
+.recRecipes{
+    display: flex;
+    flex-direction: row;
+    width: 336px;
+    height: 325px;
+    overflow: scroll;
+}
+.favRecipesWrapper{
+    display: flex;
+    flex-direction: row;
+    margin-top: 0px;
+    width: 336px;
+    height: 325px;
+    overflow: scroll; 
+}
+.favRecipesTitleWrapper{
+    flex-direction: row;
+    background: white;
+    margin-top: 0px;
+    width: 336px;
+}
+.favTitle{
+    float: left;
+}
+.seeAllFavs{
+    float: right;
+    color: #007aff;
+    text-decoration: none;
+}
+.imageHolder{
+    display: flex;
+    flex-direction: row;
+    margin-right: 12px;
+    height: 290px;
+}
+.pics{
+    width: 232px;
+    height: 290px;
+    border-radius: 13px;
+}
+.yourRecipesWrapper{
+    display: flex;
+    flex-direction: row;
+    margin-top: 0px;
+    width: 336px;
+    height: 360px;
+    overflow: scroll; 
+}
+.yourRecipesTitleWrapper{
+    flex-direction: row;
+    background: white;
+    margin-top: 0px;
+    width: 336px;
+}
