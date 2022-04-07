@@ -7,11 +7,17 @@ import React from 'react';
 import InventoryRefrigerator from './components/InventoryRefrigerator.jsx';
 import { toHaveDisplayValue } from '@testing-library/jest-dom/dist/matchers';
 import AddItemInventory from './components/AddItemInventory.jsx';
+import AddItemInventoryLHF from './components/AddItemInventoryLHF.jsx';
 import { useState } from 'react';
 import ItemInfoInventory from './components/ItemInfoInventory.jsx';
 import AllStorageUnits from './components/AllStorageUnits.jsx';
 import AddStorageUnit from './components/AddStorageUnit.jsx';
 import WorkInProgress from './components/WorkInProgress.jsx';
+import LakeHouseFreezer from './components/LakeHouseFreezer.jsx';
+import LakeHouseRefrigerator from './components/LakeHouseRefrigerator.jsx';
+import AddItemInventoryLHR from './components/AddItemInventoryLHR.jsx';
+import LakeHousePantry from './components/LakeHousePantry.jsx';
+import AddItemInventoryLHP from './components/AddItemInventoryLHP.jsx';
 
 
 class App extends React.Component {
@@ -25,16 +31,31 @@ class App extends React.Component {
       presetArray: [],
       nextPresetId: 0,
       dummyInv:this.dummyInventoryData(),
-      nextInventoryId: 6,
-      dummyHome:this.dummyHomePage()
+      nextInventoryId: 7,
+      dummyHome:this.dummyHomePage(),
+      dummyInv2:this.dummyInventoryDataLHF(),
+      dummyInv3:this.dummyInventoryDataLHR(),
+      dummyInv4:this.dummyInventoryDataLHP()
     };
     this.deleteItemInventory = this.deleteItemInventory.bind(this);
     this.reduceItemInventory = this.reduceItemInventory.bind(this);
     this.createItemInventory = this.createItemInventory.bind(this);
     this.updateItemInventory = this.updateItemInventory.bind(this);
+    this.reduceItemInventoryLHF = this.reduceItemInventoryLHF.bind(this);
+    this.deleteItemInventoryLHF = this.deleteItemInventoryLHF.bind(this);
+    this.createItemInventoryLHF = this.createItemInventoryLHF.bind(this);
+    this.reduceItemInventoryLHR = this.reduceItemInventoryLHR.bind(this);
+    this.deleteItemInventoryLHR = this.deleteItemInventoryLHR.bind(this);
+    this.createItemInventoryLHR = this.createItemInventoryLHR.bind(this);
+    this.reduceItemInventoryLHP = this.reduceItemInventoryLHP.bind(this);
+    this.deleteItemInventoryLHP = this.deleteItemInventoryLHP.bind(this);
+    this.createItemInventoryLHP = this.createItemInventoryLHP.bind(this);
     this.editHomePage = this.editHomePage.bind(this);
     this.deleteHomePage = this.deleteHomePage.bind(this);
     this.importItemsFromShoppingList = this.importItemsFromShoppingList.bind(this);
+    this.importItemsFromShoppingListLHF = this.importItemsFromShoppingListLHF.bind(this);
+    this.importItemsFromShoppingListLHR = this.importItemsFromShoppingListLHR.bind(this);
+    this.importItemsFromShoppingListLHP = this.importItemsFromShoppingListLHP.bind(this);
     this.createShoppingListItem = this.createShoppingListItem.bind(this);
     this.removeShoppingListItem = this.removeShoppingListItem.bind(this);
     this.updateShoppingListItem = this.updateShoppingListItem.bind(this);
@@ -97,12 +118,29 @@ class App extends React.Component {
         onReduce={this.reduceItemInventory} 
         onDelete={this.deleteItemInventory}
         updateItem={this.updateItemInventory}/>} />
-        <Route path="/freezer" element={<HomePage />} />
         <Route path="/inventory/addOfficeRefrigerator" element={<AddItemInventory importFromShoppingList={this.importItemsFromShoppingList}/>} />
         <Route path="/inventory/addOfficeRefrigeratorItem" element={<ItemInfoInventory 
         dummyInv={this.state.dummyInv}
         id={this.state.nextInventoryId}
         newItem={this.createItemInventory} />} />
+        <Route path="/inventory/LakeHouseFreezer" element={<LakeHouseFreezer dummyInv2={this.state.dummyInv2} onReduce={this.reduceItemInventoryLHF} onDelete={this.deleteItemInventoryLHF}/>} />
+        <Route path="/inventory/addLakeHouseFreezer" element={<AddItemInventoryLHF importFromShoppingList={this.importItemsFromShoppingListLHF}/>} />
+        <Route path="/inventory/addLakeHouseFreezerItem" element={<ItemInfoInventory 
+        dummyInv={this.state.dummyInv2}
+        id={this.state.nextInventoryId}
+        newItem={this.createItemInventoryLHF} />} />
+        <Route path="/inventory/LakeHouseRefrigerator" element={<LakeHouseRefrigerator dummyInv={this.state.dummyInv3} onReduce={this.reduceItemInventoryLHR} onDelete={this.deleteItemInventoryLHR}/>} />
+        <Route path="/inventory/addLakeHouseRefrigerator" element={<AddItemInventoryLHR importFromShoppingList={this.importItemsFromShoppingListLHR}/>} />
+        <Route path="/inventory/addLakeHouseRefrigeratorItem" element={<ItemInfoInventory 
+        dummyInv={this.state.dummyInv3}
+        id={this.state.nextInventoryId}
+        newItem={this.createItemInventoryLHR} />} />
+        <Route path="/inventory/LakeHousePantry" element={<LakeHousePantry dummyInv={this.state.dummyInv4} onReduce={this.reduceItemInventoryLHP} onDelete={this.deleteItemInventoryLHP}/>} />
+        <Route path="/inventory/addLakeHousePantry" element={<AddItemInventoryLHP importFromShoppingList={this.importItemsFromShoppingListLHP}/>} />
+        <Route path="/inventory/addLakeHousePantryItem" element={<ItemInfoInventory 
+        dummyInv={this.state.dummyInv4}
+        id={this.state.nextInventoryId}
+        newItem={this.createItemInventoryLHP} />} />
         <Route path="/workinprogress" element={<WorkInProgress />} />
       </Routes>
     );
@@ -133,6 +171,39 @@ class App extends React.Component {
     });
   }
 
+  deleteItemInventoryLHF = (id) => {
+    let temp = [...this.state.dummyInv2];
+    temp.splice(temp.findIndex((obj) => obj.id == id),1);
+    let temp2 = [...this.state.dummyHome];
+    temp2[1].numberitems = temp2[1].numberitems-1
+    this.setState({
+      dummyInv2: temp,
+      dummyHome:temp2
+    });
+  }
+
+  deleteItemInventoryLHR = (id) => {
+    let temp = [...this.state.dummyInv3];
+    temp.splice(temp.findIndex((obj) => obj.id == id),1);
+    let temp2 = [...this.state.dummyHome];
+    temp2[2].numberitems = temp2[2].numberitems-1
+    this.setState({
+      dummyInv3: temp,
+      dummyHome:temp2
+    });
+  }
+
+  deleteItemInventoryLHP = (id) => {
+    let temp = [...this.state.dummyInv4];
+    temp.splice(temp.findIndex((obj) => obj.id == id),1);
+    let temp2 = [...this.state.dummyHome];
+    temp2[3].numberitems = temp2[3].numberitems-1
+    this.setState({
+      dummyInv4: temp,
+      dummyHome:temp2
+    });
+  }
+
   reduceItemInventory = (id) => {
     let temp = [...this.state.dummyInv];
     let index = temp.findIndex((obj) => obj.id == id)
@@ -148,6 +219,174 @@ class App extends React.Component {
     });
     console.log(this.state.dummyInv);
     
+  }
+
+  reduceItemInventoryLHF = (id) => {
+    let temp = [...this.state.dummyInv2];
+    let index = temp.findIndex((obj) => obj.id == id)
+    
+    if(temp[index].quantity-1===0)
+    return this.deleteItemInventoryLHF(id)
+    temp[index].quantity=temp[index].quantity-1; 
+    // console.log(temp[index].quantity)
+    // temp.findIndex((obj) => obj.id == id ? obj.quantity=obj.quantity-1 : null);
+    this.setState({
+      dummyInv2: temp
+
+    });
+    console.log(this.state.dummyInv2);
+    
+  }
+
+  reduceItemInventoryLHR = (id) => {
+    let temp = [...this.state.dummyInv3];
+    let index = temp.findIndex((obj) => obj.id == id)
+    
+    if(temp[index].quantity-1===0)
+    return this.deleteItemInventoryLHR(id)
+    temp[index].quantity=temp[index].quantity-1; 
+    // console.log(temp[index].quantity)
+    // temp.findIndex((obj) => obj.id == id ? obj.quantity=obj.quantity-1 : null);
+    this.setState({
+      dummyInv3: temp
+
+    });
+    console.log(this.state.dummyInv3);
+    
+  }
+
+  reduceItemInventoryLHP = (id) => {
+    let temp = [...this.state.dummyInv4];
+    let index = temp.findIndex((obj) => obj.id == id)
+    
+    if(temp[index].quantity-1===0)
+    return this.deleteItemInventoryLHP(id)
+    temp[index].quantity=temp[index].quantity-1; 
+    // console.log(temp[index].quantity)
+    // temp.findIndex((obj) => obj.id == id ? obj.quantity=obj.quantity-1 : null);
+    this.setState({
+      dummyInv4: temp
+
+    });
+    console.log(this.state.dummyInv4);
+    
+  }
+
+  createItemInventoryLHF = (id,name,quantity,unit,expiration) => {
+    let temp = [...this.state.dummyInv2];
+    let currentExpirationDate=new Date(expiration);
+    let categoryName = "Other"
+    var d = new Date();
+    d.setDate(d.getDate() +3);
+    let tempname=name.toLowerCase();
+    name=tempname[0].toUpperCase()+tempname.substring(1);
+    if(d>=currentExpirationDate)
+    {
+      categoryName="Expiring"
+    }
+    else {
+      categoryName= this.state.itemsToCategories.value.get(name.toLowerCase().replace(/ /g, ""));
+      if (categoryName == undefined) {
+        categoryName= "Other";
+      }
+    }
+    let item = {
+    'id': id, 
+    'name': name,
+    'quantity': quantity,
+    'unit': unit,
+    'isDisabled': true,
+    'checked': false,
+    'expiration': new Date(expiration),
+    'categoryName': categoryName
+    }
+    temp.push(item)
+    let temp2 = [...this.state.dummyHome]
+    temp2[1].numberitems = temp2[1].numberitems+1
+    this.setState({
+      dummyInv2:temp,
+      nextInventoryId: ++this.state.nextInventoryId,
+      dummyHome: temp2
+    })
+    console.log("Item Create",id);
+  }
+
+  createItemInventoryLHR = (id,name,quantity,unit,expiration) => {
+    let temp = [...this.state.dummyInv3];
+    let currentExpirationDate=new Date(expiration);
+    let categoryName = "Other"
+    var d = new Date();
+    d.setDate(d.getDate() +3);
+    let tempname=name.toLowerCase();
+    name=tempname[0].toUpperCase()+tempname.substring(1);
+    if(d>=currentExpirationDate)
+    {
+      categoryName="Expiring"
+    }
+    else {
+      categoryName= this.state.itemsToCategories.value.get(name.toLowerCase().replace(/ /g, ""));
+      if (categoryName == undefined) {
+        categoryName= "Other";
+      }
+    }
+    let item = {
+    'id': id, 
+    'name': name,
+    'quantity': quantity,
+    'unit': unit,
+    'isDisabled': true,
+    'checked': false,
+    'expiration': new Date(expiration),
+    'categoryName': categoryName
+    }
+    temp.push(item)
+    let temp2 = [...this.state.dummyHome]
+    temp2[2].numberitems = temp2[2].numberitems+1
+    this.setState({
+      dummyInv3:temp,
+      nextInventoryId: ++this.state.nextInventoryId,
+      dummyHome: temp2
+    })
+    console.log("Item Create",id);
+  }
+
+  createItemInventoryLHP = (id,name,quantity,unit,expiration) => {
+    let temp = [...this.state.dummyInv4];
+    let currentExpirationDate=new Date(expiration);
+    let categoryName = "Other"
+    var d = new Date();
+    d.setDate(d.getDate() +3);
+    let tempname=name.toLowerCase();
+    name=tempname[0].toUpperCase()+tempname.substring(1);
+    if(d>=currentExpirationDate)
+    {
+      categoryName="Expiring"
+    }
+    else {
+      categoryName= this.state.itemsToCategories.value.get(name.toLowerCase().replace(/ /g, ""));
+      if (categoryName == undefined) {
+        categoryName= "Other";
+      }
+    }
+    let item = {
+    'id': id, 
+    'name': name,
+    'quantity': quantity,
+    'unit': unit,
+    'isDisabled': true,
+    'checked': false,
+    'expiration': new Date(expiration),
+    'categoryName': categoryName
+    }
+    temp.push(item)
+    let temp2 = [...this.state.dummyHome]
+    temp2[3].numberitems = temp2[3].numberitems+1
+    this.setState({
+      dummyInv4:temp,
+      nextInventoryId: ++this.state.nextInventoryId,
+      dummyHome: temp2
+    })
+    console.log("Item Create",id);
   }
 
   updateItemInventory = (id,name) => {
@@ -259,6 +498,7 @@ class App extends React.Component {
     let mapValues = this.state.shoppingListItemDataByCategory.value.values();
     let today = new Date();
     let tempArray = [...this.state.dummyInv];
+    let temp2 = [...this.state.dummyHome]
     for (let currentArray of mapValues) {
       for (let currentItem of currentArray) {
         if (currentItem.checked) {
@@ -276,11 +516,109 @@ class App extends React.Component {
             'expiration': new Date(today.setDate(today.getDate() + 7)),
             'categoryName': categoryName
           });
+          temp2[0].numberitems = temp2[0].numberitems+1
         }
       }
     }
     this.setState({
-      dummyInv: tempArray
+      dummyInv: tempArray,
+      dummyHome: temp2
+    })
+  }
+
+  importItemsFromShoppingListLHF() {
+    let mapValues = this.state.shoppingListItemDataByCategory.value.values();
+    let today = new Date();
+    let tempArray = [...this.state.dummyInv2];
+    let temp2 = [...this.state.dummyHome]
+    for (let currentArray of mapValues) {
+      for (let currentItem of currentArray) {
+        if (currentItem.checked) {
+          let categoryName= this.state.itemsToCategories.value.get(currentItem.name.toLowerCase().replace(/ /g, ""));
+          if (categoryName == undefined) {
+            categoryName= "Other";
+          }
+          tempArray.push({
+            'id': currentItem.id, 
+            'name': currentItem.name,
+            'quantity': currentItem.quantity,
+            'unit': currentItem.unit,
+            'isDisabled': true,
+            'checked': false,
+            'expiration': new Date(today.setDate(today.getDate() + 7)),
+            'categoryName': categoryName
+          });
+          temp2[1].numberitems = temp2[1].numberitems+1
+        }
+      }
+    }
+    this.setState({
+      dummyInv2: tempArray,
+      dummyHome: temp2
+    })
+  }
+
+  importItemsFromShoppingListLHR() {
+    let mapValues = this.state.shoppingListItemDataByCategory.value.values();
+    let today = new Date();
+    let tempArray = [...this.state.dummyInv3];
+    let temp2 = [...this.state.dummyHome]
+    for (let currentArray of mapValues) {
+      for (let currentItem of currentArray) {
+        if (currentItem.checked) {
+          let categoryName= this.state.itemsToCategories.value.get(currentItem.name.toLowerCase().replace(/ /g, ""));
+          if (categoryName == undefined) {
+            categoryName= "Other";
+          }
+          tempArray.push({
+            'id': currentItem.id, 
+            'name': currentItem.name,
+            'quantity': currentItem.quantity,
+            'unit': currentItem.unit,
+            'isDisabled': true,
+            'checked': false,
+            'expiration': new Date(today.setDate(today.getDate() + 7)),
+            'categoryName': categoryName
+          });
+          temp2[2].numberitems = temp2[2].numberitems+1
+        }
+      }
+    }
+    this.setState({
+      dummyInv3: tempArray,
+      dummyHome: temp2
+    })
+  }
+
+  importItemsFromShoppingListLHP() {
+    let mapValues = this.state.shoppingListItemDataByCategory.value.values();
+    let today = new Date();
+    let tempArray = [...this.state.dummyInv4];
+    let temp2 = [...this.state.dummyHome]
+    for (let currentArray of mapValues) {
+      for (let currentItem of currentArray) {
+        if (currentItem.checked) {
+          let categoryName= this.state.itemsToCategories.value.get(currentItem.name.toLowerCase().replace(/ /g, ""));
+          if (categoryName == undefined) {
+            categoryName= "Other";
+          }
+          tempArray.push({
+            'id': currentItem.id, 
+            'name': currentItem.name,
+            'quantity': currentItem.quantity,
+            'unit': currentItem.unit,
+            'isDisabled': true,
+            'checked': false,
+            'expiration': new Date(today.setDate(today.getDate() + 7)),
+            'categoryName': categoryName
+          });
+          temp2[3].numberitems = temp2[3].numberitems+1
+        }
+      }
+    }
+    this.setState({
+      dummyInv4: tempArray,
+      dummyHome: temp2
     })
   }
 
@@ -558,6 +896,141 @@ class App extends React.Component {
    return expiring
    }
 
+   dummyInventoryDataLHF() {
+    let expiring = [
+      {
+      'id': '1', 
+      'name': 'Pizza',
+      'quantity': 4,
+      'unit': 'servings',
+      'isDisabled': true,
+      'checked': false,
+      'categoryName': 'Frozen'
+   }, 
+   {
+      'id':'2',
+      'name': 'Beef',
+      'quantity': '2',
+      'unit': 'lbs',
+      'isDisabled': true,
+      'checked': false,
+      'categoryName': 'Meats & Seafood'
+   },
+   {
+      'id':'3',
+      'name': 'Icecream',
+      'quantity': '4',
+      'unit': 'cartons',
+      'isDisabled': true,
+      'checked': false,
+      'categoryName': 'Frozen'
+   }, 
+   ]
+   return expiring
+   }
+
+   dummyInventoryDataLHR() {
+    let expiring = [
+      {
+      'id': '1', 
+      'name': 'Beer',
+      'quantity': 2,
+      'unit': 'cartons',
+      'isDisabled': true,
+      'checked': false,
+      'categoryName': 'Beverages'
+   }, 
+   {
+      'id':'2',
+      'name': 'Onions',
+      'quantity': '3',
+      'unit': 'lbs',
+      'isDisabled': true,
+      'checked': false,
+      'categoryName': 'Vegetables'
+   },
+   {
+      'id':'3',
+      'name': 'Pineapples',
+      'quantity': '6',
+      'unit': 'lbs',
+      'isDisabled': true,
+      'checked': false,
+      'categoryName': 'Fruit'
+   }, 
+   {
+    'id':'4',
+    'name': 'Cupcakes',
+    'quantity': '2',
+    'unit': 'cartons',
+    'isDisabled': true,
+    'checked': false,
+    'categoryName': 'Snacks'
+ },
+ {
+  'id':'5',
+  'name': 'Muffins',
+  'quantity': '3',
+  'unit': 'cartons',
+  'isDisabled': true,
+  'checked': false,
+  'categoryName': 'Snacks'
+},
+{
+  'id':'6',
+  'name': 'Lemons',
+  'quantity': '4',
+  'unit': 'lbs',
+  'isDisabled': true,
+  'checked': false,
+  'categoryName': 'Fruit'
+},
+   ]
+   return expiring
+   }
+
+   dummyInventoryDataLHP() {
+    let expiring = [
+      {
+      'id': '1', 
+      'name': 'Detergent',
+      'quantity': 2,
+      'unit': 'cartons',
+      'isDisabled': true,
+      'checked': false,
+      'categoryName': 'Personal Care'
+   }, 
+   {
+      'id':'2',
+      'name': 'Thyme',
+      'quantity': '2',
+      'unit': 'servings',
+      'isDisabled': true,
+      'checked': false,
+      'categoryName': 'Herbs & Spices'
+   },
+   {
+      'id':'3',
+      'name': 'Vitamin',
+      'quantity': '3',
+      'unit': 'cartons',
+      'isDisabled': true,
+      'checked': false,
+      'categoryName': 'Personal Care'
+   }, 
+   {
+    'id':'4',
+    'name': 'Cayenne',
+    'quantity': '4',
+    'unit': 'servings',
+    'isDisabled': true,
+    'checked': false,
+    'categoryName': 'Herbs & Spices'
+ }, 
+   ]
+   return expiring
+   }
+
    dummyHomePage() {
     let data = [
       {
@@ -572,7 +1045,7 @@ class App extends React.Component {
         'id': 2,
         'name': 'LakeHouse Freezer',
         'numberitems': 3,
-        'linkTo':'#/inventory/OfficeRefrigerator',
+        'linkTo':'#/inventory/LakeHouseFreezer',
         'isEditable':false,
         'FavoriteFill':false
       },
@@ -580,7 +1053,7 @@ class App extends React.Component {
         'id': 3,
         'name': 'LakeHouse Refrigerator',
         'numberitems': 6,
-        'linkTo':'#/inventory/OfficeRefrigerator',
+        'linkTo':'#/inventory/LakeHouseRefrigerator',
         'isEditable':false,
         'FavoriteFill':false
       },
@@ -588,7 +1061,7 @@ class App extends React.Component {
         'id': 4,
         'name': 'LakeHouse Pantry',
         'numberitems': 4,
-        'linkTo':'#/inventory/OfficeRefrigerator',
+        'linkTo':'#/inventory/LakeHousePantry',
         'isEditable':false,
         'FavoriteFill':false
       }

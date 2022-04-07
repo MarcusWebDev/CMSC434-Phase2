@@ -1,5 +1,4 @@
 import React from 'react'
-import "./InventoryRefrigerator.css"
 import Symbol from '../icons/removeCircle.svg'
 import InventoryCategoryList from './InventoryCategoryList.jsx';
 import { Link } from "react-router-dom";
@@ -13,9 +12,7 @@ import NavBar from './NavBar';
 import BackArrow from '../icons/backArrowBlue.png';
 import SelectUserPortrait from "./SelectUserPortrait.jsx";
 
-
-function InventoryRefrigerator(props) {
-
+const LakeHouseRefrigerator = (props) => {
     const onClick = () => {
         console.log("GG");
     }
@@ -103,17 +100,17 @@ function InventoryRefrigerator(props) {
     return (
         <div className='PageWrapper'>
             <div className='HeaderContainer'>
-                <Link to="/inventory/addOfficeRefrigerator" className="linkAdd" color='#007AFF;'>Add</Link>
+                <Link to="/inventory/addLakeHouseRefrigerator" className="linkAdd" color='#007AFF;'>Add</Link>
                 
                 <div className="linkEdit" onClick={edit}>Edit</div>
                 <button className="button buttonBlue hidden" >Done</button>
             </div>
             <div id="actA" className='RefriFreezerA' >
             <div className="dropdown">
-  <h3 className="Refrig">Office Refrigerator <img className="drop" src={droparrow}></img></h3>
+  <h3 className="Refrig">LakeHouse Refrigerator <img className="drop" src={droparrow}></img></h3>
   <div className="dropdown-content">
-    <a href="#/inventory/LakeHouseFreezer">Lake House Freezer</a>
-    <a href="#/inventory/LakeHouseRefrigerator">Lake House Refrigerator</a>
+    <a href="#/inventory/LakeHouseFreezer">LakeHouse Freezer</a>
+    <a href="#/inventory/OfficeRefrigerator">Office Refrigerator</a>
     <a href="#/inventory/LakeHousePantry">Lake House Pantry</a>
   </div>
 </div>
@@ -148,4 +145,4 @@ function InventoryRefrigerator(props) {
     )
 }
 
-export default InventoryRefrigerator
+export default LakeHouseRefrigerator
