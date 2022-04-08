@@ -658,7 +658,7 @@ class App extends React.Component {
 
   createNewPreset() {
     this.setState({
-      presetArray: this.state.presetArray.concat({id: this.state.nextPresetId, name: "New List", presetMap: this.initializeShoppingList()}),
+      presetArray: this.state.presetArray.concat({id: this.state.nextPresetId, name: "New Template", presetMap: this.initializeShoppingList()}),
       nextPresetId: ++this.state.nextPresetId
     });
   }

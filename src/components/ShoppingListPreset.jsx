@@ -82,7 +82,7 @@ class ShoppingListPreset extends React.Component {
                     <div className="presetHeaderButtonBar">
                         <div className={`backButtonContainer ${this.state.isEditDisabled ? null : "hidden"}`} onClick={() => this.props.closePreset()}>
                             <img src={require("../icons/backArrowBlue.png")} className="backButtonArrow"/>
-                            <p className="blueText">Back</p>
+                            <p className="blueText backButtonMargins">Back</p>
                         </div>
                         <button className={`buttonBackgroundless redText  ${this.state.isEditDisabled ? "hidden" : "verticalMargin"}`} onClick={() => {this.props.closePreset(); this.props.deletePreset(this.props.presetData.id)}}>Delete Template</button>
                         <button className={`buttonBackgroundless blueText ${this.state.isEditDisabled ? null : "hidden"}`} onClick={() => this.toggleEditDisable()}>Edit</button>
@@ -101,7 +101,7 @@ class ShoppingListPreset extends React.Component {
                         <div className="presetEmptySpace"><br/><br/><br/><br/><br/></div>
                     </div>
                     <button className={`addAllItemsButton ${this.state.isEditDisabled ? null : "hidden"}`} onClick={() => {this.setState({itemsAddedOpen: true}); this.props.importItemstoShoppingList(this.props.presetData.presetMap)}}>Add Selected Items to Shopping List</button>
-                    <div className="presetBottomButtonsContainer">
+                    <div className={`presetBottomButtonsContainer ${this.state.isEditDisabled ? null : "presetLessMargin"}`}>
                         <button className={`addNewItemsToListButton ${this.state.isEditDisabled ? "hidden" : null}`} onClick={() => this.setState({addItemOpen: true})}>Add New Items to Template</button>
                     </div>
                     

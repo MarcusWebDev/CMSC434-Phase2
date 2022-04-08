@@ -59,7 +59,7 @@ class AddItemShoppingList extends React.Component {
                 <div className="addItemWrapper">
                     <div className={`addItemContainer ${this.state.addItemOpen ? "blurWall" : null}`}> 
                         <Link to="/shoppingList" className="link" >
-                            <div className="backButtonContainer">
+                            <div className="backButtonContainer ">
                                 <img src={require("../icons/backArrowBlue.png")} className="backButtonArrow"/>
                                 <p className="blueText displayInlineBlock">Shopping List</p>
                             </div>

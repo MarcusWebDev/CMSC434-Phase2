@@ -69,10 +69,10 @@ class NewItemShoppingList extends React.Component {
                     <div className={`${this.props.isPreset ? "hidden" : null}`}>
                         <h3 className="newItemSelectUsers">Select Users</h3>
                         <div className="shoppingListUsersContainer">
-                            <SelectUserPortrait name="Elizabeth" picture={require("../icons/elizabeth.jpg")} />
-                            <SelectUserPortrait name="James" picture={require("../icons/james.jpg")} />
-                            <SelectUserPortrait name="William" picture={require("../icons/william.jpg")} />
-                            <SelectUserPortrait name="Patricia" picture={require("../icons/patricia.jpg")} />
+                            <SelectUserPortrait name="Elizabeth" picture={require("../icons/elizabeth.jpg")} defaultState={true}/>
+                            <SelectUserPortrait name="James" picture={require("../icons/james.jpg")} defaultState={false} />
+                            <SelectUserPortrait name="William" picture={require("../icons/william.jpg")} defaultState={false} />
+                            <SelectUserPortrait name="Patricia" picture={require("../icons/patricia.jpg")} defaultState={false} />
                         </div>
                     </div>
                     <button className="newItemButton newItemButtonActive" onClick={()=> {this.createItem(); this.setState({itemAddedNotificationOpen: true, notificationName: this.state.itemName}); clearTimeout(this.timer); this.runNotificationTimer()}}>Add Item(s)</button>

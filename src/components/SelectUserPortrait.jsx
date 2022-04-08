@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import "./SelectUserPortrait.css";
 
-function SelectUserPortrait({name, picture}) {
-    const [clicked, setClicked] = useState(false);
+function SelectUserPortrait({name, picture, defaultState}) {
+    const [clicked, setClicked] = useState(defaultState);
 
     return (
         <div className="selectUserPortraitContainer">
