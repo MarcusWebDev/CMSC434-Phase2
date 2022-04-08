@@ -35,13 +35,14 @@
     border-radius: 40px;
 }
 .notifications {
-    width: 336px;
-    height: 220px;
+    width: 335px;
+    height: 196px;
     left: 24px;
     top: 88px;
     background: #F9D3E0;
     box-shadow: 0px 10px 30px rgb(0 0 0 / 30%);
     border-radius: 22px;
+    overflow: scroll;
 }
 .notificationsHeader {
     font-family: Arial;
@@ -69,7 +70,7 @@
 .refrigeratorHeader {
     font-family: Arial;
     font-style: normal;
-    font-size: 20px;
+    font-size: 24px;
     line-height: 23px;
     letter-spacing: -0.03em;
     color: #1C1C1E;
@@ -113,11 +114,25 @@ label {
     color: #007AFF;
 }
 .divide {
-    border: 0.5px solid #C7C7CC;
+    border: 0.3px solid #C7C7CC;
     width: 331px;
+    margin-bottom: 11px;
+    margin-top: 30px;
 }
+
+.divide4 {
+    border: 0.3px solid #C7C7CC;
+    width: 331px;
+    margin-top: -14px;
+}
+
 .SeeAll {
     margin-left: 102px;
     margin-top: -3px;
     color: #007AFF;
+}
+.link8 {
+margin-left: 82px;
+color: #007AFF;
+text-decoration: none;
 }

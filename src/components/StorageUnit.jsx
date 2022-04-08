@@ -26,7 +26,7 @@ const StorageUnit = ({id,name,number,linkTo,FavoriteFillc,isEditable,deleteHomeP
         <div className='FavoriteandUsers'>
           {FavoriteFillc ? (<img className='FavoriteFill' src={FavoriteFill} />) : (<div className='FavoriteFill'></div>)}
           <div className='UserImages'>
-            <img  src={Elizabeth}></img>
+            <img src={Elizabeth}></img>
             <img className='James2' src={James}></img>
           </div>
         </div>

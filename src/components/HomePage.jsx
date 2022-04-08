@@ -24,6 +24,7 @@ function HomePage({dummyHome,dummyInv}) {
                     <SelectUserPortrait picture={require("../icons/elizabeth.jpg")} />
                     </Link>
                 </div>
+                <hr className='divide4'/>
                 <div className="notifications">
                     <p className="notificationsHeader"><b>Notifications</b></p>
                     {dummyInv.map((unit) => { if(unit.categoryName==="Expiring")
@@ -36,8 +37,8 @@ function HomePage({dummyHome,dummyInv}) {
                 </div>
                 <hr className='divide'/>
                 <div className="refrigeratorSelectionContainer">
-                    
-                    <h2 className="refrigeratorHeader">Your Storage Units</h2> <div className='SeeAll'><a className="link" href="#/allStorageUnits" >See All</a></div>
+                          
+                    <h2 className="refrigeratorHeader">Your Storage Units</h2><a className="link8" href="#/allStorageUnits" >See All</a>
                 </div>
                 <div className="refrigeratorFreezerContainer">
                 {dummyHome.map((unit) => {

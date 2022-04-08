@@ -58,8 +58,8 @@ line-height: 20px;
     margin: 0 10px;
 }
 .tip {
- /* width: 315px; */
-  /* height: 38px; */
+  width: 336px;
+  height: 40px;
   /* left: 32px; */
   /* top: 90px; */
   background: #CBCBCB;
@@ -72,7 +72,7 @@ line-height: 20px;
   line-height: 35px;
   display: flex;
   align-items: center;
-  margin-left: 7px;
+  margin-left: 13px;
   /* z-index: 100; */
 }
 .para {
@@ -270,7 +270,7 @@ text-decoration: none;
   .drop {
     width:22.35px;
     height:13.17px;
-    margin-left: 6px;
+    margin-left: 12px;
   }
 
   .rule3 {
