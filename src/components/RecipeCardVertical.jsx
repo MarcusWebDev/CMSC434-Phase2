@@ -11,7 +11,6 @@ function RecipeCardVertical({picture, itemName, itemDescription, pathToLinkTo}) 
                     <div className="recipeCardVerticalTextContainer">
                         <h3 className="recipeCardVerticalItemName">{itemName}</h3>
                         <p className="recipeCardVerticalItemDescription">{itemDescription}</p>
-
                     </div>
                 </div>
             </div>
