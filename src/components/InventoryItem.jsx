@@ -8,9 +8,25 @@ const InventoryItem = ({item, onDelete,onReduce,updateItem}) => {
     const [itemquantity, setItemQuantity] = useState(item.quantity);
     const [itemunit, setItemUnit] = useState(item.unit);
 
-    function handleChange(event) {
-        console.log(event.target.value);
-      }
+    const showaKeyboard = () => {
+        let btn = document.getElementsByClassName('alphabeticKeyboard')
+        btn[0].style.display='block'
+    }
+
+    const hideaKeyboard = () => {
+        let btn = document.getElementsByClassName('alphabeticKeyboard')
+        btn[0].style.display='none'
+    }
+    
+    const shownKeyboard = () => {
+        let btn = document.getElementsByClassName('numericKeyboard')
+        btn[0].style.display='block'
+    }
+
+    const hidenKeyboard = () => {
+        let btn = document.getElementsByClassName('numericKeyboard')
+        btn[0].style.display='none'
+    }
 
     const edit = (id) => {
         var btn=document.getElementsByClassName('linkEdit');
@@ -59,9 +75,9 @@ const InventoryItem = ({item, onDelete,onReduce,updateItem}) => {
     }
     return (
         <div className="shoppingListItemContainer4">
-            <input type="text" className="nameInput2 shoppingListItemInput2" value={itemname} onChange={(event) => setItemName(event.target.value)} disabled />
+            <input type="text" className="nameInput2 shoppingListItemInput2" value={itemname} onChange={(event) => setItemName(event.target.value)} disabled onFocus={showaKeyboard} onBlur={hideaKeyboard} />
             <div className="quantitySelection">
-                <input type="number" className="quantityInput2 shoppingListItemInput2"  value={item.quantity}  disabled/>
+                <input type="number" className="quantityInput2 shoppingListItemInput2"  value={item.quantity} onFocus={shownKeyboard} onBlur={hidenKeyboard}  disabled/>
                 <select name="metricsSelect" className="metricsSelect2 shoppingListItemInput2" value={itemunit} onChange={(event) => setItemUnit(event.target.value)} disabled >
                     <option value="lbs">lbs</option>
                     <option value="gallons">gallons</option>
@@ -71,6 +87,8 @@ const InventoryItem = ({item, onDelete,onReduce,updateItem}) => {
                 </select>
             </div>
             <img src={Symbol} className="shoppingListDelete2" onClick={() => edit(item.id)}/>
+            <img className={'alphabeticKeyboard'} hidden src={require("../icons/alphabeticKeyboard.png")} />
+            <img className={'numericKeyboard'} hidden src={require("../icons/numericKeyboard.png")} />
         </div>
     );
 }

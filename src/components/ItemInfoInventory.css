@@ -1,6 +1,6 @@
 .newItemWrapper2 {
     position: absolute;
-    margin-top: 16vh;
+    margin-top: 3vh;
     margin-left: 46px;
     width: 280px;
     height: 523px;
@@ -74,7 +74,7 @@
 
 .newItemNotificationContainer2 {
     position: absolute;
-    top: -15%;;
+    top: +10%;
     left: -2.5%;
     display: flex;
     flex-direction: row;

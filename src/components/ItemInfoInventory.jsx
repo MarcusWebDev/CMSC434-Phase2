@@ -10,6 +10,27 @@ const ItemInfoInventory = ({id, newItem}) => {
     const [itemExpiration, setItemExpiration] = useState('');
     // console.log(newItem)
 
+
+    const showaKeyboard = () => {
+        let btn = document.getElementsByClassName('alphabeticKeyboard')
+        btn[0].style.display='block'
+    }
+
+    const hideaKeyboard = () => {
+        let btn = document.getElementsByClassName('alphabeticKeyboard')
+        btn[0].style.display='none'
+    }
+
+    const shownKeyboard = () => {
+        let btn = document.getElementsByClassName('numericKeyboard')
+        btn[0].style.display='block'
+    }
+
+    const hidenKeyboard = () => {
+        let btn = document.getElementsByClassName('numericKeyboard')
+        btn[0].style.display='none'
+    }
+
     const showNotification = () => {
         let btn = document.getElementsByClassName("newItemNotificationContainer2")
         btn[0].style.display="flex"
@@ -25,11 +46,11 @@ const ItemInfoInventory = ({id, newItem}) => {
                         <a href="#/inventory/OfficeRefrigerator" > <img src={require("../icons/closeButton.png")} className="newItemCloseButton" /> </a>
                     </div>
                     <label className="newItemLabel">Item Name</label>
-                    <input type="text" className="newItemInput" value={itemname} onChange={(event) => setItemName(event.target.value)} placeholder="Name"/>
+                    <input type="text" className="newItemInput" value={itemname} onChange={(event) => setItemName(event.target.value)} placeholder="Name" onFocus={showaKeyboard} onBlur={hideaKeyboard}/>
                     <div className="quantityUnitContainer">
                         <div className="quantityContainer">
                             <label className="newItemLabel">Quantity</label>
-                            <input type="number" className="newItemInput" min="1" value={itemquantity} onChange={(event) => setItemQuantity(event.target.value)} placeholder="1" />            
+                            <input type="number" className="newItemInput" min="1" value={itemquantity} onChange={(event) => setItemQuantity(event.target.value)} placeholder="1" onFocus={shownKeyboard} onBlur={hidenKeyboard}/>            
                         </div>
                         <div className="unitContainer">
                             <label className="newItemLabel">Unit</label>
@@ -46,7 +67,7 @@ const ItemInfoInventory = ({id, newItem}) => {
                     </div>
                     <div className="expirationDateContainer">
                             <label className="newItemLabel">Expiration Date</label>
-                            <input type="text" className="newItemInput" value={itemExpiration} onChange={(event) => setItemExpiration(event.target.value)} placeholder="MM/DD/YYYY" />            
+                            <input type="text" className="newItemInput" value={itemExpiration} onChange={(event) => setItemExpiration(event.target.value)} placeholder="MM/DD/YYYY" onFocus={showaKeyboard} onBlur={hideaKeyboard}/>            
                         </div>
                         <div className="shoppingListSelectUser3">
                         <h3 className='userHead'>Select Users</h3>
@@ -63,6 +84,8 @@ const ItemInfoInventory = ({id, newItem}) => {
                 <img src={require("../icons/notificationIconWhite.png")} className="newItemNotificationIcon2"/>
                 <p>"{itemname}" was added!</p>
                 </div>
+                <img className={'alphabeticKeyboard'} hidden src={require("../icons/alphabeticKeyboard.png")} />
+                <img className={'numericKeyboard'} hidden src={require("../icons/numericKeyboard.png")} />
             </div>
         );
     }
