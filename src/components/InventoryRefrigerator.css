@@ -192,16 +192,24 @@ color: #000000;
     display: none;
 }
 .linkAdd {
-    color: #007AFF;
-    margin-bottom: 19px;
-    margin-left: -1px;
-    text-decoration: none;
+  color: #007AFF;
+  margin-bottom: 19px;
+  margin-top: 21px;
+  margin-left: 24px;
+  text-decoration: none;
+  width: 69px;
+  height: 21px;
+  font-size: 18px;
 }
 .linkEdit {
-    color: #007AFF;
-    margin-bottom: 19px;
-    margin-left: 270px;
-    text-decoration: none;
+  color: #007AFF;
+  margin-bottom: 19px;
+  margin-left: 239px;
+  margin-top: 21px;
+  text-decoration: none;
+  width: 69px;
+  height: 21px;
+  font-size: 18px;
 }
 .dropbtn {
     background-color: green;

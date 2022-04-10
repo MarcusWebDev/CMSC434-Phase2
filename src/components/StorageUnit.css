@@ -26,8 +26,9 @@
     letter-spacing: -0.03em;
     text-align: justify;
     color: #FFFFFF;
-    margin-top: 13px;
+    margin-top: 5px;
     margin-left: 10px;
+    padding-top: 13px;
 }
 
 .Numberitems {
@@ -60,8 +61,8 @@ color: #F2F2F7;
 }
 
 .Elizabeth2 {
+    width: 68px;
     height: 36px;
-    width: 34px;
 }
 .James2 {
     margin-left:-3px;

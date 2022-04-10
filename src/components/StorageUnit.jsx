@@ -3,6 +3,7 @@ import "./StorageUnit.css"
 import FavoriteFill from "../icons/favoriteFill.png"
 import Elizabeth from '../icons/ElizabethBlue.png';
 import James from '../icons/JamesBlue.png';
+import Group4 from '../icons/Group4.png'
 import { Link } from 'react-router-dom';
 import { render } from '@testing-library/react';
 import deleteSymbol from '../icons/deleteSymbol.png'
@@ -26,8 +27,7 @@ const StorageUnit = ({id,name,number,linkTo,FavoriteFillc,isEditable,deleteHomeP
         <div className='FavoriteandUsers'>
           {FavoriteFillc ? (<img className='FavoriteFill' src={FavoriteFill} />) : (<div className='FavoriteFill'></div>)}
           <div className='UserImages'>
-            <img src={Elizabeth}></img>
-            <img className='James2' src={James}></img>
+            <img className='Elizabeth2' src={Group4}></img>
           </div>
         </div>
       </div>
