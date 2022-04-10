@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./RecipesSearch.css"
 import { Link } from "react-router-dom";
 import NavBar from './NavBar';
 import RightArrow from "../icons/rightArrow.png"
 
 const RecipesSearch = () => {
+    const [aKeyboardActive, setAKeyboardActive] = useState(false);
+
   return (
     <div className="recipesSearchPageWrapper">
         <div className="recipesSearchPageContainer">
@@ -12,7 +14,7 @@ const RecipesSearch = () => {
             <div className="recipesSearchHeaderBar">
 
                 <div className="recipesSearchBarHolder">
-                    <input type="text" className="recipesSearchBar" placeholder="Search">
+                    <input type="text" className="recipesSearchBar" placeholder="Search" onFocus={() => setAKeyboardActive(true)} onBlur={() => setAKeyboardActive(false)}>
                     </input>
                 </div>
 
@@ -82,6 +84,7 @@ const RecipesSearch = () => {
             </Link>
             <hr className="recentlySearchedItemsLine"/>
         </div>
+        <img className={`alphabeticKeyboard ${aKeyboardActive ? "" : "hidden "}`} src={require("../icons/alphabeticKeyboard.png")} />
         <NavBar selectedTab={"Recipes"} />
     </div>
   )

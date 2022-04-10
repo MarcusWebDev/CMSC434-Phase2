@@ -35,16 +35,22 @@ const Recipes = () => {
         </div>
 
         <div className = "recRecipes">
-            <div className= "imageHolder">
-                <Link to="./BerryYogurtSmoothie">
-                    <img src= {SmoothiePic} className = "pics"/>
-                </Link>
-            </div>
-            <div className= "imageHolder">
-                <Link to="./StrawberryMuffins">
-                    <img src= {MuffinsPic} className = "pics"/>
-                </Link>
-            </div>
+            <Link to="./BerryYogurtSmoothie" className="link">
+                <div className= "imageHolder" style={{background: "url(" + SmoothiePic + ")", backgroundSize: "290px", backgroundPosition: "center", backgroundRepeat: "no-repeat"}}>
+                    <div className="recipeCardTextContainer">
+                        <h3 className="recipeCardTitle">Berry Yogurt Smoothie</h3>
+                        <p className="recipeCardDescription">Vegan, refined sugar-free</p>
+                    </div>
+                </div>
+            </Link>
+            <Link to="./StrawberryMuffins" className="link">
+                <div className= "imageHolder" style={{background: "url(" + MuffinsPic + ")", backgroundSize: "232px", backgroundPosition: "center", backgroundRepeat: "no-repeat"}}>
+                    <div className="recipeCardTextContainer">
+                        <h3 className="recipeCardTitle">Strawberry Muffins</h3>
+                        <p className="recipeCardDescription">Vegan, gluten-free</p>
+                    </div>
+                </div>     
+            </Link>
         </div>
 
         <div className= "favRecipesTitleWrapper">
@@ -55,31 +61,40 @@ const Recipes = () => {
         </div>
 
         <div className = "favRecipesWrapper">
-            <div className= "imageHolder">
-                <Link to = "./LettuceWraps">
-                    <img src= {WrapsPic} className = "pics"/>
-                </Link>
-            </div>
-            <div className= "imageHolder">
-                <Link to = "./BananaBread">
-                    <img src= {BananaBreadPic} className = "pics"/>
-                </Link>
-            </div>
+            <Link to = "./LettuceWraps" className="link">
+                <div className= "imageHolder" style={{background: "url(" + WrapsPic + ")", backgroundSize: "232px", backgroundPosition: "center", backgroundRepeat: "no-repeat"}}>
+                    <div className="recipeCardTextContainer">
+                        <h3 className="recipeCardTitle">Thai Lettuce Wraps</h3>
+                        <p className="recipeCardDescription">Vegan</p>
+                    </div>
+                </div>  
+            </Link>
+            <Link to = "./BananaBread" className="link">
+                <div className= "imageHolder" style={{background: "url(" + BananaBreadPic + ")", backgroundSize: "232px", backgroundPosition: "center", backgroundRepeat: "no-repeat"}}>
+                    <div className="recipeCardTextContainer">
+                        <h3 className="recipeCardTitle">Banana Bread</h3>
+                        <p className="recipeCardDescription">Vegan</p>
+                    </div>
+                </div>  
+            </Link>
         </div>
 
         <div className= "yourRecipesTitleWrapper">
             <h3 className= "favTitle">Your Recipes</h3>
-            <Link to="./Favorites" className= "seeAllFavs">
+            <Link to="/workinprogress" className= "seeAllFavs">
                 See All
             </Link>
         </div>
 
         <div className = "yourRecipesWrapper">
-            <div className= "imageHolder">
-                <Link to = "./BananaBread">
-                    <img src= {BananaBreadPic} className = "pics"/>
-                </Link>
-            </div>
+            <Link to = "./BananaBread" className="link">
+                <div className= "imageHolder" style={{background: "url(" + BananaBreadPic + ")", backgroundSize: "232px", backgroundPosition: "center", backgroundRepeat: "no-repeat"}}>
+                    <div className="recipeCardTextContainer">
+                        <h3 className="recipeCardTitle">Banana Bread</h3>
+                        <p className="recipeCardDescription">Vegan</p>
+                    </div>
+                </div>  
+            </Link>
         </div>
 
         </div>

@@ -24,11 +24,13 @@ const Favorites = () => {
                     <div className= "favPageTitle">
                         Favorites
                     </div>
-                    <div className= "editFavsTitle">
-                        <Link to = "/" className="noDec">
+                    
+                    <div className= "editFavsTitle noDec">
+                        <Link to="/workinprogress" className="link">
                             Edit
                         </Link>
                     </div>
+                    
                 </div>
             </div>
 
@@ -37,45 +39,26 @@ const Favorites = () => {
             </div>
 
             <div className="favImgHolderWrapper">
-                <div className="favImgHolder">
-                    <Link to = "../Recipes/LettuceWraps">
-                        <img src= {WrapsPic} className = "pics2"/>
-                    </Link>
-                </div>
+                <Link to = "../Recipes/LettuceWraps" className="link">
+                    <div className="favImgHolder" style={{background: "url(" + WrapsPic + ")", backgroundSize: "336px", backgroundPosition: "center", backgroundRepeat: "no-repeat"}}>
+                        <div className="recipesCardHorizontalTextContainer">
+                            <h3 className="recipeCardTitle">Thai Lettuce Wraps</h3>
+                            <p className="recipeCardDescription">Vegan</p>
+                        </div>    
+                    </div>
+                </Link>
             </div>
 
             <div className="favImgHolderWrapper">
-                <div className="favImgHolder">
-                    <Link to = "../Recipes/BananaBread">
-                        <img src= {BananaBreadPic} className = "pics2"/>
-                    </Link>
-                </div>
+                <Link to = "../Recipes/LettuceWraps" className="link">
+                    <div className="favImgHolder" style={{background: "url(" + BananaBreadPic+ ")", backgroundSize: "336px", backgroundPosition: "center", backgroundRepeat: "no-repeat"}}>
+                        <div className="recipesCardHorizontalTextContainer">
+                            <h3 className="recipeCardTitle">Banana Bread</h3>
+                            <p className="recipeCardDescription">Vegan</p>
+                        </div>    
+                    </div>
+                </Link>
             </div>
-
-            <div className="favImgHolderWrapper">
-                <div className="favImgHolder">
-                    <Link to = "../Recipes/BananaBread">
-                        <img src= {BananaBreadPic} className = "pics2"/>
-                    </Link>
-                </div>
-            </div>
-
-            <div className="favImgHolderWrapper">
-                <div className="favImgHolder">
-                    <Link to = "../Recipes/BananaBread">
-                        <img src= {BananaBreadPic} className = "pics2"/>
-                    </Link>
-                </div>
-            </div>
-
-            <div className="favImgHolderWrapper">
-                <div className="favImgHolder">
-                    <Link to = "../Recipes/BananaBread">
-                        <img src= {BananaBreadPic} className = "pics2"/>
-                    </Link>
-                </div>
-            </div>
-
         </div>
         <NavBar selectedTab={"Recipes"} />
     </div>

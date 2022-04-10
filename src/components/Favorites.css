@@ -77,11 +77,28 @@
     width: 336px;
 }
 .favImgHolder{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-top: 10px;
+    margin-right: 17px;
     height: 184px;
     width: 336px;
+    border-radius: 13px;
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.15);
 }
 .pics2{
     height: 184px;
     width: 336px;
     border-radius: 13px;
+}
+.recipesCardHorizontalTextContainer {
+    display: flex;
+    flex-direction: column;
+    width: 336px;
+    height: 76px;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    color: white;
+    border-radius: 0 0 13px 13px;
 }

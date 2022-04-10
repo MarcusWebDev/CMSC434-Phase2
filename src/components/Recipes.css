@@ -21,6 +21,7 @@
     background: white;
     width: 336px;
     height: 110px;
+    z-index: 10;
 }
 .recipesHeaderBar {
     display: flex;
@@ -100,19 +101,16 @@
     color: #007aff;
     text-decoration: none;
 }
-.imageHolderBys{
-    display: flex;
-    flex-direction: row;
-    margin-right: 17px;
-    width: 232px;
-    height: 290px;
-}
 .imageHolder{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-top: 10px;
     margin-right: 17px;
-    width: 232px;
     height: 290px;
+    width: 232px; 
+    border-radius: 13px;
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.15);
 }
 .pics{
     width: 232px;
@@ -132,4 +130,21 @@
     background: white;
     margin-top: 0px;
     width: 336px;
+}
+.recipeCardTextContainer {
+    display: flex;
+    flex-direction: column;
+    width: 232px;
+    height: 76px;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    color: white;
+    border-radius: 0 0 13px 13px;
+}
+.recipeCardTitle {
+    margin: 10px 0px 10px 5px;
+
+}
+.recipeCardDescription { 
+    margin: 0 0 0 5px;
 }
