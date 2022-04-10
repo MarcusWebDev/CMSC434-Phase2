@@ -1,0 +1,177 @@
+.bbPageWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    overflow: scroll;
+}
+.bbPageContainer {
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    width: 336px;
+    overflow: scroll;
+}
+.bbBackPadding{
+    display: flex;
+    flex-direction: row;
+    background: white;
+    height: 21px;
+    width: 336px;
+    position: fixed;
+}
+.bbBackWrapper{
+    display: flex;
+    flex-direction: row;
+    background: white;
+    height: 31px;
+    width: 336px;
+    margin-top: 21px;
+    position: fixed;
+}
+.bbImageWrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 260px;
+    width: 336px;
+    margin-top: 52px;
+}
+.bbImageHolder{
+    height: 240px;
+    width: 240px;
+}
+.bbPic{
+    height: 240px;
+    width: 240px;
+    border-radius: 13px;
+}
+.bbTitleWrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    width: 336px;
+}
+.bbTitle{
+    font-family: Arial;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: -0.03em;
+    text-align: center;
+}
+.bbButtonWrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    width: 336px;
+}
+.bbButtonsContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 42px;
+    width: 336px;
+}
+.bbButtons{
+    height: 42px;
+    width: 140px;
+    left: 40px;
+    top: 354px;
+    border-radius: 13px;
+    border: none;
+    justify-content: center;
+    align-items: center;
+    background: #EDEDED;    
+}
+.bbFavButton{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-family: Arial;
+    font-weight: 400;
+    line-height: 21px;
+    justify-content: space-evenly;
+    font-size: 18px;
+    color: #F0395A;
+}
+.bbCookButton{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-family: Arial;
+    width: 100px;
+    margin-left: 13px;
+    font-weight: 400;
+    line-height: 21px;
+    justify-content: space-evenly;
+    font-size: 18px;
+    color: #007AFF;
+}
+.bbDescWrapper{
+    display: flex;
+    width: 336px;
+}
+.bbDesc{
+    font-family: Arial;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #8E8E93;
+}
+.bbInfoWrapper{
+    display: flex;
+    flex-direction: row;
+    width: 336px;
+}
+.bbInfoContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 50px;
+    margin-bottom: 60px;
+    width: 286px;
+}
+.bbInfoHolder{
+    align-items: center;
+    height: 26px;
+    width: 286px;
+}
+.bbInfoLeft{
+    float: left;
+    font-family: Arial;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #636366;
+}
+.bbInfoRight{
+    float: right;
+    font-family: Arial;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0em;
+    text-align: right;
+    color: #1C1C1E;
+}
+.bbBackLink{
+    float: left;
+    margin-left: 0px;
+    text-decoration: none;
+}
+.bbBackArrow {
+    color: #007AFF;
+    margin-left: 5px;
+}

@@ -1,0 +1,121 @@
+.bysInstructionsPageWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    overflow: scroll;
+}
+.bysInstructionsPageContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 336px;
+    overflow: scroll;
+}
+.bysInstructionsHeaderWrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: fixed;
+    background: white;
+    width: 336px;
+    height: 110px;
+}
+.bysInstructionsHeaderBar{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    background: white;
+    margin-top: 21px;
+}
+.bysInstructionsNavHeader{
+    margin-bottom: 3px;
+}
+.bysInstructionsHeaderContainer{
+    align-items: center;
+    width: 336px;
+    background: white;
+}
+.bysInsTitleContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 336px;
+    background: white;
+}
+.bysInsIngredientsTitleCont{
+    display: flex;
+    flex-direction: row;
+    background: white;
+    margin-top: 110px;
+    width: 336px;
+}
+.bysInsIngTitle{
+    font-family: Arial;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: left;
+    color: #1C1C1E;
+}
+.bysInsTitle{
+    font-family: Arial;
+    font-size: 30px;
+    font-weight: 700;
+    text-align: left;
+}
+.bysIngredientsInfo{
+    display: flex;
+    flex-direction: row;
+    vertical-align: text-top;
+    height: 196px;
+    width: 336px;
+    font-family: Arial;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.bysInsInsTitleCont {
+    display: flex;
+    flex-direction: row;
+    background: white;
+    width: 336px;
+}
+
+.bysInsInsTitle{
+    font-family: Arial;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 23px;
+    text-align: left;
+}
+.bysInstructionsData{
+    width: 336px;
+    margin-bottom: 30px;
+    font-family: Arial;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: left;
+    color: #1C1C1E;
+}
+.bysInstructionsDataWhtSpace{
+    width: 336px;
+    margin-top: 50px;
+}
+.bysInsBackLink{
+    float: left;
+    margin-left: 0px;
+    text-decoration: none;
+}
+.bysInsBackArrow{
+    color: #007AFF;
+    margin-left: 5px;
+}
+.bysInsLine{
+    width: 336px;
+    color: #C7C7CC;
+}

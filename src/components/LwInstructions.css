@@ -1,0 +1,126 @@
+.lwInstructionsPageWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    overflow: scroll;
+}
+.lwInstructionsPageContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 336px;
+    overflow: scroll;
+}
+.lwInstructionsHeaderWrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: fixed;
+    background: white;
+    width: 336px;
+    height: 110px;
+}
+.lwInstructionsHeaderBar{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    background: white;
+    margin-top: 21px;
+}
+.lwInstructionsNavHeader{
+    margin-bottom: 3px;
+}
+.lwInstructionsHeaderContainer{
+    align-items: center;
+    width: 336px;
+    background: white;
+}
+.lwInsTitleContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 336px;
+    background: white;
+}
+.lwInsIngredientsTitleCont{
+    display: flex;
+    flex-direction: row;
+    background: white;
+    margin-top: 110px;
+    width: 336px;
+}
+.lwInsIngTitle{
+    font-family: Arial;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: left;
+    color: #1C1C1E;
+}
+.lwInsTitle{
+    font-family: Arial;
+    font-size: 30px;
+    font-weight: 700;
+    text-align: left;
+}
+.lwIngredientsInfo{
+    display: flex;
+    flex-direction: row;
+    vertical-align: text-top;
+    height: 510px;
+    width: 336px;
+    font-family: Arial;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.lwInsInsTitleCont {
+    display: flex;
+    flex-direction: row;
+    background: white;
+    width: 336px;
+}
+
+.lwInsInsTitle{
+    font-family: Arial;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 23px;
+    text-align: left;
+}
+.lwIngListHeaderTitle{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.lwInstructionsData{
+    width: 336px;
+    margin-bottom: 30px;
+    font-family: Arial;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: left;
+    color: #1C1C1E;
+}
+.lwInstructionsDataWhtSpace{
+    width: 336px;
+    margin-top: 50px;
+}
+.lwInsBackLink{
+    float: left;
+    margin-left: 0px;
+    text-decoration: none;
+}
+.lwInsBackArrow{
+    color: #007AFF;
+    margin-left: 5px;
+}
+.lwInsLine{
+    width: 336px;
+    color: #C7C7CC;
+}

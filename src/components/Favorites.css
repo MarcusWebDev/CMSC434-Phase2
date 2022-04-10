@@ -1,0 +1,87 @@
+.favoritesPageWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    overflow: scroll;
+    
+}
+.favoritesPageContainer{
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    width: 336px;
+}
+.favPageHeaderWrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: fixed;
+    background: white;
+    height: 68px;
+    width: 336px;
+}
+.favoritesPageHeaderBar{
+    display: flex;
+    flex-direction: row;
+    width: 336px;
+    align-items: center;
+    text-align: center;
+    margin-top: 21px;
+    position: fixed;
+}
+.backArrow {
+    color: #007AFF;
+    margin-left: 5px;
+}
+.favPageTitle{
+    display: flex;
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+    margin-left: 80px;
+}
+.link{
+    float: left;
+    margin-left: 0px;
+}
+.editFavsTitle{
+    float: right;
+    margin-left: auto;
+    text-decoration: none;
+}
+.noDec{
+    color: #007AFF;
+    text-decoration: none;
+}
+.favPageWhtSpace{
+    display: flex;
+    flex-direction: row;
+    margin-top: 42px;
+    height: 35px;
+    width: 336px;
+    position: fixed;
+}
+.favImgHolderStart{
+    display: flex;
+    flex-direction: row;
+    background: white;
+    margin-top: 68px;
+    width: 336px;
+}
+.favImgHolderWrapper{
+    height: 208px;
+    width: 336px;
+}
+.favImgHolder{
+    height: 184px;
+    width: 336px;
+}
+.pics2{
+    height: 184px;
+    width: 336px;
+    border-radius: 13px;
+}

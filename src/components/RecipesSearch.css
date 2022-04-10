@@ -1,0 +1,111 @@
+.recipesSearchPageWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    overflow: scroll;
+}
+.recipesSearchPageContainer{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    height: 100vh;
+    width: 336px;
+}
+.recipesSearchHeaderBar{
+    margin-top: 24px;
+    margin-bottom: 10px;
+    align-items: center;
+    height: 60px;
+    width: 336px;
+}
+.recipesSearchBar{
+    background: rgba(237, 237, 237, 0.8);
+    border-radius: 12px;
+    border: none;
+    height: 38px;
+    width: 240px;
+    padding: 0px 15px;
+}
+.recipesSearchBarHolder{
+    float: left;
+}
+.cancelOption{
+    float: right;
+    margin-top: 10px;
+    text-decoration: none;
+    font-family: Arial;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0em;
+    color: #007AFF;
+}
+.recentlySearchedContainer{
+    height: 25px;
+}
+.recentlySearchedTitle{
+    float: left;
+    font-family: Arial;
+    font-size: 16px;
+    font-weight: 400;
+}
+.recentlySearchedClear{
+    float: right;
+    text-decoration: none;
+    font-family: Arial;
+    font-size: 16px;
+    font-weight: 400;
+    color: #007AFF;
+}
+.searchTabLine{
+    width: 336px;
+    color: #C7C7CC;
+    border: 1;
+}
+.recentlySearchedItemsLine{
+    margin-left: 15px;
+    width: 320px;
+    color: #C7C7CC;
+    border: 1;
+}
+.recentlySearchedItemLink{
+    text-decoration: none;
+}
+.recentlySearchedItemContainer{
+    display: flex;
+    flex-direction: row;
+    margin-top: 5px;
+    margin-left: 20px;
+    height: 40px;
+    text-decoration: none;
+}
+.toDeleteItemContainer{
+    width: 260px;
+}
+.toDeleteItemTitle{
+    text-decoration: none;
+    height: 25px;
+    font-family: Arial;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0em;
+    color: #1C1C1E;
+}
+.toDeleteItemCuisine{
+    height: 15px;
+    font-family: Arial;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0em;
+    color: #636366;
+}
+
+.toDeleteItemArrowContainer{
+    display: flex;
+    width: 50px;
+    justify-content: right;
+    align-items: center;
+}

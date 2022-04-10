@@ -18,6 +18,29 @@ import LakeHouseRefrigerator from './components/LakeHouseRefrigerator.jsx';
 import AddItemInventoryLHR from './components/AddItemInventoryLHR.jsx';
 import LakeHousePantry from './components/LakeHousePantry.jsx';
 import AddItemInventoryLHP from './components/AddItemInventoryLHP.jsx';
+import Recipes from './components/Recipes.jsx';
+import Favorites from './components/Favorites.jsx';
+import RecipesSearch from './components/RecipesSearch.jsx';
+import BerryYogurtSmoothie from './components/BerryYogurtSmoothie.jsx'
+import BerryYogurtSmoothieFavorite from './components/BerryYogurtSmoothieFavorite.jsx';
+import StrawberryMuffins from './components/StrawberryMuffins.jsx'
+import StrawberryMuffinsFavorite from './components/StrawberryMuffinsFavorite.jsx'
+import LettuceWraps from './components/LettuceWraps.jsx';
+import LettuceWrapsFavorite from './components/LettuceWrapsFavorite.jsx';
+import BananaBread from './components/BananaBread.jsx';
+import BananaBreadFavorite from './components/BananaBreadFavorite.jsx';
+import BysInstructions from './components/BysInstructions.jsx';
+import SbmInstructions from './components/SbmInstructions.jsx'
+import LwInstructions from './components/LwInstructions.jsx';
+import BbInstructions from './components/BbInstructions.jsx';
+import FinishedCookingBys from './components/FinishedCookingBys.jsx'
+import FinishedCookingSbm from './components/FinishedCookingSbm.jsx'
+import FinishedCookingLw from './components/FinishedCookingLw.jsx';
+import FinishedCookingBb from './components/FinishedCookingBb.jsx';
+import RemoveIngBys from './components/RemoveIngBys.jsx'
+import RemoveIngSbm from './components/RemoveIngSbm.jsx'
+import RemoveIngLw from './components/RemoveIngLw.jsx';
+import RemoveIngBb from './components/RemoveIngBb.jsx';
 
 
 class App extends React.Component {
@@ -112,7 +135,6 @@ class App extends React.Component {
             presetArray={this.state.presetArray}
           />} 
         />
-        <Route path="/recipes" element={<ShoppingListPreset />} />
         <Route path="/inventory/OfficeRefrigerator" element={<InventoryRefrigerator
         dummyInv={this.state.dummyInv}
         onReduce={this.reduceItemInventory} 
@@ -142,6 +164,29 @@ class App extends React.Component {
         id={this.state.nextInventoryId}
         newItem={this.createItemInventoryLHP} />} />
         <Route path="/workinprogress" element={<WorkInProgress />} />
+        <Route path="/recipes" element={<Recipes />} />
+        <Route path="/recipes/favorites" element={<Favorites />}/>
+        <Route path="/recipes/RecipesSearch" element={<RecipesSearch/>} />
+        <Route path="/recipes/berryyogurtsmoothie" element={<BerryYogurtSmoothie />}/>
+        <Route path="/recipes/berryyogurtsmoothiefavorite" element={<BerryYogurtSmoothieFavorite />}/>
+        <Route path="/recipes/strawberrymuffins" element={<StrawberryMuffins />}/>
+        <Route path="/recipes/strawberrymuffinsfavorite" element={<StrawberryMuffinsFavorite />}/>
+        <Route path="/recipes/lettucewraps" element={<LettuceWraps />}/>
+        <Route path="/recipes/lettucewrapsfavorite" element={<LettuceWrapsFavorite />}/>
+        <Route path="/recipes/bananabread" element={<BananaBread />}/>
+        <Route path="/recipes/bananabreadfavorite" element={<BananaBreadFavorite />}/>
+        <Route path="/recipes/berryyogurtsmoothie/bysInstructions" element={<BysInstructions />}/>
+        <Route path="/recipes/strawberrymuffins/sbminstructions" element={<SbmInstructions />}/>
+        <Route path="/recipes/lettucewraps/lwinstructions" element={<LwInstructions />}/>
+        <Route path="/recipes/bananabread/bbinstructions" element={<BbInstructions />}/>
+        <Route path="/recipes/berryyogurtsmoothie/bysInstructions/finishedcookingbys" element={<FinishedCookingBys />}/>
+        <Route path="/recipes/strawberrymuffins/sbmInstructions/finishedcookingsbm" element={<FinishedCookingSbm />}/>
+        <Route path="/recipes/lettucewraps/lwinstructions/finishedcookinglw" element={<FinishedCookingLw />}/>
+        <Route path="/recipes/bananabread/bbinstructions/finishedcookingbb" element={<FinishedCookingBb />}/>
+        <Route path="/recipes/berryyogurtsmoothie/bysInstructions/finishedcookingbys/removeingbys" element={<RemoveIngBys />}/>
+        <Route path="/recipes/strawberrymuffins/sbmInstructions/finishedcookingsbm/removeingsbm" element={<RemoveIngSbm />}/>
+        <Route path="/recipes/lettucewraps/lwinstructions/finishedcookinglw/removeinglw" element={<RemoveIngLw />}/>
+        <Route path="/recipes/bananabread/bbinstructions/finishedcookingbb/removeingbb" element={<RemoveIngBb />}/>
       </Routes>
     );
   }
