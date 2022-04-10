@@ -8,7 +8,7 @@ function CategoryList({isPreset, presetId, name, items, isEditDisabled, updateIt
     } 
 
     return (
-        <div className={`categoryContainer ${isPreset ? "width300px" : null}`}>
+        <div className={`categoryContainer ${isPreset ? "width300px" : "categoryOverflowHidden"}`}>
             <h3 className="categoryHeader">{name}</h3>
             {items.map(shoppingListItem => <ShoppingListItem 
                                                 key={shoppingListItem.id}  

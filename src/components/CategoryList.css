@@ -4,11 +4,13 @@
     background: #FFFFFF;
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
     border-radius: 13px;
-    overflow: hidden;
 }
 .categoryHeader {
     margin-left: 20px;
 }
 .width300px {
     width: 300px;
+}
+.categoryOverflowHidden {
+    overflow: hidden;
 }
