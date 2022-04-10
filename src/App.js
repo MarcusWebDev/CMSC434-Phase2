@@ -19,7 +19,8 @@ import AddItemInventoryLHR from './components/AddItemInventoryLHR.jsx';
 import LakeHousePantry from './components/LakeHousePantry.jsx';
 import AddItemInventoryLHP from './components/AddItemInventoryLHP.jsx';
 import Recipes from './components/Recipes.jsx';
-import AddNewRecipe from './components/AddNewRecipe'
+import AddNewRecipe from './components/AddNewRecipe.jsx';
+import NewRecipeSaved from './components/NewRecipeSaved.jsx'
 import Favorites from './components/Favorites.jsx';
 import RecipesSearch from './components/RecipesSearch.jsx';
 import BerryYogurtSmoothie from './components/BerryYogurtSmoothie.jsx'
@@ -167,6 +168,7 @@ class App extends React.Component {
         <Route path="/workinprogress" element={<WorkInProgress />} />
         <Route path="/recipes" element={<Recipes />} />
         <Route path="/recipes/addnewrecipe" element= {<AddNewRecipe/>}/>
+        <Route path="/recipes/addnewrecipe/newrecipesaved" element= {<NewRecipeSaved/>}/>
         <Route path="/recipes/favorites" element={<Favorites />}/>
         <Route path="/recipes/RecipesSearch" element={<RecipesSearch/>} />
         <Route path="/recipes/berryyogurtsmoothie" element={<BerryYogurtSmoothie />}/>

@@ -25,7 +25,7 @@ const AddNewRecipe = () => {
                         Back
                     </div>
                 </Link>
-                <Link to = "/" className="saveNewRecipeLink">
+                <Link to = "./NewRecipeSaved" className="saveNewRecipeLink">
                     <div className="saveNewRecipeText">
                         Save
                     </div>
