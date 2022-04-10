@@ -10,9 +10,9 @@ const AddItemInventory = ({importFromShoppingList}) => {
   return (
     <div className='PageWrapper'>
       <div className={`addItemInventoryContainer ${itemsAddedOpen ? "blurWall" : ""}`}>
-        <div className='HeaderContainer'>
+        <div className='HeaderContainer4'>
+        <h3 className='Heading4'>Add Item(s)</h3>
           <Link to="/inventory/LakeHouseFreezer" className="linkBack2" > <img className="linkBackimage" src={BackArrow} />  Back</Link>
-          <h3 className='Heading'>Add Item(s)</h3>
         </div>
         <hr className='rule'/>
         <div className='ShoppingListandButton'>
