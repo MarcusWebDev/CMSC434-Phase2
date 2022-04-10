@@ -72,7 +72,7 @@ const ItemInfoInventory = ({id, newItem}) => {
                         <div className="shoppingListSelectUser3">
                         <h3 className='userHead'>Select Users</h3>
                         <div className="shoppingListUsersContainer">
-                            <SelectUserPortrait name="Elizabeth" picture={require("../icons/elizabeth.jpg")} />
+                            <SelectUserPortrait defaultState={true} name="Elizabeth" picture={require("../icons/elizabeth.jpg")} />
                             <SelectUserPortrait name="James" picture={require("../icons/james.jpg")} />
                             <SelectUserPortrait name="William" picture={require("../icons/william.jpg")} />
                             <SelectUserPortrait name="Patricia" picture={require("../icons/patricia.jpg")} />
