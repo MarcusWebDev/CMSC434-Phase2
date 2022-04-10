@@ -38,33 +38,44 @@ const Favorites = () => {
 
             <div className="favImgHolderWrapper">
                 <div className="favImgHolder">
-                    <img src= {WrapsPic} className = "pics2"/>
+                    <Link to = "../Recipes/LettuceWraps">
+                        <img src= {WrapsPic} className = "pics2"/>
+                    </Link>
                 </div>
             </div>
 
             <div className="favImgHolderWrapper">
                 <div className="favImgHolder">
-                    <img src= {BananaBreadPic} className = "pics2"/>
+                    <Link to = "../Recipes/BananaBread">
+                        <img src= {BananaBreadPic} className = "pics2"/>
+                    </Link>
                 </div>
             </div>
 
             <div className="favImgHolderWrapper">
                 <div className="favImgHolder">
-                    <img src= {BananaBreadPic} className = "pics2"/>
+                    <Link to = "../Recipes/BananaBread">
+                        <img src= {BananaBreadPic} className = "pics2"/>
+                    </Link>
                 </div>
             </div>
 
             <div className="favImgHolderWrapper">
                 <div className="favImgHolder">
-                    <img src= {BananaBreadPic} className = "pics2"/>
+                    <Link to = "../Recipes/BananaBread">
+                        <img src= {BananaBreadPic} className = "pics2"/>
+                    </Link>
                 </div>
             </div>
 
             <div className="favImgHolderWrapper">
                 <div className="favImgHolder">
-                    <img src= {BananaBreadPic} className = "pics2"/>
+                    <Link to = "../Recipes/BananaBread">
+                        <img src= {BananaBreadPic} className = "pics2"/>
+                    </Link>
                 </div>
             </div>
+
         </div>
         <NavBar selectedTab={"Recipes"} />
     </div>

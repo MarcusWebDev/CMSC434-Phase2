@@ -1,0 +1,127 @@
+.bbInstructionsPageWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    overflow: scroll;
+}
+.bbInstructionsPageContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 336px;
+    overflow: scroll;
+}
+.bbInstructionsHeaderWrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: fixed;
+    background: white;
+    width: 336px;
+    height: 110px;
+}
+.bbInstructionsHeaderBar{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    background: white;
+    margin-top: 21px;
+}
+.bbInstructionsNavHeader{
+    margin-bottom: 3px;
+}
+.bbInstructionsHeaderContainer{
+    align-items: center;
+    width: 336px;
+    background: white;
+}
+.bbInsTitleContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 336px;
+    background: white;
+}
+.bbInsIngredientsTitleCont{
+    display: flex;
+    flex-direction: row;
+    background: white;
+    margin-top: 110px;
+    width: 336px;
+}
+.bbInsIngTitle{
+    font-family: Arial;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: left;
+    color: #1C1C1E;
+}
+.bbInsTitle{
+    font-family: Arial;
+    font-size: 30px;
+    font-weight: 700;
+    text-align: left;
+}
+.bbIngredientsInfo{
+    display: flex;
+    flex-direction: row;
+    vertical-align: text-top;
+    height: 340px;
+    width: 336px;
+    font-family: Arial;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.bbInsInsTitleCont {
+    display: flex;
+    flex-direction: row;
+    background: white;
+    width: 336px;
+}
+
+.bbInsInsTitle{
+    font-family: Arial;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 23px;
+    text-align: left;
+}
+.bbInstructionsData{
+    width: 336px;
+    margin-bottom: 30px;
+    font-family: Arial;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: left;
+    color: #1C1C1E;
+}
+.bbInstructionsDataWhtSpace{
+    width: 336px;
+    margin-top: 50px;
+}
+.bbInsBackLink{
+    float: left;
+    margin-left: 0px;
+    text-decoration: none;
+}
+.bbInsBackArrow{
+    color: #007AFF;
+    margin-left: 5px;
+}
+.bbInsLine{
+    width: 336px;
+    color: #C7C7CC;
+}
+.bbIngListHeaderTitle{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-style: italic;
+}

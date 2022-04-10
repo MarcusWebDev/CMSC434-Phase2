@@ -7,6 +7,7 @@ import MuffinsPic from "../icons/strawberryMuffins.jpg"
 import WrapsPic from "../icons/LettuceWraps.png"
 import BananaBreadPic from "../icons/BananaBread.png"
 import Favorites from './Favorites';
+import BerryYogurtSmoothie from './BerryYogurtSmoothie';
 
 const Recipes = () => {
   return (
@@ -18,7 +19,7 @@ const Recipes = () => {
                     <Link to="/" className="addRecipes">
                         Add
                     </Link>
-                    <Link to="/" className="searchRecipes">
+                    <Link to="./recipessearch" className="searchRecipes">
                         Search
                     </Link>
                 </div>
@@ -35,12 +36,14 @@ const Recipes = () => {
 
         <div className = "recRecipes">
             <div className= "imageHolder">
-                <Link to="/">
-                <img src= {SmoothiePic} className = "pics"/>
+                <Link to="./BerryYogurtSmoothie">
+                    <img src= {SmoothiePic} className = "pics"/>
                 </Link>
             </div>
             <div className= "imageHolder">
-                <img src= {MuffinsPic} className = "pics"/>
+                <Link to="./StrawberryMuffins">
+                    <img src= {MuffinsPic} className = "pics"/>
+                </Link>
             </div>
         </div>
 
@@ -53,10 +56,14 @@ const Recipes = () => {
 
         <div className = "favRecipesWrapper">
             <div className= "imageHolder">
-                <img src= {WrapsPic} className = "pics"/>
+                <Link to = "./LettuceWraps">
+                    <img src= {WrapsPic} className = "pics"/>
+                </Link>
             </div>
             <div className= "imageHolder">
-                <img src= {BananaBreadPic} className = "pics"/>
+                <Link to = "./BananaBread">
+                    <img src= {BananaBreadPic} className = "pics"/>
+                </Link>
             </div>
         </div>
 
@@ -69,7 +76,9 @@ const Recipes = () => {
 
         <div className = "yourRecipesWrapper">
             <div className= "imageHolder">
-                <img src= {BananaBreadPic} className = "pics"/>
+                <Link to = "./BananaBread">
+                    <img src= {BananaBreadPic} className = "pics"/>
+                </Link>
             </div>
         </div>
 
