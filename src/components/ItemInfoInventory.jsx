@@ -3,7 +3,7 @@ import "./ItemInfoInventory.css";
 import { useState } from 'react';
 import SelectUserPortrait from "./SelectUserPortrait.jsx";
 
-const ItemInfoInventory = ({id, newItem}) => {
+const ItemInfoInventory = ({id, newItem,pathreturn}) => {
     const [itemname, setItemName] = useState('');
     const [itemquantity, setItemQuantity] = useState('');
     const [itemunit, setItemUnit] = useState('');
@@ -43,7 +43,7 @@ const ItemInfoInventory = ({id, newItem}) => {
                 <div className="newItemContainer">
                     <div className="newItemHeader">
                         <h2>New Item</h2>
-                        <a href="#/inventory/OfficeRefrigerator" > <img src={require("../icons/closeButton.png")} className="newItemCloseButton" /> </a>
+                        <a href={pathreturn} > <img src={require("../icons/closeButton.png")} className="newItemCloseButton" /> </a>
                     </div>
                     <label className="newItemLabel">Item Name</label>
                     <input type="text" className="newItemInput" value={itemname} onChange={(event) => setItemName(event.target.value)} placeholder="Name" onFocus={showaKeyboard} onBlur={hideaKeyboard}/>

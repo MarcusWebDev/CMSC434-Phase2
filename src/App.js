@@ -146,25 +146,29 @@ class App extends React.Component {
         <Route path="/inventory/addOfficeRefrigeratorItem" element={<ItemInfoInventory 
         dummyInv={this.state.dummyInv}
         id={this.state.nextInventoryId}
-        newItem={this.createItemInventory} />} />
+        newItem={this.createItemInventory}
+        pathreturn={"#/inventory/OfficeRefrigerator"} />} />
         <Route path="/inventory/LakeHouseFreezer" element={<LakeHouseFreezer dummyInv2={this.state.dummyInv2} onReduce={this.reduceItemInventoryLHF} onDelete={this.deleteItemInventoryLHF}/>} />
         <Route path="/inventory/addLakeHouseFreezer" element={<AddItemInventoryLHF importFromShoppingList={this.importItemsFromShoppingListLHF}/>} />
         <Route path="/inventory/addLakeHouseFreezerItem" element={<ItemInfoInventory 
         dummyInv={this.state.dummyInv2}
         id={this.state.nextInventoryId}
-        newItem={this.createItemInventoryLHF} />} />
+        newItem={this.createItemInventoryLHF}
+        pathreturn={"#/inventory/LakeHouseFreezer"} />} />
         <Route path="/inventory/LakeHouseRefrigerator" element={<LakeHouseRefrigerator dummyInv={this.state.dummyInv3} onReduce={this.reduceItemInventoryLHR} onDelete={this.deleteItemInventoryLHR}/>} />
         <Route path="/inventory/addLakeHouseRefrigerator" element={<AddItemInventoryLHR importFromShoppingList={this.importItemsFromShoppingListLHR}/>} />
         <Route path="/inventory/addLakeHouseRefrigeratorItem" element={<ItemInfoInventory 
         dummyInv={this.state.dummyInv3}
         id={this.state.nextInventoryId}
-        newItem={this.createItemInventoryLHR} />} />
+        newItem={this.createItemInventoryLHR} 
+        pathreturn={"#/inventory/LakeHouseRefrigerator"}/>} />
         <Route path="/inventory/LakeHousePantry" element={<LakeHousePantry dummyInv={this.state.dummyInv4} onReduce={this.reduceItemInventoryLHP} onDelete={this.deleteItemInventoryLHP}/>} />
         <Route path="/inventory/addLakeHousePantry" element={<AddItemInventoryLHP importFromShoppingList={this.importItemsFromShoppingListLHP}/>} />
         <Route path="/inventory/addLakeHousePantryItem" element={<ItemInfoInventory 
         dummyInv={this.state.dummyInv4}
         id={this.state.nextInventoryId}
-        newItem={this.createItemInventoryLHP} />} />
+        newItem={this.createItemInventoryLHP} 
+        pathreturn={"#/inventory/LakeHousePantry"}/>} />
         <Route path="/workinprogress" element={<WorkInProgress />} />
         <Route path="/recipes" element={<Recipes />} />
         <Route path="/recipes/addnewrecipe" element= {<AddNewRecipe/>}/>
