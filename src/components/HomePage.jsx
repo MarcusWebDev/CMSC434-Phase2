@@ -20,7 +20,7 @@ function HomePage({dummyHome,dummyInv}) {
             <div className="homePageContainer">
                 <div className="headerBar">
                     <h1 className="header">Hello, Elizabeth!</h1>
-                    <Link to="/profileSettings" className="link">
+                    <Link to="/workinprogress" className="link">
                     <SelectUserPortrait picture={require("../icons/elizabeth.jpg")} />
                     </Link>
                 </div>

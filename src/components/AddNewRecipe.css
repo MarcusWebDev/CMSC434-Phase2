@@ -1,0 +1,184 @@
+.addNewRecipePageWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    overflow: scroll;
+}
+.addNewRecipePageContainer{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    width: 336px;
+    overflow: scroll;
+}
+.addNewRecipeWhtSpace{
+    display: flex;
+    flex-direction: row;
+    background: white;
+    height: 24px;
+    width: 336px;
+    position: fixed;
+}
+.addNewRecipeNavHeaderContainer{
+    width: 336px;
+    height: 30px;
+    margin-top: 24px;
+    position: fixed;
+    background: white;
+}
+.addNewRecepieBackLink{
+    float: left;
+    margin-left: 0px;
+    text-decoration: none;
+    color: #007AFF;
+}
+.addNewRecipeBackArrow{
+    margin-left: 5px;
+}
+.saveNewRecipeLink{
+    float: right;
+    text-decoration: none;
+    color: #007AFF;
+}
+.imageIconWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 260px;
+    width: 336px;
+    margin-top: 48px;
+}
+.newImageHolder{
+    height: 240px;
+    width: 240px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #EDEDED;
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 13px;
+}
+.newImageIconHolder{
+    height: 40px;
+    width: 50px;
+}
+.chooseToTakePic{
+    font-family: Arial;
+    margin-top: 14px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #636366;
+}
+.newRecipieNameBar{
+    margin-top: 15px;
+    height: 50px;
+    width: 320px;
+    background: #EDEDED;
+    border: none;
+    border-radius: 13px;
+    font-family: Arial;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: -0.03em;
+    text-align: left;
+    padding-left: 10px;
+    color: #8E8E93;
+}
+.newRecipieDescription{
+    margin-top: 12px;
+    height: 86px;
+    width: 320px;
+    background: #EDEDED;
+    border: none;
+    border-radius: 13px;
+    font-family: Arial;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #8E8E93;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+.newRecepiesLine{
+    margin-top: 24px;
+    width: 330px;
+    color: #C7C7CC;
+    border: 1;
+}
+.newRecipieGenInfoContainer{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    height: 50px;
+    width: 320px;
+    margin-left: 6px;
+}
+.newRecipieGenInfoText{
+    width: 103px;
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    color: #636366;
+}
+.newRecipieGenInfoVal{
+    margin-left: 129px;
+    height: 36px;
+    width: 120px;
+    border: none;
+    border-radius: 13px;
+    background: #EDEDED;
+    font-family: Arial;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0em;
+    text-align: right;
+    color: #8E8E93;
+    padding-right: 10px;
+}
+.newRecipeSubTitleHolder{
+    height: 45px;
+    width: 336px;
+}
+.newRecipeSubTitleText{
+    font-family: Arial;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: left;
+    color: #1C1C1E;
+}
+.newRecipeBigTextBox{
+    height: 156px;
+    width: 320px;
+    margin-bottom: 25px;
+    background: #EDEDED;
+    border: none;
+    border-radius: 13px;
+    font-family: Arial;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #8E8E93;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+.newRecipiesBottomPagePadding{
+    height: 350px;
+    width: 150px;
+}
+.noTxtDec{
+    text-decoration: none;
+}

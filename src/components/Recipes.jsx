@@ -16,7 +16,7 @@ const Recipes = () => {
         <div className="recipesHeaderWrapper">
             <div className="recipesHeaderBar">
                 <div className = "recipesNavHeader">
-                    <Link to="/" className="addRecipes">
+                    <Link to="./addnewrecipe" className="addRecipes">
                         Add
                     </Link>
                     <Link to="./recipessearch" className="searchRecipes">
