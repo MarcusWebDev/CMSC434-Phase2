@@ -741,18 +741,13 @@ class App extends React.Component {
   }
 
   updatePresetListItem(presetId, itemId, categoryName, newItemName, newItemQuantity, newItemUnit, newPresetChecked) {
-    console.log("In update preset");
     let temp = [...this.state.presetArray];
     temp.find((obj) => {
       if (obj.id == presetId) {
         if (this.state.itemsToCategories.value.get(newItemName.toLowerCase().replace(/ /g, "")) != categoryName && !(this.state.itemsToCategories.value.get(newItemName.toLowerCase().replace(/ /g, "")) == undefined && categoryName == "Other")) {
-          console.log(newItemName.toLowerCase().replace(/ /g, ""));
-          console.log(this.state.itemsToCategories.value.get(newItemName.toLowerCase().replace(/ /g, "")));
-          console.log(categoryName);
           this.removePresetListItem(presetId, itemId, categoryName);
           this.createPresetListItem(presetId, this.state.itemsToCategories.value.get(newItemName.toLowerCase().replace(/ /g, "")), {id: itemId, name: newItemName, quantity: newItemQuantity, unit: newItemUnit, checked: false, presetChecked: newPresetChecked});
         } else {
-          console.log("In else");
           let tempArray = obj.presetMap.get(categoryName);
           tempArray.find((o, i) => {
             if (o.id == itemId) {
