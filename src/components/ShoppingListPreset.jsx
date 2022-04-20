@@ -54,7 +54,7 @@ class ShoppingListPreset extends React.Component {
     selectAll() {
         for (let currentArray of this.props.presetData.presetMap) {
             for (let currentItem of currentArray[1]) {
-                let categoryName = this.props.itemsToCategories.get(currentItem.name.toLowerCase().replace(/ /g, ""));
+                let categoryName = this.props.itemsToCategories.get(currentItem.name);
                 if (categoryName == undefined) {
                     categoryName = "Other";
                 }
@@ -66,7 +66,7 @@ class ShoppingListPreset extends React.Component {
     deselectAll() {
         for (let currentArray of this.props.presetData.presetMap) {
             for (let currentItem of currentArray[1]) {
-                let categoryName = this.props.itemsToCategories.get(currentItem.name.toLowerCase().replace(/ /g, ""));
+                let categoryName = this.props.itemsToCategories.get(currentItem.name);
                 if (categoryName == undefined) {
                     categoryName = "Other";
                 }
